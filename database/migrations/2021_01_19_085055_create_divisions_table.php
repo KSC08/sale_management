@@ -18,6 +18,7 @@ class CreateDivisionsTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+        //Add foreign key for users table
         Schema::table('users', function (Blueprint $table)
         {
             $table->foreign('div_id')
