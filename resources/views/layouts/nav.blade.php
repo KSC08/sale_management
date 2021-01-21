@@ -58,7 +58,7 @@
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่กำลังดำเนินการอยู่</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่เสร็จสิ้นไปแล้ว</a></li>
-							
+
 						</ul>
                     </li>
                     <li class="sidebar-header">
@@ -66,27 +66,27 @@
                     </li>
                     <li class="sidebar-item">
 						<a data-target="#pages" data-toggle="collapse" class="sidebar-link collapsed">
-                            
+
                 <i class="align-middle mr-2 fas fa-fw fa-file"></i> <span class="align-middle">จัดการข้อมูลลูกค้า</span>
               </a>
 						<ul id="pages" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">ข้อมูลลูกค้า</a></li>
-							
-							
+                            <li class="sidebar-item"><a class="sidebar-link" href="{{url('/customer_type')}}">ประเภทข้อมูลลูกค้า</a></li>
+
 						</ul>
 					</li>
 					<li class="sidebar-item">
 						<a data-target="#pages1" data-toggle="collapse" class="sidebar-link collapsed">
-                            
+
                 <i class="align-middle mr-2 fas fa-fw fa-file"></i> <span class="align-middle">จัดการข้อมูลผู้ใช้</span>
               </a>
 						<ul id="pages1" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">สมัครสมาชิก</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">ข้อมูลผู้ใช้</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">เปลี่ยนรหัสผ่าน</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/user')}}">ข้อมูลผู้ใช้</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">เปลี่ยนรหัสผ่าน</a></li>
 						</ul>
 					</li>
-					
+
 				</ul>
 			</div>
 		</nav>
@@ -249,7 +249,8 @@
 			</nav>
 			<main class="content">
 				<div class="container-fluid">
-					<!-- <meta http-equiv="refresh" content="0;url=dashboard-default.html" /> -->
+                    <!-- <meta http-equiv="refresh" content="0;url=dashboard-default.html" /> -->
+                    @yield('content')
 				</div>
 			</main>
 			<footer class="footer">
