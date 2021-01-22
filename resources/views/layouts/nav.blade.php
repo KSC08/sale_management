@@ -8,7 +8,7 @@
 	<meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
 	<meta name="author" content="Bootlab">
 
-	<title>Spark - Responsive Admin &amp; Dashboard Template</title>
+	<title>Spark - Responsive Admin &amp; Dashboard Template @yield('title')</title>
 
 	<!-- PICK ONE OF THE STYLES BELOW -->
 	<link href="{{ asset('css/modern.css') }}" rel="stylesheet">
@@ -56,7 +56,7 @@
                 <i class="align-middle mr-2 fas fa-fw fa-home"></i> <span class="align-middle">โครงการ</span>
               </a>
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่กำลังดำเนินการอยู่</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{ url('projact') }}">โครงการที่กำลังดำเนินการอยู่</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่เสร็จสิ้นไปแล้ว</a></li>
 							
 						</ul>
@@ -249,6 +249,7 @@
 			</nav>
 			<main class="content">
 				<div class="container-fluid">
+				@yield('content')
 					<!-- <meta http-equiv="refresh" content="0;url=dashboard-default.html" /> -->
 				</div>
 			</main>
@@ -292,7 +293,23 @@
       </symbol>
     </defs>
   </svg>
-	<script src="{{ asset('js/app.js') }}"></script>
+	<script src="js/app.js"></script>
+
+	<script>
+		$(function() {
+			// Datatables basic
+			$('#datatables-basic').DataTable({
+				responsive: true
+			});
+			// Datatables with Buttons
+			var datatablesButtons = $('#datatables-buttons').DataTable({
+				lengthChange: !1,
+				buttons: ["copy", "print"],
+				responsive: true
+			});
+			datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)")
+		});
+	</script>
 
 </body>
 

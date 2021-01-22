@@ -19,6 +19,9 @@ Route::get('/', function () {
 Route::get('/nav', function () {
     return view('layouts.nav');
 });
+Route::get('/projact', function () {
+    return view('project.index');
+});
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
