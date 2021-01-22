@@ -56,6 +56,7 @@
                 <i class="align-middle mr-2 fas fa-fw fa-home"></i> <span class="align-middle">โครงการ</span>
               </a>
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+							<li class="sidebar-item"><a class="sidebar-link" href="{{url('company')}}">โครงการที่กำลังดำเนินการอยู่</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่กำลังดำเนินการอยู่</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่เสร็จสิ้นไปแล้ว</a></li>
 							
@@ -70,7 +71,7 @@
                 <i class="align-middle mr-2 fas fa-fw fa-file"></i> <span class="align-middle">จัดการข้อมูลลูกค้า</span>
               </a>
 						<ul id="pages" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">ข้อมูลลูกค้า</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{route('customer.index')}}">ข้อมูลลูกค้า</a></li>
 							
 							
 						</ul>
@@ -250,6 +251,7 @@
 			<main class="content">
 				<div class="container-fluid">
 					<!-- <meta http-equiv="refresh" content="0;url=dashboard-default.html" /> -->
+                  @yield('content')
 				</div>
 			</main>
 			<footer class="footer">
@@ -294,6 +296,21 @@
   </svg>
 	<script src="{{ asset('js/app.js') }}"></script>
 
+	<script>
+		$(function() {
+			// Datatables basic
+			$('#datatables-basic').DataTable({
+				responsive: true
+			});
+			// Datatables with Buttons
+			var datatablesButtons = $('#datatables-buttons').DataTable({
+				lengthChange: !1,
+				buttons: ["copy", "print"],
+				responsive: true
+			});
+			datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)")
+		});
+	</script>
 </body>
 
 </html>
