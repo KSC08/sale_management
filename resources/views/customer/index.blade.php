@@ -135,7 +135,7 @@
         })
     })
 </script>
-<svg width="0" height="0" style="position:absolute">
+<svg width="0" height="1" style="position:absolute">
     <defs>
       <symbol viewBox="0 0 512 512" id="ion-ios-pulse-strong">
         <path
