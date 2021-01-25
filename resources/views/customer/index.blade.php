@@ -1,10 +1,20 @@
 @extends('layouts.nav')
 @section('content')
+<div class="header">
+    <h1 class="header-title">
+        ข้อมูลลูกค้า
+    </h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ข้อมูลลูกค้า</li>
+        </ol>
+    </nav>
+</div>
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Default</h5>
                 <a class="btn btn-primary" href="{{route('customer.create')}}">เพิ่มข้อมูลลูกค้า</a>
             </div>
             <div class="card-body">
