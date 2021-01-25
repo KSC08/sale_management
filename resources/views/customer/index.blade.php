@@ -23,8 +23,8 @@
                             <td>{{$row->id}}</td>
                             <td>{{$row->cus_name}}</td>
                             <td>{{$row->com_name}}</td>
-                            <th><a href="{{route('customer.edit',$row->id)}}">Edit</a>&nbsp&nbsp
-                            <a href="{{url('customer_delete',$row->id)}}">Delete</a></th>
+                            <th><a href="{{route('customer.edit',$row->id)}}"><i class="fa fa-edit"></i></a>&nbsp&nbsp
+                            <a href="{{url('customer_delete',$row->id)}}" onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่')"><i class="fa fa-trash"></i></a></th>
                         </tr>
                     @endforeach
                     </tbody>

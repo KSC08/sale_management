@@ -22,7 +22,7 @@
                         <tr>
                             <td>{{$row->id}}</td>
                             <td>{{$row->name}}</td>
-                            <th><a href="{{url('company_edit',$row->id)}}">Edit</a>&nbsp&nbsp<a href="{{url('company_delete',$row->id)}}" onclick="myFunction()">Delete</a></th>
+                            <th><a href="{{url('company_edit',$row->id)}}"><i class="fa fa-edit"></i></a>&nbsp&nbsp<a href="{{url('company_delete',$row->id)}}" onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่')"><i class="fa fa-trash"></i></a></th>
                         </tr>
                     @endforeach
                     </tbody>

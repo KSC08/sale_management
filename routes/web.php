@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\DepartmentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +40,11 @@ Route::get('/customer_edit/{id}', [CustomerController::class, 'edit']);
 Route::POST('/customer_update', [CustomerController::class, 'update']);
 Route::get('/customer_delete/{id}', [CustomerController::class, 'destroy']);
 
+//Department
+Route::resource('department','App\Http\Controllers\DepartmentController');
+Route::POST('/department_store',[DepartmentController::class,'store']);
+Route::POST('/department_update/{id}',[DepartmentController::class,'update']);
+Route::get('/department_delete/{id}',[DepartmentController::class,'destroy']);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

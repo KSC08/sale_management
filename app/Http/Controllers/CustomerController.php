@@ -16,7 +16,8 @@ class CustomerController extends Controller
     {
         return view('customer.index', [
             'customers' => DB::table('customers')
-            ->join('companies','companies.id','=','customers.id')->select(
+            ->join('companies','companies.id','=','customers.id')
+            ->select(
                 'customers.id as id',
                 'customers.fname as cus_name',
                 'companies.name as com_name'
