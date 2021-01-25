@@ -1,18 +1,23 @@
 @extends('layouts.nav')
 @section('title','เพิ่มข้อมูลบริษัท')
 @section('content')
+<div class="header">
+    <h1 class="header-title">
+        แก้ไขข้อมูลบริษัท
+    </h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{url('company')}}">ข้อมูลบริษัท</a></li>
+            <li class="breadcrumb-item active" aria-current="page">แก้ไขข้อมูลบริษัท</li>
+        </ol>
+    </nav>
+</div>
 <div class="container">
 <div class="row">
     <div class="col-12 col-xl-12">
-
         <div class="card">
-                <div class="card-header">
-
-                
-                <h1 class="text-primary mr-auto" align="center">เพิ่มข้อมูลติดต่อ</h1>
-                </div>
                     <div class="card-body">
-
                     @if(count($errors) > 0)
                 <div class="alert alert-danger">
                     <ul>@foreach ($errors->all() as $error)
@@ -54,17 +59,17 @@
                     {{csrf_field()}}
                     {{ method_field('POST') }}
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                             <input type="hidden" name="id" value="{{$companies->id}}">
                             <label style="color:red;">ชื่อ *</label>
                             <input type="text" name="name" class="form-control" placeholder="ป้อนชื่อ" value="{{$companies->name}}" required>
                         </div>
                     </div>
+                    <br>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-12">
                         <center>
-                            <div class="form-group"><input type="submit" class="btn btn-primary" value="บันทึกข้อมูลแล้วหยุด">
-                                <a href="{{url('/company')}}" class="btn btn-danger">ย้อนกลับ</a>
+                            <div class="form-group"><input type="submit" class="btn btn-primary" value="บันทึกการแก้ไข">
                             </div>
                         </center>
                         </div>

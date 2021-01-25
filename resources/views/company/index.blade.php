@@ -1,12 +1,21 @@
 @extends('layouts.nav')
 @section('content')
+<div class="header">
+    <h1 class="header-title">
+        ข้อมูลบริษัท
+    </h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ข้อมูลบริษัท</li>
+        </ol>
+    </nav>
+</div>
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Default</h5>
-                <h6 class="card-subtitle text-muted">Highly flexible tool that many advanced features to any HTML table.</h6>
-                <a href="{{url('/company_create')}}">company_create</a>
+                <a class="btn btn-primary" href="{{url('/company_create')}}">เพิ่มข้อมูลบริษัท</a>
             </div>
             <div class="card-body">
                 <table id="datatables-basic" class="table table-striped" style="width:100%">

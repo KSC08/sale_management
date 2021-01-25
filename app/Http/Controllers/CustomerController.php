@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\customer;
+
 class CustomerController extends Controller
 {
     /**
@@ -48,9 +49,7 @@ class CustomerController extends Controller
                 'company_id' => $request->post('company_id')
             ]);
         $customer->save();
-        return view('customer.index', [
-            'customers' => DB::table('customers')->get()
-            ])->with('success', 'เพิ่มข้มูลลูกค้าแล้ว');
+        return redirect()->action([CustomerController::class, 'index']);
     }
 
     /**
