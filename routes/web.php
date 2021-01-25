@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\CustomerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,26 +14,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/nav', function () {
+Route::get('/ ', function () {
     return view('layouts.nav');
 });
-Route::get('/projact', function () {
-    return view('project.index');
-});
+Route::resource('project','ProjectController');
+// Route::get('/company','CompanyController@index');
 
-//user
-Route::get('/user', function () {
-    return view('user.index');
-});
+//Company
+Route::get('/company', [CompanyController::class, 'index']);
+Route::get('/company_seach', [CompanyController::class, 'search']);
+Route::get('/company_create', [CompanyController::class, 'create']);
+Route::POST('/company_store', [CompanyController::class, 'store']);
+Route::get('/company_edit/{id}', [CompanyController::class, 'edit']);
+Route::POST('/company_update', [CompanyController::class, 'update']);
+Route::get('/company_delete/{id}', [CompanyController::class, 'destroy']);
 
-//customer_type
-Route::get('/customer_type', function () {
-    return view('customer_type.index');
-});
-
+//Customer
+Route::resource('customer', 'App\Http\Controllers\CustomerController');
+// Route::get('/customer', [CustomerController::class, 'index']);
+Route::get('/customer_seach', [CustomerController::class, 'search']);
+Route::get('/customer_create', [CustomerController::class, 'create']);
+Route::POST('/customer_store', [CustomerController::class, 'store']);
+Route::get('/customer_edit/{id}', [CustomerController::class, 'edit']);
+Route::POST('/customer_update', [CustomerController::class, 'update']);
+Route::get('/customer_delete/{id}', [CustomerController::class, 'destroy']);
 
 Auth::routes();
 
