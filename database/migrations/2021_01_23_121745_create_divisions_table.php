@@ -16,6 +16,7 @@ class CreateDivisionsTable extends Migration
         Schema::create('divisions', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('dep_id')->unsigned();
             $table->timestamps();
         });
         //Add foreign key for users table

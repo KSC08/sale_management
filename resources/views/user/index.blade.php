@@ -5,8 +5,12 @@
         <div class="card">
             <div class="card-header">
                 <h5 class="card-title">ข้อมูลผู้ใช้งาน</h5>
-                <h6 class="card-subtitle text-muted">Highly flexible tool that many advanced features to any HTML table.</h6>
+                <!-- <a class ="btn btn-primary float-right" href="{{route('user.create')}}">เพิ่มข้อมูลผู้ใช้งาน</a> -->
+                <h6 class="card-subtitle text-muted">มีรายละเอียด ดังต่อไปนี้</h6>
             </div>
+            
+            
+
             <div class="card-body">
                 <table id="datatables-basic" class="table table-striped" style="width:100%">
                     <thead>
@@ -14,24 +18,31 @@
                             <th>รหัสผู้ใช้งาน</th>
                             <th>ชื่อผู้ใช้งาน</th>
                             <th>E-mail</th>
-                            <th>Password</th>
                             <th>ส่วนงาน</th>
+                            <th>Action</th>
 
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($users as $row)
                         <tr>
-                            <th scope="row">{{$row->user_id}}</th>
-                            <td>{{$row->user_name}}</td>
+                        <td scope="row">{{$row->id}}</td>
+                            <td>{{$row->name}}</td>
                             <td>{{$row->email}}</td>
-                            <td>{{$row->password}}</td>
-                            <td>{{$row->division}}</td>
+                            <td>{{$row->division }}</td>
+                            <td>
+                            <a  href="{{route('user.edit',$row->id)}}"  class="btn btn-info btn-simple btn-xs" data-original-title="Edit Article">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            
+                            <a  href="user/destroy/{{$row->id}}" onclick="return confirm('คุณต้องการลบข้อมูลนี้ใช่หรือไม่')"type="button" rel="tooltip" title="" class="btn btn-info btn-simple btn-xs" data-original-title="Edit Article">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                            </td>
                         </tr>
                         @endforeach
 
-                        <button type="button" class = "btn btn-warning" onclick="window.location='{{url{}}}'"></button>
-
+                        
 
                     </tbody>
 
@@ -69,5 +80,6 @@
    datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)")
   });
  </script>
+ 
 
 @endsection

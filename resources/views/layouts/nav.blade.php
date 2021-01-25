@@ -64,7 +64,7 @@
                     <li class="sidebar-header">
 						data
                     </li>
-                    <li class="sidebar-item">
+					<li class="sidebar-item">
 						<a data-target="#pages" data-toggle="collapse" class="sidebar-link collapsed">
 
                 <i class="align-middle mr-2 fas fa-fw fa-file"></i> <span class="align-middle">จัดการข้อมูลลูกค้า</span>
