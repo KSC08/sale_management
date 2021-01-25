@@ -16,10 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/lo', function () {
+    return view('layouts.login');
+});
 Route::get('/nav', function () {
     return view('layouts.nav');
 });
-Route::get('/projact', function () {
+Route::get('/project', function () {
     return view('project.index');
 });
 

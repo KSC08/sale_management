@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\division;
 
 class UserController extends Controller
 {
@@ -15,6 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        
         $users = DB::table('users')->join('divisions','divisions.id','=','div_id')
         ->select('users.id as user_id',
                     'users.name as user_name',
