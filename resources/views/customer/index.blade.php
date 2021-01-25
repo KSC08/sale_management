@@ -41,60 +41,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    // $(document).ready(function(){$('.delete_form').on('submit',function(){
-    //     if(confirm("คุณต้องการลบข้อมูลหรือไม่ ?")){
-    //         return true;
-    //     }else{
-    //         return false;
-    //     }
-    // });
-    // });
-
-    $(document).on('click', '.delBtn', function(e) {
-        e.preventDefault();
-        var id = $(this).data('id');
-        // alert(id);
-        swal({
-                title: "คุณต้องการลบ?",
-                text: "หากคุณทำการลบข้อมูล จะไม่สามารถทำการกู้คืนได้อีก",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
-                    $.ajax({
-                        method: "DELETE",
-                        url: '{{ url('
-                        projects ')}}/' + id,
-                        data: {
-                            ids: id,
-                            _token: $('#_token').val(),
-                        },
-                        success: function(data) {
-                            if (data.success == "1") {
-                                swal("ทำการลบข้อมูลสำเร็จ", {
-                                    icon: "success",
-                                }).then(() => {
-                                    location.reload();
-                                });
-                            } else {
-                                swal({
-                                    title: "พบข้อผิดพลาด",
-                                    text: "กรุณาติดต่อผู้ดูแลระบบ",
-                                    icon: "warning",
-                                    dangerMode: true,
-                                });
-                            }
-                        }
-                    });
-                } else {
-                    swal("ยกเลิกการลบข้อมูล");
-                }
-            });
-    });
-</script>
 
 <script>
     $(document).ready(function() {

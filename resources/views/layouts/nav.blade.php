@@ -56,10 +56,8 @@
 							<i class="align-middle mr-2 fas fa-fw fa-home"></i> <span class="align-middle">โครงการ</span>
 						</a>
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="{{url('company')}}">โครงการที่กำลังดำเนินการอยู่</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่กำลังดำเนินการอยู่</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่เสร็จสิ้นไปแล้ว</a></li>
-
 						</ul>
 					</li>
 					<li class="sidebar-header">
@@ -74,14 +72,13 @@
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('customer.index')}}">ข้อมูลลูกค้า</a></li>
 						</ul>
 					</li>
-
 					<li class="sidebar-item">
 						<a data-target="#pages2" data-toggle="collapse" class="sidebar-link collapsed">
-
 							<i class="align-middle mr-2 fas fa-fw fa-file"></i> <span class="align-middle">จัดการข้อมูลพื้นฐาน</span>
 						</a>
 						<ul id="pages2" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('department.index')}}">Department</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{url('company')}}">บริษัท</a></li>
 						</ul>
 					</li>
 					
