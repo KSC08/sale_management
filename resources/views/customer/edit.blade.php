@@ -120,36 +120,7 @@
         $('.product-list').not(this).prop('checked', false);
     });
   </script>
-    <script>
-
-  function myFunction() {
-    var checkBox = document.getElementById("myCheck");
-    var text = document.getElementById("text");
-    var checkBox2 = document.getElementById("myCheck2");
-    var text2 = document.getElementById("text2");
-    if (checkBox.checked == true) {
-        checkBox2.checked = false;
-      text.style.display = "block";
-      text2.style.display = "none";
-    } else {
-      text.style.display = "none";
-    }
-  }
-
-  function myFunction2() {
-    var checkBox2 = document.getElementById("myCheck2");
-    var text2 = document.getElementById("text2");
-    var checkBox = document.getElementById("myCheck");
-    var text = document.getElementById("text");
-    if (checkBox2.checked == true) {
-        checkBox.checked = false;
-        text2.style.display = "block";
-        text.style.display = "none";
-    } else {
-        text2.style.display = "none";
-    }
-  }
-</script>
+   
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 

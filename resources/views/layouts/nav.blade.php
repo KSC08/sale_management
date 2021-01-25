@@ -66,8 +66,8 @@
 					<li class="sidebar-item">
 						<a data-target="#pages" data-toggle="collapse" class="sidebar-link collapsed">
 
-                <i class="align-middle mr-2 fas fa-fw fa-file"></i> <span class="align-middle">จัดการข้อมูลลูกค้า</span>
-              </a>
+							<i class="align-middle mr-2 fas fa-fw fa-file"></i> <span class="align-middle">จัดการข้อมูลลูกค้า</span>
+						</a>
 						<ul id="pages" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('customer.index')}}">ข้อมูลลูกค้า</a></li>
 						</ul>
@@ -81,16 +81,16 @@
 							<li class="sidebar-item"><a class="sidebar-link" href="{{url('company')}}">บริษัท</a></li>
 						</ul>
 					</li>
-					
+
 					<li class="sidebar-item">
 						<a data-target="#pages1" data-toggle="collapse" class="sidebar-link collapsed">
 
-                <i class="align-middle mr-2 fas fa-fw fa-file"></i> <span class="align-middle">จัดการข้อมูลผู้ใช้</span>
-              </a>
+							<i class="align-middle mr-2 fas fa-fw fa-file"></i> <span class="align-middle">จัดการข้อมูลผู้ใช้</span>
+						</a>
 						<ul id="pages1" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">สมัครสมาชิก</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/user')}}">ข้อมูลผู้ใช้</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">เปลี่ยนรหัสผ่าน</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">เปลี่ยนรหัสผ่าน</a></li>
 						</ul>
 					</li>
 
@@ -256,9 +256,9 @@
 			</nav>
 			<main class="content">
 				<div class="container-fluid">
-				@yield('content')
-					<!-- <meta http-equiv="refresh" content="0;url=dashboard-default.html" /> -->
 					@yield('content')
+					<!-- <meta http-equiv="refresh" content="0;url=dashboard-default.html" /> -->
+				
 				</div>
 			</main>
 			<footer class="footer">
