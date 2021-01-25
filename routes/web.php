@@ -33,7 +33,7 @@ Route::get('/user', function () {
 Route::resource('user', 'App\Http\Controllers\UserController');
 Route::get('/user_seach', [UserContrUseroller::class, 'search']);
 Route::get('/user_create', [UserController::class, 'create']);
-Route::POST('/user_store', [UserController::class, 'store']);
+Route::POST('/user_store/{id}', [UserController::class, 'store']);
 Route::get('/user_edit/{id}', [UserController::class, 'edit']);
 Route::POST('/user_update/{id}', [UserController::class, 'update']);
 

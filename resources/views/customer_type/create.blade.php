@@ -7,7 +7,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h1 class="text-primary mr-auto" align="center">เพิ่มข้อมูลประเภทลูกค้า</h1>
+                    <h1 class="text-primary mr-auto" align="center">เพิ่มรายละเอียดข้อมูลลูกค้า</h1>
                 </div>
                 
                 <div class="card-body">
@@ -16,8 +16,8 @@
                         {{ method_field('POST') }}
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label style="color:red;">ประเภทข้อมูลลูกค้า</label>
-                                <input type="text" name="name" class="form-control" placeholder="ประเภทข้อมูลลูกค้า" required>
+                                <label style="color:red;">ประเภทลูกค้า</label>
+                                <input type="text" name="name" class="form-control" placeholder="ประเภทลูกค้า" required>
                             </div>
 
                         </div><br>

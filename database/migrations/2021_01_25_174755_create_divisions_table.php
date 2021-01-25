@@ -1,3 +1,4 @@
+
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -38,3 +39,4 @@ class CreateDivisionsTable extends Migration
         Schema::dropIfExists('divisions');
     }
 }
+

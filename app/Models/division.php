@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class division extends Model
 {
     use HasFactory;
+
 }

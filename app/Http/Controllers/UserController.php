@@ -45,11 +45,14 @@ class UserController extends Controller
         $users = new User([
             'name' => $request->post('name'),
             'email' => $request->post('email'),
-            'password' => $request->post('password'),
-            'div_id' => $request->post('div_id')
+            'phone_number' => $request->post('phone_number'),
+
+
         ]);
-        //$users->save();
-        return redirect()->action([UserController::class, 'index']);
+        
+        $users->save();
+        return view('user.index',['users' => User::All()]);
+
     }
 
     /**
@@ -109,6 +112,7 @@ class UserController extends Controller
         $users->email = $request->post('email');
         // $users->password = $request->post('password');
         $users->div_id = $request->post('div_id');
+        $users->phone_number = $request->post('phone_number');
         $users->save();
         return redirect()->action([UserController::class, 'index']);
     }

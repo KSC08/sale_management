@@ -17,14 +17,20 @@
                             <div class="form-group col-md-12">
                                 <label style="color:red;">ชื่อผู้ใช้งาน</label>
                                 <input type="text" name="name" class="form-control" placeholder="ชื่อผู้ใช้งาน" value="{{$user->name}}" required>
-                            </div>
+                            </div><br>
                             <div class="form-group col-md-12">
                                 <label style="color:red;">E-mail</label>
-                                <input type="text" name="email" class="form-control" placeholder="ป้อนชื่อย่อ" value="{{$user->email}}" required>
-                            </div>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="ป้อน E-mail" value="{{$user->email}}" required>
+                            </div><br>
+                            <div class="form-group">
+                                <label style="color:red;">เบอร์โทร</label>
+                                <input type="text" name="phone_number"  class="form-control" maxlength="10" placeholder="ป้อนเบอร์โทร"  
+                                value="{{$user->phone_number}}" style="width:250px;" onKeyUp="if(this.value*1!=this.value) this.value='' ;" required>
+                                
+                            </div><br>
                             <div class="form-group col-md-12">
                                 <label style="color:red;">ส่วนงาน</label><br>
-                                <select class="custom-select " name="div_id" id="comid" style="width:250px;">
+                                <select class="custom-select " name="div_id" id="comid" placeholder="ป้อนส่วนงาน" style="width:250px;">
                                 <option value="{{$user->div_id}}">{{$user->division}}</option>
                                 @foreach($division as $row)
                                 <?php if($user->div_id!=$row->id){?>
@@ -32,6 +38,7 @@
                                 <?php }?>
                                 @endforeach</select>
                             </div>
+                            
                         </div><br>
                           
                             <div class="form-group col-md-12">

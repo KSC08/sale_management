@@ -1,5 +1,5 @@
 @extends('layouts.nav')
-@section('title','เพิ่มข้อมูล User')
+@section('title','เพิ่มข้อมูลผู้ใช้งาน')
 @section('content')
 <div class="container">
     <div class="row">
@@ -7,34 +7,29 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h1 class="text-primary mr-auto" align="center">เพิ่มข้อมูลDepartment</h1>
+                    <h1 class="text-primary mr-auto" align="center">เพิ่มข้อมูลผู้ใช้งาน</h1>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{route('user.store')}}" enctype="multipart/form-data">
                         {{csrf_field()}}
                         {{ method_field('POST') }}
                         <div class="form-row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-12">
                                 <label style="color:red;">ชื่อผู้ใช้งาน</label>
-                                <input type="text" name="name" class="form-control" placeholder="ชื่อผู้ใช้งาน" required>
-                            </div>
-                            <div class="form-group col-md-6">
+                                <input type="text" name="name" class="form-control" placeholder="ชื่อผู้ใช้งาน"  required>
+                            </div><br>
+                            <div class="form-group col-md-12">
                                 <label style="color:red;">E-mail</label>
-                                <input type="text" name="email" class="form-control" placeholder="ป้อนชื่อย่อ" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label style="color:red;">Password</label>
-                                <input type="text" name="password" class="form-control" placeholder="E-mail" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label style="color:red;">ส่วนงาน</label>
-                                <select class="custom-select " name="div_id" id="comid">
-                                @foreach($division as $row)
-                                    <option value="{{$row->id}}">{{$row->name}}</option>
-                                @endforeach
-                        </select>
-
-                            </div>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="ป้อน E-mail"  required>
+                            </div><br>
+                            <div class="form-group">
+                                <label style="color:red;">เบอร์โทร</label>
+                                <input type="text" name="phone_number"  class="form-control" maxlength="10" placeholder="ป้อนเบอร์โทร"  
+                                style="width:250px;" onKeyUp="if(this.value*1!=this.value) this.value='' ;" required>
+                                
+                            </div><br>
+                            
+                            
                         </div><br>
                         <div class="form-row">
                             <div class="form-group col-md-12">

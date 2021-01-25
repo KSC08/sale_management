@@ -4,16 +4,16 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">ประเภทข้อมูลลูกค้า</h5>
-                <a class ="btn btn-primary float-right" href="{{route('customer_type.create')}}">เพิ่มข้อมูลประเภทลูกค้า</a>
+                <h5 class="card-title">รายละเอียดข้อมูลลูกค้า</h5>
+                <a class ="btn btn-primary float-right" href="{{route('customer_type.create')}}">เพิ่มรายละเอียดข้อมูลลูกค้า</a>
                 <h6 class="card-subtitle text-muted">มีรายละเอียด ดังต่อไปนี้</h6>
             </div>
             <div class="card-body">
                 <table id="datatables-basic" class="table table-striped" style="width:100%">
                     <thead>
                         <tr>
-                            <th>รหัสผู้ใช้งาน</th>
-                            <th>ชื่อผู้ใช้งาน</th>
+                            <th>รหัสลูกค้า</th>
+                            <th>ประเภทลูกค้า</th>
                             <th>Action</th>
 
                         </tr>

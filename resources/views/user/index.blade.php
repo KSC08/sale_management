@@ -18,7 +18,8 @@
                             <th>รหัสผู้ใช้งาน</th>
                             <th>ชื่อผู้ใช้งาน</th>
                             <th>E-mail</th>
-                            <th>ส่วนงาน</th>
+                            <th>เบอร์โทร</th>
+                            <th>ส่วนงาน</th>                     
                             <th>Action</th>
 
                         </tr>
@@ -29,7 +30,9 @@
                         <td scope="row">{{$row->id}}</td>
                             <td>{{$row->name}}</td>
                             <td>{{$row->email}}</td>
+                            <td>{{$row->phone_number}}</td>
                             <td>{{$row->division }}</td>
+                            
                             <td>
                             <a  href="{{route('user.edit',$row->id)}}"  class="btn btn-info btn-simple btn-xs" data-original-title="Edit Article">
                                 <i class="fa fa-edit"></i>

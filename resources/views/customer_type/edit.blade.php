@@ -7,7 +7,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h1 class="text-primary mr-auto" align="center">แก้ไขข้อมูลประเภทลูกค้า</h1>
+                    <h1 class="text-primary mr-auto" align="center">แก้ไขรายละเอียดข้อมูลลูกค้า</h1>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{url('customer_type_update',$customer_types->id)}}" enctype="multipart/form-data">
