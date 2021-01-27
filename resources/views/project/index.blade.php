@@ -1,51 +1,54 @@
 @extends('layouts.template')
 @section('content')
-<div class="container">
-   <div class="row">
-      <div class="col-12 col-xl-12">
-         <div class="card">
-            <div class="card-header">
-               <h1 class="text-primary mr-auto" align="center">ค้นหา</h1>
-            </div>
-            <div class="card-body">
-               <form action="{{action('VisitorController@search')}}" method="get">
-                  <div class="row">
-                     <div class="form-group col-md-6">
-                        <label class="form-label">ชื่อ</label>
-                        <input class="form-control" placeholder="กรอกชื่อ" type="text" name="vis_name">
-                     </div>
-                     <div class="form-group col-md-6">
-                        <label class="form-label">นามสกุล</label>
-                        <input class="form-control" placeholder="กรอกนามสกุล" type="text" name="vis_lname">
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="form-group col-md-6">
-                        <label class="form-label">&nbsp;หน่วยงาน&nbsp;</label>
-                        <input class="form-control" placeholder="กรอกชื่อหน่วยงาน" type="text" name="com_name_TH">
-                     </div>
-                     <div class="form-group col-md-6">
-                        <label class="form-label">&nbsp;เลขบัตรประชาชน &nbsp;/passpost</label>
-                        <input class="form-control" placeholder="กรอกเลขบัตรประชาชน/passpost" type="text" name="ID_card">
-                     </div>
-                  </div>
-                  <div class="row">
-                     <div class="form-group col-md-6">
-                        <label class="form-label">เบอร์โทร</label>
-                        <input class="form-control" placeholder="กรอกเบอร์โทร" type="text" name="phone">
-                     </div>
-                     <div class="form-group col-md-6">
-                        <label class="form-label">E-mail</label>
-                        <input class="form-control" placeholder="กรอกE-mail" type="text" name="vis_email">
-                     </div>
-                  </div>
-                  <center>
-                     <button type="submit" class="btn btn-primary" name="btnSearch" value="Search">ค้นหา</button>
-                     <div class="mb-2">
-                        <a href="{{route('visitor.index')}}"><i class="align-middle mr-2" data-feather="rotate-cw"></i> <span class="align-middle"></span></a>
-                     </div>
-                  </center>
-               </form>
+<div class="container-fluid">
+
+    <div class="header">
+        <h1 class="header-title">
+            DataTables
+        </h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="dashboard-default.html">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="#">Tables</a></li>
+                <li class="breadcrumb-item active" aria-current="page">DataTables</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">รายละเอียดโครงการ</h5>
+                    <a class="btn btn-primary" >เพิ่มข้อมูล</a>
+                </div>
+
+                <div class="card-body">
+                    <table id="datatables-basic" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>on.</th>
+                                <th>รหัส</th>
+                                <th>ชื่อโครงการ</th>
+                                <th>สถานะโครงการ</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($project as $data)
+                            <tr>
+                                <td>{{$data->id}}</td>
+                                <td>{{$data->code}}</td>
+                                <td>{{$data->name}}</td>
+                                <td>{{$data->pro_status}}</td>
+                                
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                           
+                        </tfoot>
+                    </table>
+                </div>
             </div>
          </div>
       </div>

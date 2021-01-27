@@ -10,6 +10,7 @@ use App\Http\Controllers\CustomerTypeController;
 use App\Mail\MailNotify;
 
 
+use App\Http\Controllers\ProjectController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,43 +22,20 @@ use App\Mail\MailNotify;
 |
 */
 
-Route::get('/ ', function () {
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/lo', function () {
+    return view('layouts.login');
+});
+Route::get('/nav', function () {
     return view('layouts.nav');
 });
-Route::resource('project','ProjectController');
-// Route::get('/company','CompanyController@index');
-
-//Company
-Route::get('/company', [CompanyController::class, 'index']);
-Route::get('/company_seach', [CompanyController::class, 'search']);
-Route::get('/company_create', [CompanyController::class, 'create']);
-Route::POST('/company_store', [CompanyController::class, 'store']);
-Route::get('/company_edit/{id}', [CompanyController::class, 'edit']);
-Route::POST('/company_update', [CompanyController::class, 'update']);
-Route::get('/company_delete/{id}', [CompanyController::class, 'destroy']);
-
-//Customer
-Route::resource('customer', 'App\Http\Controllers\CustomerController');
-// Route::get('/customer', [CustomerController::class, 'index']);
-Route::get('/customer_seach', [CustomerController::class, 'search']);
-Route::get('/customer_create', [CustomerController::class, 'create']);
-Route::POST('/customer_store', [CustomerController::class, 'store']);
-Route::get('/customer_edit/{id}', [CustomerController::class, 'edit']);
-Route::POST('/customer_update', [CustomerController::class, 'update']);
-Route::get('/customer_delete/{id}', [CustomerController::class, 'destroy']);
-
-//Department
-Route::resource('department','App\Http\Controllers\DepartmentController');
-Route::POST('/department_store',[DepartmentController::class,'store']);
-Route::POST('/department_update/{id}',[DepartmentController::class,'update']);
-Route::get('/department_delete/{id}',[DepartmentController::class,'destroy']);
-
-Route::get('/projact', function () {
-    return view('project.index');
-});
-
-
-//user route job
+// Route::get('/project', function () {
+//     return view('project.index');
+// });
+Route::get('/project', [ProjectController::class, 'index']);
+//user
 Route::get('/user', function () {
     return view('user.index');
 });
