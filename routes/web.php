@@ -45,6 +45,30 @@ Route::resource('department','App\Http\Controllers\DepartmentController');
 Route::POST('/department_store',[DepartmentController::class,'store']);
 Route::POST('/department_update/{id}',[DepartmentController::class,'update']);
 Route::get('/department_delete/{id}',[DepartmentController::class,'destroy']);
+Route::get('/', function () {
+    return view('welcome');
+});
+Route::get('/lo', function () {
+    return view('layouts.login');
+});
+Route::get('/nav', function () {
+    return view('layouts.nav');
+});
+Route::get('/project', function () {
+    return view('project.index');
+});
+
+//user
+Route::get('/user', function () {
+    return view('user.index');
+});
+
+//customer_type
+Route::get('/customer_type', function () {
+    return view('customer_type.index');
+});
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
