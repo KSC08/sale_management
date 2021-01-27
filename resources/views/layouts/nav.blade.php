@@ -77,8 +77,9 @@
 							<i class="align-middle mr-2 fas fa-fw fa-file"></i> <span class="align-middle">จัดการข้อมูลพื้นฐาน</span>
 						</a>
 						<ul id="pages2" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="{{route('department.index')}}">Department</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="{{url('company')}}">บริษัท</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href={{route('department.index')}}>ข้อมูลฝ่าย</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href={{route('division.index')}}>ข้อมูลส่วน</a></li>
 						</ul>
 					</li>
 
