@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ProjectController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,10 +22,10 @@ Route::get('/lo', function () {
 Route::get('/nav', function () {
     return view('layouts.nav');
 });
-Route::get('/project', function () {
-    return view('project.index');
-});
-
+// Route::get('/project', function () {
+//     return view('project.index');
+// });
+Route::get('/project', [ProjectController::class, 'index']);
 //user
 Route::get('/user', function () {
     return view('user.index');

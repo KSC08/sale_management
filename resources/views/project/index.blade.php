@@ -23,41 +23,34 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Default</h5>
-                    <h6 class="card-subtitle text-muted">Highly flexible tool that many advanced features to any HTML table.</h6>
+                    <h5 class="card-title">รายละเอียดโครงการ</h5>
+                    <a class="btn btn-primary" >เพิ่มข้อมูล</a>
                 </div>
+
                 <div class="card-body">
                     <table id="datatables-basic" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
+                                <th>on.</th>
+                                <th>รหัส</th>
+                                <th>ชื่อโครงการ</th>
+                                <th>สถานะโครงการ</th>
+                               
                             </tr>
                         </thead>
                         <tbody>
-
+                        @foreach($project as $data)
                             <tr>
-                                <td>Donna Snider</td>
-                                <td>Customer Support</td>
-                                <td>New York</td>
-                                <td>27</td>
-                                <td>2011/01/25</td>
-                                <td>$112,000</td>
+                                <td>{{$data->id}}</td>
+                                <td>{{$data->code}}</td>
+                                <td>{{$data->name}}</td>
+                                <td>{{$data->pro_status}}</td>
+                                
                             </tr>
+                            @endforeach
                         </tbody>
                         <tfoot>
-                            <tr>
-                                <th>Name</th>
-                                <th>Position</th>
-                                <th>Office</th>
-                                <th>Age</th>
-                                <th>Start date</th>
-                                <th>Salary</th>
-                            </tr>
+                           
                         </tfoot>
                     </table>
                 </div>

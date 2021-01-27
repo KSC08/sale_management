@@ -32,6 +32,7 @@ class CreateProjectDetailsTable extends Migration
             $table->integer('Coordinator')->unsigned();
             $table->timestamps();
         });
+       
     }
 
     /**
