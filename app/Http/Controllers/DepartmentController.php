@@ -41,7 +41,7 @@ class DepartmentController extends Controller
             'shortName' => $request->post('shortName')
         ]);
         $department->save();
-        return view('department.index',['departments' => department::All()]);
+        return redirect()->action([DepartmentController::class, 'index']);
     }
 
     /**
@@ -82,7 +82,7 @@ class DepartmentController extends Controller
         $department->fullName = $request->post('fullName');
         $department->shortName = $request->post('shortName');
         $department->save();
-        return view('department.index',['departments' => department::All()]);
+        return redirect()->action([DepartmentController::class, 'index']);
     }
 
     /**
@@ -94,11 +94,8 @@ class DepartmentController extends Controller
     public function destroy($id)
     {
         $department = department::find($id);
-        if($department->delete()){
-            return view('department.index',['departments' => department::All()]);
-        }else{
-            return view('department.index',['departments' => department::All()]);
-        }
+        $department->delete();
+        return redirect()->action([DepartmentController::class, 'index']);
 
     }
 }

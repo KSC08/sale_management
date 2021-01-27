@@ -1,50 +1,94 @@
 @extends('layouts.nav')
-@section('title','เพิ่มข้อมูลDepartment')
+@section('title','แก้ไขข้อมูลฝ่าย')
 @section('content')
 <div class="container">
+    <div class="header">
+        <h1 class="header-title">
+            แก้ไขข้อมูลฝ่าย
+        </h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{route('department.index')}}">Department</a></li>
+                <li class="breadcrumb-item"><a href="{{route('department.index')}}">Index</a></li>
+                <li class="breadcrumb-item"><a href="{{route('department.create')}}">Edit</a></li>
+            </ol>
+        </nav>
+    </div>
     <div class="row">
         <div class="col-12 col-xl-12">
-
             <div class="card">
                 <div class="card-header">
-                    <h1 class="text-primary mr-auto" align="center">เพิ่มข้อมูลDepartment</h1>
+                    <h1 class="card-title">แก้ไขข้อมูลฝ่าย</h1>
+                    <h6 class="card-subtitle text-muted">กรุณากรอกข้อมูลในเเบบฟอร์มด้านล่างให้ครบถ้วน</h6>
                 </div>
                 <div class="card-body">
                     <form method="POST" action="{{url('department_update',$departments->id)}}" enctype="multipart/form-data">
                         {{csrf_field()}}
                         {{ method_field('POST') }}
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label style="color:red;">ชื่อเติม*</label>
+                        <div class="row">
+                            <div class="mb-3 col-md-8">
+                                <label style="color:red;">ชื่อฝ่าย*</label>
                                 <input type="text" name="fullName" class="form-control" value="{{$departments->fullName}}" placeholder="ป้อนชื่อเติม" required>
                             </div>
-                            <div class="form-group col-md-6">
-                                <label style="color:red;">ชื่อย่อ*</label>
+                            <div class="form-group col-md-4">
+                                <label style="color:red;">ชื่อย่อฝ่าย*</label>
                                 <input type="text" name="shortName" class="form-control" value="{{$departments->shortName}}" placeholder="ป้อนชื่อย่อ" required>
                             </div>
                         </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <center>
-                                    <div class="form-group"><input type="submit" class="btn btn-primary" value="บันทึกข้อมูลแล้วหยุด">
-                                        <a href="{{route('department.index')}}" class="btn btn-danger">ย้อนกลับ</a>
-                                    </div>
-                                </center>
-                            </div>
+                        <div class="form-group col-md-12">
+                            <center>
+                                <div class="form-group"><input type="submit" class="btn btn-primary" value="บันทึก">
+                                    <a href="{{route('department.index')}}" class="btn btn-danger">ยกเลิก</a>
+                                </div>
+                            </center>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+        <div class="row">
+            <div class="col-12 col-xl-12">
 
-<script type="text/javascript">
-    $("#comid").select2({
-        placeholder: "Select a Name",
-        allowClear: true
-    });
-</script>
-@stop
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="text-primary mr-auto" align="center">แก้ไขข้อมูลฝ่าย</h1>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{url('department_update',$departments->id)}}" enctype="multipart/form-data">
+                            {{csrf_field()}}
+                            {{ method_field('POST') }}
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label style="color:red;">ชื่อเติม*</label>
+                                    <input type="text" name="fullName" class="form-control" value="{{$departments->fullName}}" placeholder="ป้อนชื่อเติม" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label style="color:red;">ชื่อย่อ*</label>
+                                    <input type="text" name="shortName" class="form-control" value="{{$departments->shortName}}" placeholder="ป้อนชื่อย่อ" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <center>
+                                        <div class="form-group"><input type="submit" class="btn btn-primary" value="บันทึก">
+                                            <a href="{{route('department.index')}}" class="btn btn-danger">ยกเลิก</a>
+                                        </div>
+                                    </center>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+    <script type="text/javascript">
+        $("#comid").select2({
+            placeholder: "Select a Name",
+            allowClear: true
+        });
+    </script>
+@endsection
