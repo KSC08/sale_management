@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFinesTable extends Migration
+class CreateFinancialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,15 @@ class CreateFinesTable extends Migration
      */
     public function up()
     {
-        Schema::create('fines', function (Blueprint $table) {
+        Schema::create('financials', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->integer('pro_detail')->unsigned();
             $table->foreign('pro_detail')->references('id')->on('project_details');
-           
+            
             $table->timestamps();
         });
+        
     }
 
     /**
@@ -30,6 +31,6 @@ class CreateFinesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fines');
+        Schema::dropIfExists('financials');
     }
 }

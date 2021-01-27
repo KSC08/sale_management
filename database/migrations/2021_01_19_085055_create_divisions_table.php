@@ -15,18 +15,13 @@ class CreateDivisionsTable extends Migration
     {
         Schema::create('divisions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('fullName');
-            $table->string('shortName');
-            $table->integer('dep_id')->unsigned();
+            $table->string('fname');
+            $table->string('sname');
+            $table->integer('department')->unsigned();
             $table->timestamps();
         });
         //Add foreign key for users table
-        // Schema::table('users', function (Blueprint $table)
-        // {
-        //     $table->foreign('div_id')
-        //         ->references('id')->on('divisions')
-        //         ->onDelete('cascade');
-        // });
+        
     }
 
     /**

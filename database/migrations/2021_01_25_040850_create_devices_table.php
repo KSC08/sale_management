@@ -14,9 +14,15 @@ class CreateDevicesTable extends Migration
     public function up()
     {
         Schema::create('devices', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('name');
             $table->timestamps();
+        });
+        Schema::table('project_details', function (Blueprint $table)
+        {
+            $table->foreign('device')
+                ->references('id')->on('devices')
+                ->onDelete('cascade');
         });
     }
 

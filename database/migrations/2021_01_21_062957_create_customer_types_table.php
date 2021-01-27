@@ -18,6 +18,12 @@ class CreateCustomerTypesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
+        Schema::table('customers', function (Blueprint $table)
+        {
+            $table->foreign('customer_type')
+                ->references('id')->on('customer_types')
+                ->onDelete('cascade');
+        });
     }
 
     /**
