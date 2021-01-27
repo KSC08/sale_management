@@ -110,10 +110,3 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('users');
 Route::get('/customer_type', [App\Http\Controllers\CustomerTypeController::class, 'index'])->name('customer_types');
 
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> katoon
