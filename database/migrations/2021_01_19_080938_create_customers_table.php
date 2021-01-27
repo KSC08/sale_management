@@ -15,12 +15,13 @@ class CreateCustomersTable extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->increments('id');
-            $table->longText('fname');
+            $table->string('name');
             $table->integer('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companies');
-
+            $table->integer('customer_type')->unsigned();
             $table->timestamps();
         });
+        
     }
 
     /**

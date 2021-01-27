@@ -16,7 +16,7 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
             $table->longText('name');
-            $table->timestamp('failed_at')->useCurrent();
+            $table->timestamps();
         });
     }
 
