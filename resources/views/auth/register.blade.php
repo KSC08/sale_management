@@ -68,22 +68,16 @@
 
                                 </div>
 
-                                <div class="mb-3">
-                                    <label>{{ __('Division') }}</label>
+                                <div class="mb-3 ">
+                                    <label for="type">status</label>
+                                    <select id="type" name="status" class="form-control">
+                                        <option selected>Choose...</option>
 
-
-                                    <select name="division" id="division" class="form-control form-control-lg">
-                                        @foreach ($division as $row)
-                                        <!--LOOP ข้อมูลใน $users-->
-                                        <option value="<?= $row->id ?>"><?= $row->name ?></option>
-                                        @endforeach
+                                        <option value="admin">admin</option>
+                                        <option value="department">ฝ่าย</option>
+                                        <option value="division">ส่วน</option>
+                                        <option value="empolyee">พนักงาน</option>
                                     </select>
-                                    @error('division')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-
                                 </div>
 
                                 <div class="text-center mt-3">
