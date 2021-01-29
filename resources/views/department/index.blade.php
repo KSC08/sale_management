@@ -41,21 +41,14 @@
                         </tr>
                     @endforeach
                     </tbody>
-                    <tfoot>
-                        
-                    </tfoot>
-                            <!-- <th>
-                                <a href="{{route('department.edit',$row->id)}}"><i class="align-middle fas fa-fw fa-pen"></i></i></a>&nbsp&nbsp
-                                <a href="department_delete/{{$row->id}}" onclick="return confirm('คุณต้องการลบข้อมูลนี้ใช่หรือไม่')"><i class="align-middle fas fa-fw fa-trash"></i></a>
-                            </th>
-                        </tr>
-                    @endforeach
-                    </tbody> -->
                 </table>
             </div>
         </div>
     </div>
 </div>
 @endsection
-
+@section('css')
+@endsection
+@section('script')
+@endsection
 <!-- /Attachment Modal -->

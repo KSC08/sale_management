@@ -9,8 +9,8 @@ class division extends Model
 {
     protected $fillable = [
         'id',
-        'fullName',
-        'shortName',
-        'dep_id'
+        'fname',
+        'sname',
+        'department'
     ];
 }

@@ -57,4 +57,4 @@
         allowClear: true
     });
 </script>
-@endsection
+@stop

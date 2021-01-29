@@ -10,7 +10,7 @@ class department extends Model
 
     protected $fillable = [
         'id',
-        'fullName',
-        'shortName'
+        'fname',
+        'sname'
     ];
 }

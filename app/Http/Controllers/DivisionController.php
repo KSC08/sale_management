@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\division;
 use App\Models\department;
-use App\Http\Controllers\DivisionController;
 
 class DivisionController extends Controller
 {
@@ -18,9 +17,9 @@ class DivisionController extends Controller
     public function index()
     {
         $divisions_dep = DB::table('divisions')
-        ->join('departments as dep','dep.id','=','divisions.dep_id')
+        ->join('departments as dep','dep.id','=','divisions.department')
         ->select('divisions.*',
-                    'dep.fullName as dep_fullName')
+                    'dep.fname as dep_fname')
         ->get();
         return view('division.index',['divisions' => $divisions_dep]);
     }
@@ -48,9 +47,9 @@ class DivisionController extends Controller
     public function store(Request $request)
     {
         $division = new division([
-            'fullName' => $request->post('fullName'),
-            'shortName' => $request->post('shortName'),
-            'dep_id' => $request->post('dep_fullName')
+            'fname' => $request->post('fname'),
+            'sname' => $request->post('sname'),
+            'department' => $request->post('department')
         ]);
         $division->save();
         return redirect()->action([DivisionController::class, 'index']);
@@ -78,12 +77,13 @@ class DivisionController extends Controller
         $dep = department::all();  //การดึงข้อมูลมาจาก db
         // // dd($dep);
         return view('division.edit',['dep' => $dep,'divisions' => DB::table('divisions')
-        ->join('departments','departments.id','=','divisions.dep_id')
-        ->select('divisions.fullName as div_fullName'
-        ,'divisions.id as div_id'
-        ,'divisions.shortName as div_shortName'
+        ->join('departments','departments.id','=','divisions.department')
+        ->select('divisions.id as div_id',
+            'divisions.fname as div_fname'
+        ,'divisions.department as department'
+        ,'divisions.sname as div_sname'
         ,'departments.id as dep_id'
-        ,'departments.fullName as dep_fullName')
+        ,'departments.fname as dep_fname')
         ->where('divisions.id','=',$id)->first()]);
     }
 
