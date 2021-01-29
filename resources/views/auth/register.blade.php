@@ -68,7 +68,7 @@
 
                                 </div>
 
-                                <div class="mb-3">
+                                {{-- <div class="mb-3">
                                     <label>{{ __('Division') }}</label>
 
 
@@ -84,7 +84,7 @@
                                     </span>
                                     @enderror
 
-                                </div>
+                                </div> --}}
 
                                 <div class="text-center mt-3">
 
