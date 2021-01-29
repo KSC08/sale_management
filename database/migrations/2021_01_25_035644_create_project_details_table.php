@@ -14,25 +14,34 @@ class CreateProjectDetailsTable extends Migration
     public function up()
     {
         Schema::create('project_details', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->integer('pro_id')->unsigned();
-            $table->foreign('pro_id')->references('id')->on('projects');
-            $table->string('work_type');
-            $table->string('payment');
+            $table->integer('work_type')->unsigned();
             $table->string('amount_pay');
             $table->string('work_goals');
             $table->string('scope');
             $table->integer('service')->unsigned();
             $table->integer('device')->unsigned();
-            $table->integer('fines')->unsigned();
-            $table->integer('operation_plan')->unsigned();
-            $table->integer('financial')->unsigned();
-            $table->integer('result')->unsigned();
-            $table->integer('document')->unsigned();
-            $table->integer('Coordinator')->unsigned();
+            $table->integer('risk')->unsigned();
+            $table->integer('result');
+            $table->integer('Coordinator');
+            $table->string('created_by');
+            $table->string('update_by');
             $table->timestamps();
         });
-       
+        Schema::table('project_details', function (Blueprint $table)
+        {
+            $table->foreign('pro_id')
+                ->references('id')->on('projects')
+                ->onDelete('cascade');
+        });
+        Schema::table('project_details', function (Blueprint $table)
+        {
+            $table->foreign('work_type')
+                ->references('id')->on('working_types')
+                ->onDelete('cascade');
+        });
+        
     }
 
     /**

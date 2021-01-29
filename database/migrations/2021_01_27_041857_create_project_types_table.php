@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDepartmentsTable extends Migration
+class CreateProjectTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,15 @@ class CreateDepartmentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('departments', function (Blueprint $table) {
+        Schema::create('project_types', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('fullName');
-            $table->string('shortName');
+            $table->string('name');
             $table->timestamps();
         });
-        //Add foreign key for divisions table
-        Schema::table('divisions', function (Blueprint $table)
+        Schema::table('projects', function (Blueprint $table)
         {
-            $table->foreign('dep_id')
-                ->references('id')->on('departments')
+            $table->foreign('pro_type')
+                ->references('id')->on('project_types')
                 ->onDelete('cascade');
         });
     }
@@ -35,6 +33,6 @@ class CreateDepartmentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departments');
+        Schema::dropIfExists('project_types');
     }
 }
