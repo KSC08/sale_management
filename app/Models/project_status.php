@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class project_status extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'id',
+        'name',
+    ];
 }

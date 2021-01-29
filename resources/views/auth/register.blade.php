@@ -68,23 +68,7 @@
 
                                 </div>
 
-                                <div class="mb-3">
-                                    <label>{{ __('Division') }}</label>
-
-
-                                    <select name="division" id="division" class="form-control form-control-lg">
-                                        @foreach ($division as $row)
-                                        <!--LOOP ข้อมูลใน $users-->
-                                        <option value="<?= $row->id ?>"><?= $row->name ?></option>
-                                        @endforeach
-                                    </select>
-                                    @error('division')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-
-                                </div>
+                                
 
                                 <div class="text-center mt-3">
 
