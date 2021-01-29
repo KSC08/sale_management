@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\division;
 use App\Models\department;
-use App\Http\Controllers\DivisionController;
 
 class DivisionController extends Controller
 {

@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class division extends Model
 {
-    protected $fillable =['id','fname','sname','department'];
+    protected $fillable = [
+        'id',
+        'fname',
+        'sname',
+        'department'
+    ];
 }

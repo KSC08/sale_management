@@ -40,6 +40,7 @@ class DepartmentController extends Controller
             'fname' => $request->post('fname'),
             'sname' => $request->post('sname')
         ]);
+        // return $department;
         $department->save();
         return redirect()->action([DepartmentController::class, 'index']);
     }
