@@ -18,9 +18,9 @@ class DivisionController extends Controller
     public function index()
     {
         $divisions_dep = DB::table('divisions')
-        ->join('departments as dep','dep.id','=','divisions.department')
+        ->join('departments as dep','dep.id','=','divisions.dep_id')
         ->select('divisions.*',
-                    'dep.fname as dep_fname')
+                    'dep.fullName as dep_fullName')
         ->get();
         return view('division.index',['divisions' => $divisions_dep]);
     }
@@ -48,9 +48,9 @@ class DivisionController extends Controller
     public function store(Request $request)
     {
         $division = new division([
-            'fname' => $request->post('fname'),
-            'sname' => $request->post('sname'),
-            'department' => $request->post('department')
+            'fullName' => $request->post('fullName'),
+            'shortName' => $request->post('shortName'),
+            'dep_id' => $request->post('dep_fullName')
         ]);
         $division->save();
         return redirect()->action([DivisionController::class, 'index']);
@@ -78,13 +78,12 @@ class DivisionController extends Controller
         $dep = department::all();  //การดึงข้อมูลมาจาก db
         // // dd($dep);
         return view('division.edit',['dep' => $dep,'divisions' => DB::table('divisions')
-        ->join('departments','departments.id','=','divisions.department')
-        ->select('divisions.id as div_id',
-            'divisions.fname as div_fname'
-        ,'divisions.department as department'
-        ,'divisions.sname as div_sname'
+        ->join('departments','departments.id','=','divisions.dep_id')
+        ->select('divisions.fullName as div_fullName'
+        ,'divisions.id as div_id'
+        ,'divisions.shortName as div_shortName'
         ,'departments.id as dep_id'
-        ,'departments.fname as dep_fname')
+        ,'departments.fullName as dep_fullName')
         ->where('divisions.id','=',$id)->first()]);
     }
 

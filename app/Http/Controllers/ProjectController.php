@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\project;
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> 488058c34a6dac5770b5857e2e85f2cfb17a7f6a
 
 class ProjectController extends Controller
 {

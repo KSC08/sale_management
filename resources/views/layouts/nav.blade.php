@@ -96,7 +96,6 @@
 							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/user_detail')}}">รายละเอียดข้อมูลผู้ใช้</a></li>
 						</ul>
 					</li>
-
 				</ul>
 			</div>
 		</nav>
@@ -260,8 +259,6 @@
 			<main class="content">
 				<div class="container-fluid">
 					@yield('content')
-					<!-- <meta http-equiv="refresh" content="0;url=dashboard-default.html" /> -->
-				
 				</div>
 			</main>
 			<footer class="footer">

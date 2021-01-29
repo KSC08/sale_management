@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\CustomerType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\customer_type;
@@ -16,6 +18,7 @@ class CustomerTypeController extends Controller
     {
         $customer_types = DB::table('customer_types')->get();
         return view('customer_type.index',['customer_types' => $customer_types]);
+        
     }
 
     /**
@@ -26,7 +29,7 @@ class CustomerTypeController extends Controller
     public function create()
     {
         $customer_types = DB::table('customer_types')->latest('id')->first();
-        $customer_types = customer_type::all();
+        $customer_types = CustomerType::all();
         return view('customer_type.create',compact('customer_types'));
     }
 
@@ -38,12 +41,12 @@ class CustomerTypeController extends Controller
      */
     public function store(Request $request)
     {
-        $customer_types = new customer_type([
+        $customer_types = new CustomerType([
             'id' => $request->post('id'), 
             'name' => $request->post('name')             
         ]);
         $customer_types->save();
-        return view('customer_type.index',['customer_types' => customer_type::All()]);
+        return view('customer_type.index',['customer_types' => CustomerType::All()]);
     }
 
     /**
@@ -64,11 +67,22 @@ class CustomerTypeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
+    {   
         return view('customer_type.edit',[
             'customer_types' => DB::table('customer_types')
             ->where('id','=',$id)->first()
             ]);
+
+        // $customer_types = DB::table('customer_types')
+        // ->where('id',$id)
+        // ->get();
+        // foreach($customer_types as $value)
+        // return view('customer_type.edit',compact('value')); 
+        
+
+        // $customer_types = DB::table('customer_types')->where('id','=',$id)->first();
+        // return  view('customer_type.index',['customer_types' => $customer_types]);
+       
     }
 
     /**
@@ -80,10 +94,20 @@ class CustomerTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $customer_types = customer_type::find($id);
+        $customer_types = CustomerType::find($id);
         $customer_types->name = $request->post('name');
         $customer_types->save();
-        return view('customer_type.index',['customer_types' => customer_type::All()]);
+        return view('customer_type.index',['customer_types' => CustomerType::All()]);
+
+        // $update = [
+        //     'id'        => $request->id,
+        //     'name'      => $request->name
+            
+        // ];
+        // dd($update);
+
+
+        
     }
 
     /**
@@ -91,10 +115,13 @@ class CustomerTypeController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * 
      */
+
     public function destroy($id)
     {
         DB::table('customer_types')->where('id',$id)->delete();
         return redirect()->back()->with('destroy','.');
     }
+    
 }

@@ -4,13 +4,23 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\DivisionController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CustomerTypeController;
+use App\Mail\MailNotify;
+
+
 use App\Http\Controllers\ProjectController;
+<<<<<<< HEAD
 <<<<<<< HEAD
 use App\Http\Controllers\DivisionController;
 
 use App\Http\Controllers\CustomerTypeController;
 use App\Http\Controllers\UserDetailController;
 =======
+=======
+
+>>>>>>> dev
 use App\Http\Controllers\ProjectTypeController;
 use App\Http\Controllers\ProjectStatusController;
 >>>>>>> 488058c34a6dac5770b5857e2e85f2cfb17a7f6a
@@ -84,10 +94,24 @@ Route::get('/nav', function () {
 Route::get('/user', function () {
     return view('user.index');
 });
+<<<<<<< HEAD
 //user_detail
 Route::get('/user_detail', function () {
     return view('user_detail.index');
 });
+=======
+Route::resource('user', 'App\Http\Controllers\UserController');
+Route::get('/user_seach', [UserContrUseroller::class, 'search']);
+Route::get('/user_create', [UserController::class, 'create']);
+Route::POST('/user_store/{id}', [UserController::class, 'store']);
+Route::get('/user_edit/{id}', [UserController::class, 'edit']);
+Route::POST('/user_update/{id}', [UserController::class, 'update']);
+
+//test delete user route
+Route::get('user/destroy/{id}', 'App\Http\Controllers\UserController@destroy')->name('destroy');
+Route::post('user/destroy/{id}', 'App\Http\Controllers\UserController@destroy')->name('destroy');
+
+>>>>>>> dev
 
 //customer_type
 Route::get('/customer_type', function () {
@@ -103,6 +127,7 @@ Route::POST('/customer_type_update/{id}', [CustomerTypeController::class, 'updat
 Route::get('customer_type/destroy/{id}', 'App\Http\Controllers\CustomerTypeController@destroy')->name('destroy');
 Route::post('customer_type/destroy/{id}', 'App\Http\Controllers\CustomerTypeController@destroy')->name('destroy');
 
+<<<<<<< HEAD
 //user_detail
 Route::get('/user_detail', function () {
     return view('user_detail.index');
@@ -116,6 +141,23 @@ Route::POST('/user_detail_update/{id}', [UserDetailController::class, 'update'])
 
 Route::get('user_detail/destroy/{id}', 'App\Http\Controllers\UserDetailController@destroy')->name('destroy');
 Route::post('user_detail/destroy/{id}', 'App\Http\Controllers\UserDetailController@destroy')->name('destroy');
+=======
+
+
+
+
+
+
+
+
+//division
+
+Route::resource('division', 'App\Http\Controllers\DivisionController');
+Route::POST('/division_store',[DivisionController::class,'store']);
+Route::POST('/division_update/{id}',[DivisionController::class,'update']);
+Route::get('/division_delete/{id}',[DivisionController::class,'destroy']);
+
+>>>>>>> dev
 
 
 Auth::routes();

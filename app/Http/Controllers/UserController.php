@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Division;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\division;
+
+
 
 class UserController extends Controller
 {
@@ -18,10 +20,7 @@ class UserController extends Controller
     {
         
         $users = DB::table('users')->join('divisions','divisions.id','=','div_id')
-        ->select('users.id as user_id',
-                    'users.name as user_name',
-                    'users.email',
-                    'users.password',
+        ->select('users.*',
                     'divisions.name as division')->get();
         return view('user.index',['users' => $users]);
     }
@@ -33,7 +32,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $division = Division::All();
+        return view('user.create',['division' => $division]);
     }
 
     /**
@@ -44,7 +44,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $users = new User([
+            'name' => $request->post('name'),
+            'email' => $request->post('email'),
+            'phone_number' => $request->post('phone_number'),
+
+
+        ]);
+        
+        $users->save();
+        return view('user.index',['users' => User::All()]);
+
     }
 
     /**
@@ -66,7 +76,18 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $users = DB::table('users')->join('divisions','divisions.id','=','div_id')
+        ->where('users.id','=',$id)
+        ->select('users.*',
+        'divisions.id as div_id',
+                    'divisions.name as division')->first();
+
+        return view('user.edit',['user' => $users,'division' => division::All()]); 
+
+        // return view('user.edit',[
+        //     'users' => DB::table('users')
+        //     ->where('id','=',$id)->first()
+        //     ]);
     }
 
     /**
@@ -78,7 +99,24 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $update = [
+        //     'id'        => $request->id,
+        //     'name'      => $request->name,
+        //     'email'     => $request->email,
+        //     'password'  => $request->password,
+        //     'division'  => $request->division
+        // ];
+        // dd($update);
+
+
+        $users = User::find($id);
+        $users->name = $request->post('name');
+        $users->email = $request->post('email');
+        // $users->password = $request->post('password');
+        $users->div_id = $request->post('div_id');
+        $users->phone_number = $request->post('phone_number');
+        $users->save();
+        return redirect()->action([UserController::class, 'index']);
     }
 
     /**
@@ -89,6 +127,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        DB::table('users')->where('id',$id)->delete();
+        return redirect()->back()->with('destroy','.');
+
     }
 }
