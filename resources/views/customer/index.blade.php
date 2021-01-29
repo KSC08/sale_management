@@ -24,6 +24,7 @@
                             <th>ID</th>
                             <th>ชื่อลูกค้า</th>
                             <td>ชื่อบริษัท</td>
+                            <td>ประเภทลูกค้า</td>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -33,20 +34,13 @@
                             <td>{{$row->id}}</td>
                             <td>{{$row->cus_name}}</td>
                             <td>{{$row->com_name}}</td>
+                            <td>{{$row->cus_type_name}}</td>
                             <th><a href="{{route('customer.edit',$row->id)}}"><i class="fa fa-edit"></i></a>&nbsp&nbsp
                                 <a href="{{url('customer_delete',$row->id)}}" onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่')"><i class="fa fa-trash"></i></a>
                             </th>
                         </tr>
                         @endforeach
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>ID</th>
-                            <th>ชื่อลูกค้า</th>
-                            <th>ชื่อบริษัท</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>
