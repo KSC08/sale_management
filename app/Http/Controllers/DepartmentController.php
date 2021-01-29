@@ -37,11 +37,11 @@ class DepartmentController extends Controller
     public function store(Request $request)
     {
         $department = new department([
-            'fullName' => $request->post('fullName'),
-            'shortName' => $request->post('shortName')
+            'fname' => $request->post('fname'),
+            'sname' => $request->post('sname')
         ]);
         $department->save();
-        return view('department.index',['departments' => department::All()]);
+        return redirect()->action([DepartmentController::class, 'index']);
     }
 
     /**
@@ -79,10 +79,10 @@ class DepartmentController extends Controller
     public function update(Request $request, $id)
     {
         $department = department::find($id);
-        $department->fullName = $request->post('fullName');
-        $department->shortName = $request->post('shortName');
+        $department->fname = $request->post('fname');
+        $department->sname = $request->post('sname');
         $department->save();
-        return view('department.index',['departments' => department::All()]);
+        return redirect()->action([DepartmentController::class, 'index']);
     }
 
     /**
@@ -94,11 +94,8 @@ class DepartmentController extends Controller
     public function destroy($id)
     {
         $department = department::find($id);
-        if($department->delete()){
-            return view('department.index',['departments' => department::All()]);
-        }else{
-            return view('department.index',['departments' => department::All()]);
-        }
+        $department->delete();
+        return redirect()->action([DepartmentController::class, 'index']);
 
     }
 }

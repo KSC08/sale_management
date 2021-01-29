@@ -70,6 +70,7 @@
 						</a>
 						<ul id="pages" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('customer.index')}}">ข้อมูลลูกค้า</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/customer_type')}}">รายละเอียดข้อมูลลูกค้า</a></li>
 						</ul>
 					</li>
 					<li class="sidebar-item">
@@ -77,8 +78,9 @@
 							<i class="align-middle mr-2 fas fa-fw fa-file"></i> <span class="align-middle">จัดการข้อมูลพื้นฐาน</span>
 						</a>
 						<ul id="pages2" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="{{route('department.index')}}">Department</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="{{url('company')}}">บริษัท</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href={{route('department.index')}}>ข้อมูลฝ่าย</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href={{route('division.index')}}>ข้อมูลส่วน</a></li>
 						</ul>
 					</li>
 
@@ -91,6 +93,7 @@
 							<li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">สมัครสมาชิก</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/user')}}">ข้อมูลผู้ใช้</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">เปลี่ยนรหัสผ่าน</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/user_detail')}}">รายละเอียดข้อมูลผู้ใช้</a></li>
 						</ul>
 					</li>
 
@@ -303,7 +306,7 @@
   </svg>
 	<script src="{{ asset('js/app.js') }}"></script>
 
-	<script>
+	<!-- <script>
 		$(function() {
 			// Datatables basic
 			$('#datatables-basic').DataTable({
@@ -317,7 +320,7 @@
 			});
 			datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)")
 		});
-	</script>
+	</script> -->
 </body>
 
 </html>
