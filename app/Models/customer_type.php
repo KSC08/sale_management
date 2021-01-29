@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class customer_type extends Model
 {
-    protected $fillable =['id','name'];
+    use HasFactory;
+    
+    protected $fillable = [
+        'id',
+        'name'
+    ];
 }
