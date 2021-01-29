@@ -40,7 +40,7 @@ Route::get('/customer_seach', [CustomerController::class, 'search']);
 Route::get('/customer_create', [CustomerController::class, 'create']);
 Route::POST('/customer_store', [CustomerController::class, 'store']);
 Route::get('/customer_edit/{id}', [CustomerController::class, 'edit']);
-Route::POST('/customer_update', [CustomerController::class, 'update']);
+Route::POST('/customer_update/{id}', [CustomerController::class, 'update']);
 Route::get('/customer_delete/{id}', [CustomerController::class, 'destroy']);
 
 //department
