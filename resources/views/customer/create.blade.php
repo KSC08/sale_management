@@ -11,8 +11,8 @@
             <li class="breadcrumb-item active" aria-current="page">เพิ่มข้อมูลลูกค้า</li>
         </ol>
     </nav>
-</div>
-<div class="col-md-12">
+</div><center>
+<div class="col-md-8">
     <div class="card">
         <div class="card-body">
             <form method="POST" action="{{route('customer.store')}}" enctype="multipart/form-data">
@@ -21,16 +21,23 @@
                 <div class="form-row">
                     <div class="form-group col-md-6">
                         <label>ชื่อลูกค้า</label>
-                        <input type="text" class="form-control" name="fname" placeholder="กรอกชื่อลูกค้า">
+                        <br>
+                        <input type="text" class="form-control" name="fname" placeholder="กรอกชื่อลูกค้า" required>
                     </div>
-                </div>
                 <br>
-                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label>บริษัท</label>
+                        <select class="custom-select " name="company_id" placeholder="เลือกบริษัท" style="width:250px;">
+                            @foreach($companies as $row)
+                            <option value="{{$row->id}}">{{$row->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-group col-md-6">
                         <br>
-                        <label>บริษัท</label>
-                        <select class="custom-select " name="company_id" id="comid" placeholder="เลือกบริษัท">
-                            @foreach($companies as $row)
+                        <label>ประเภทลูกค้า</label>
+                        <select class="custom-select " name="customer_type" placeholder="เลือกบริษัท" style="width:250px;">
+                            @foreach($customer_types as $row)
                             <option value="{{$row->id}}">{{$row->name}}</option>
                             @endforeach
                         </select>
@@ -39,6 +46,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-12">
                         <center>
+                        <br>
                             <div class="form-group"><input type="submit" class="btn btn-primary" value="บันทึกข้อมูล">
                             </div>
                         </center>
@@ -48,7 +56,7 @@
         </div>
     </div>
 </div>
-
+</center>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <svg width="0" height="0" style="position:absolute">

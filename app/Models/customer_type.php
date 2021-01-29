@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class customer_type extends Model
 {
-    use HasFactory;
+    protected $fillable =['id','name'];
 }
