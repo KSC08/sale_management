@@ -67,13 +67,29 @@
                                     <input id="password-confirm" type="password" class="form-control form-control-lg" placeholder="Enter your confirm password" name="password_confirmation" required autocomplete="new-password">
 
                                 </div>
-
                                 
+                                    
+
+
+                                    <div class="mb-3 ">
+                                        <label for="type">status</label>
+                                        <select id="type" name="status" class="form-control">
+                                            <option selected>Choose...</option>
+
+                                            <option value="admin">admin</option>
+                                            <option value="department">ฝ่าย</option>
+                                            <option value="division">ส่วน</option>
+                                            <option value="empolyee">พนักงาน</option>
+                                        </select>
+                                    </div>
+                                
+
+
 
                                 <div class="text-center mt-3">
 
-                                    <button type="submit" class="btn btn-lg btn-primary">
-                                        {{ __('Register') }}
+                                    <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
                                     </button>
 
                                 </div>
