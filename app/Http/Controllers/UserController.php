@@ -19,9 +19,7 @@ class UserController extends Controller
     public function index()
     {
         
-        $users = DB::table('users')->join('divisions','divisions.id','=','div_id')
-        ->select('users.*',
-                    'divisions.name as division')->get();
+        $users = DB::table('users')->get();
         return view('user.index',['users' => $users]);
     }
 

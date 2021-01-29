@@ -5,11 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\project;
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 488058c34a6dac5770b5857e2e85f2cfb17a7f6a
 
 class ProjectController extends Controller
 {
@@ -130,6 +125,16 @@ class ProjectController extends Controller
      */
     public function destroy($id)
     {
-        return 0;
+        $delete = project::find($id);
+        if($delete != null){
+            $delete->delete();
+            return view('project.index', [
+                'project' => DB::table('projects')->get()
+                ])->with('success', 'ลบข้อมูลแล้ว');
+        }else{
+            return view('project.index', [
+                'project' => DB::table('projects')->get()
+                ])->with('alert', 'ไม่สามารถลบข้อมูลนี้ได้');
+        }
     }
 }
