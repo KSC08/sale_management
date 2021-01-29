@@ -5,6 +5,8 @@ use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ProjectTypeController;
+use App\Http\Controllers\ProjectStatusController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,10 +18,10 @@ use App\Http\Controllers\ProjectController;
 |
 */
 
-Route::get('/ ', function () {
-    return view('layouts.nav');
-});
-Route::resource('project','ProjectController');
+// Route::get('/ ', function () {
+//     return view('layouts.nav');
+// });
+
 // Route::get('/company','CompanyController@index');
 
 //Company
@@ -46,8 +48,12 @@ Route::resource('department','App\Http\Controllers\DepartmentController');
 Route::POST('/department_store',[DepartmentController::class,'store']);
 Route::POST('/department_update/{id}',[DepartmentController::class,'update']);
 Route::get('/department_delete/{id}',[DepartmentController::class,'destroy']);
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.login');
 });
 Route::get('/lo', function () {
     return view('layouts.login');
@@ -55,10 +61,8 @@ Route::get('/lo', function () {
 Route::get('/nav', function () {
     return view('layouts.nav');
 });
-// Route::get('/project', function () {
-//     return view('project.index');
-// });
-Route::get('/project', [ProjectController::class, 'index']);
+
+
 //user
 Route::get('/user', function () {
     return view('user.index');
@@ -75,3 +79,30 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('users');
 Route::get('/customer_type', [App\Http\Controllers\CustomerTypeController::class, 'index'])->name('customer_types');
+
+
+//project
+Route::get('/project', [ProjectController::class, 'index']);
+Route::get('/project/add', [ProjectController::class, 'create']);
+Route::get('/create_project', [ProjectController::class, 'store']);
+Route::get('/project/edit/{id}', [ProjectController::class, 'edit']);
+Route::post('/project_update', [ProjectController::class, 'update']);
+Route::get('/project_/delete/{id}', [ProjectController::class, 'destroy']);
+
+//project_type
+Route::get('/project_type', [ProjectTypeController::class, 'index']);
+Route::get('/project_type/add', [ProjectTypeController::class, 'create']);
+Route::get('/create_project_type', [ProjectTypeController::class, 'store']);
+Route::get('/project_type/edit/{id}', [ProjectTypeController::class, 'edit']);
+Route::post('/project_type_update', [ProjectTypeController::class, 'update']);
+Route::get('/project_type/delete/{id}', [ProjectTypeController::class, 'destroy']);
+
+
+//project_status
+Route::get('/project_status', [ProjectStatusController::class, 'index']);
+Route::get('/project_status/add', [ProjectStatusController::class, 'create']);
+Route::get('/create_project_status', [ProjectStatusController::class, 'store']);
+Route::get('/project_status/edit/{id}', [ProjectStatusController::class, 'edit']);
+Route::post('/project_status_update', [ProjectStatusController::class, 'update']);
+Route::get('/project_status/delete/{id}', [ProjectStatusController::class, 'destroy']);
+

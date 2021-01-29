@@ -20,8 +20,8 @@ class User extends Authenticatable
         'id',
         'name',
         'email',
-        'password',
-        'div_id'
+        'password'
+        
         
     ];
 
