@@ -69,11 +69,11 @@ Route::get('/division_delete/{id}',[DivisionController::class,'destroy']);
 
 
 Route::get('/', function () {
-    return view('layouts.login');
+    return view('auth.login');
 });
-Route::get('/lo', function () {
-    return view('layouts.login');
-});
+// Route::get('/lo', function () {
+//     return view('layouts.login');
+// });
 Route::get('/nav', function () {
     return view('layouts.nav');
 });

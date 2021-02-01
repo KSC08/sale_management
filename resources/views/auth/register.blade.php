@@ -8,14 +8,16 @@
             <div class="d-table-cell align-middle">
 
                 <div class="text-center mt-4">
-                    <h1 class="h2">Get started</h1>
-                    <p class="lead">
+                    <h1 class="h2">สมัครสมาชิก</h1>
+                    <!-- <p class="lead">
                         Start creating the best possible user experience for you customers.
-                    </p>
+                    </p> -->
                 </div>
                 <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
-
+                    <div class="card-header"></div>
+                    <div class="text-center">
+                                <img src="img/avatars/login.png" alt="Linda Miller" class="img-fluid rounded-circle" width="132" height="132" />
+                            </div>
                     <div class="card-body">
                         <div class="m-sm-4">
                             <form method="POST" action="{{ route('register') }}">
