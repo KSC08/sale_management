@@ -23,8 +23,9 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>ชื่อฝ่าย</th>
-                            <th>ชื่อย่อฝ่าย</th>
+                            <th>ชื่อส่วน</th>
+                            <th>ชื่อย่อส่วน</th>
+                            <th>ฝ่าย</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,6 +35,7 @@
                             <td>{{$row->id}}</td>
                             <td>{{$row->fname}}</td>
                             <td>{{$row->sname}}</td>
+                            <td>{{$row->sector}}</td>
                             <th>
                                 <a href="{{route('department.edit',$row->id)}}"><i class="align-middle fas fa-fw fa-pen"></i></i></a>&nbsp&nbsp
                                 <a href="department_delete/{{$row->id}}" onclick="return confirm('คุณต้องการลบข้อมูลนี้ใช่หรือไม่')"><i class="align-middle fas fa-fw fa-trash"></i></a>

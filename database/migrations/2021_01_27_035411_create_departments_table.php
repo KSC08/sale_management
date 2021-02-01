@@ -17,14 +17,17 @@ class CreateDepartmentsTable extends Migration
             $table->increments('id');
             $table->string('fname');
             $table->string('sname');
+            $table->integer('sector')->unsigned();
+            
             $table->timestamps();
         });
-        Schema::table('divisions', function (Blueprint $table)
+        Schema::table('users', function (Blueprint $table)
         {
             $table->foreign('department')
                 ->references('id')->on('departments')
                 ->onDelete('cascade');
         });
+        
         
     }
 
