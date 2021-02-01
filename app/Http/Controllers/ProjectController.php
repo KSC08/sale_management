@@ -71,7 +71,7 @@ class ProjectController extends Controller
         }else{
             $project = DB::table('projects')
             ->join('departments','departments.id','=','projects.department')
-            ->where('departments.sector',Auth::user()->sector)
+            ->where('departments.id',Auth::user()->department)
             ->select('projects.*'
             ,'departments.fname as department')
             ->get();
