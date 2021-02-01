@@ -15,7 +15,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">รายชื่อฝ่ายทั้งหมด</h5>
+                <h5 class="card-title">รายชื่อฝ่ายทั้งหมดx</h5>
                 <a class ="btn btn-primary float-right" href="{{route('department.create')}}">สร้างฝ่าย</a>
             </div>
             <div class="card-body">
