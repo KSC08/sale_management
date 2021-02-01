@@ -35,6 +35,17 @@
                                 <input type="text" name="sname" class="form-control" placeholder="ชื่อย่อฝ่าย" required>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="mb-3 ">
+                                <label for="sector">sector</label>
+                                <select id="sector" name="sector" class="form-control">
+                                    <option selected>Choose...</option>
+                                    @foreach($sector as $data)
+                                    <option value="{{$data->id}}">{{$data->name}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group col-md-12">
                             <center>
                                 <div class="form-group"><input type="submit" class="btn btn-primary" value="บันทึก">

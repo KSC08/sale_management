@@ -18,6 +18,7 @@ use App\Http\Controllers\UserDetailController;
 
 use App\Http\Controllers\ProjectTypeController;
 use App\Http\Controllers\ProjectStatusController;
+use App\Http\Controllers\SectorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -169,3 +170,10 @@ Route::get('/project_status/edit/{id}', [ProjectStatusController::class, 'edit']
 Route::post('/project_status_update', [ProjectStatusController::class, 'update']);
 Route::get('/project_status/delete/{id}', [ProjectStatusController::class, 'destroy']);
 
+//sector
+Route::get('/sector', [SectorController::class, 'index']);
+Route::get('/sector/add', [SectorController::class, 'create']);
+Route::get('/create_sector', [SectorController::class, 'store']);
+Route::get('/sector/edit/{id}', [SectorController::class, 'edit']);
+Route::post('/sector_update', [SectorController::class, 'update']);
+Route::get('/sector/delete/{id}', [SectorController::class, 'destroy']);

@@ -29,10 +29,10 @@
                             <label for="pro_name">ชื่อโครงการ</label>
                             <input type="text" class="form-control" id="pro_name" name="pro_name" placeholder="กรองชื่อโครงการ">
                         </div>
-                        <?php $user_id = Auth::user()->id;
+                        <?php $user_dep = Auth::user()->department;
                         //echo $user_status;
                         ?>
-<input type="text" value="{{$user_id}}">
+                        <input type="hidden" name="department" value="{{$user_dep}}">
                     </div>
                     <div class="mb-3 ">
                         <label for="status">สถานะโครงการ</label>
