@@ -361,7 +361,7 @@
 	</svg>
 	<script src="{{ asset('js/app.js') }}"></script>
 
-	<!-- <script>
+	<script>
 		$(function() {
 			// Datatables basic
 			$('#datatables-basic').DataTable({
@@ -375,7 +375,7 @@
 			});
 			datatablesButtons.buttons().container().appendTo("#datatables-buttons_wrapper .col-md-6:eq(0)")
 		});
-	</script> -->
+	</script>
 </body>
 
 </html>
