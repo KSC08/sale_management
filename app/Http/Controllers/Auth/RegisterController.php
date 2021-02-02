@@ -68,13 +68,25 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
-        // dd($data['division']);
+        if($data['role'] == 'sector'){
+                $sector =  $data['sector'];
+                $department =  1;
+                // dd($department);
+        }elseif($data['role'] == 'admin'){
+            $sector =  '1';
+            $department =  1;
+        }else{
+            $sector =  '1';
+            $department =  $data['department'];
+        }
+        //   dd($data['status']);
          return User::create([
              'name' => $data['name'],
              'email' => $data['email'],
              'password' => Hash::make($data['password']),
-             
+             'role' => $data['role'],
+             'department' => $department,
+             'sector' => $sector,
          ]);
     }
 

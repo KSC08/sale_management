@@ -19,6 +19,8 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->integer('pro_status')->unsigned();
             $table->integer('pro_type')->unsigned();
+            $table->longText('detail');
+            $table->longText('department');
             $table->string('created_by');
             $table->string('update_by');
             $table->timestamps();

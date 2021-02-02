@@ -4,11 +4,21 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DepartmentController;
+
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CustomerTypeController;
+use App\Mail\MailNotify;
+
+
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\DivisionController;
 
-use App\Http\Controllers\CustomerTypeController;
+;
 use App\Http\Controllers\UserDetailController;
+
+use App\Http\Controllers\ProjectTypeController;
+use App\Http\Controllers\ProjectStatusController;
+use App\Http\Controllers\SectorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,10 +30,10 @@ use App\Http\Controllers\UserDetailController;
 |
 */
 
-Route::get('/ ', function () {
-    return view('layouts.nav');
-});
-Route::resource('project','ProjectController');
+// Route::get('/ ', function () {
+//     return view('layouts.nav');
+// });
+
 // Route::get('/company','CompanyController@index');
 
 //Company
@@ -59,7 +69,7 @@ Route::get('/division_delete/{id}',[DivisionController::class,'destroy']);
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.login');
 });
 Route::get('/lo', function () {
     return view('layouts.login');
@@ -67,10 +77,8 @@ Route::get('/lo', function () {
 Route::get('/nav', function () {
     return view('layouts.nav');
 });
-// Route::get('/project', function () {
-//     return view('project.index');
-// });
-Route::get('/project', [ProjectController::class, 'index']);
+
+
 //user
 Route::get('/user', function () {
     return view('user.index');
@@ -79,6 +87,17 @@ Route::get('/user', function () {
 Route::get('/user_detail', function () {
     return view('user_detail.index');
 });
+Route::resource('user', 'App\Http\Controllers\UserController');
+Route::get('/user_seach', [UserContrUseroller::class, 'search']);
+Route::get('/user_create', [UserController::class, 'create']);
+Route::POST('/user_store/{id}', [UserController::class, 'store']);
+Route::get('/user_edit/{id}', [UserController::class, 'edit']);
+Route::POST('/user_update/{id}', [UserController::class, 'update']);
+
+//test delete user route
+Route::get('user/destroy/{id}', 'App\Http\Controllers\UserController@destroy')->name('destroy');
+Route::post('user/destroy/{id}', 'App\Http\Controllers\UserController@destroy')->name('destroy');
+
 
 //customer_type
 Route::get('/customer_type', function () {
@@ -109,9 +128,52 @@ Route::get('user_detail/destroy/{id}', 'App\Http\Controllers\UserDetailControlle
 Route::post('user_detail/destroy/{id}', 'App\Http\Controllers\UserDetailController@destroy')->name('destroy');
 
 
+
+
+
+
+
+
+
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('users');
 Route::get('/customer_type', [App\Http\Controllers\CustomerTypeController::class, 'index'])->name('customer_types');
 Route::get('/user_detail', [App\Http\Controllers\UserDetailController::class, 'index']);
+
+
+//project
+Route::get('/project', [ProjectController::class, 'index']);
+Route::get('/project/add', [ProjectController::class, 'create']);
+Route::get('/create_project', [ProjectController::class, 'store']);
+Route::get('/project/edit/{id}', [ProjectController::class, 'edit']);
+Route::post('/project_update', [ProjectController::class, 'update']);
+Route::get('/project/delete/{id}', [ProjectController::class, 'destroy']);
+
+//project_type
+Route::get('/project_type', [ProjectTypeController::class, 'index']);
+Route::get('/project_type/add', [ProjectTypeController::class, 'create']);
+Route::get('/create_project_type', [ProjectTypeController::class, 'store']);
+Route::get('/project_type/edit/{id}', [ProjectTypeController::class, 'edit']);
+Route::post('/project_type_update', [ProjectTypeController::class, 'update']);
+Route::get('/project_type/delete/{id}', [ProjectTypeController::class, 'destroy']);
+
+
+//project_status
+Route::get('/project_status', [ProjectStatusController::class, 'index']);
+Route::get('/project_status/add', [ProjectStatusController::class, 'create']);
+Route::get('/create_project_status', [ProjectStatusController::class, 'store']);
+Route::get('/project_status/edit/{id}', [ProjectStatusController::class, 'edit']);
+Route::post('/project_status_update', [ProjectStatusController::class, 'update']);
+Route::get('/project_status/delete/{id}', [ProjectStatusController::class, 'destroy']);
+
+//sector
+Route::get('/sector', [SectorController::class, 'index']);
+Route::get('/sector/add', [SectorController::class, 'create']);
+Route::get('/create_sector', [SectorController::class, 'store']);
+Route::get('/sector/edit/{id}', [SectorController::class, 'edit']);
+Route::post('/sector_update', [SectorController::class, 'update']);
+Route::get('/sector/delete/{id}', [SectorController::class, 'destroy']);

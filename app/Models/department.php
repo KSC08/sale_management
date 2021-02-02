@@ -7,5 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class department extends Model
 {
-    protected $fillable =['id','fname','sname'];
+
+    protected $fillable = [
+        'id',
+        'fname',
+        'sname',
+        'sector'
+    ];
 }

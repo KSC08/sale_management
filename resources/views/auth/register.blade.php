@@ -67,29 +67,51 @@
                                     <input id="password-confirm" type="password" class="form-control form-control-lg" placeholder="Enter your confirm password" name="password_confirmation" required autocomplete="new-password">
 
                                 </div>
+                                
+                                    
 
-                                {{-- <div class="mb-3">
-                                    <label>{{ __('Division') }}</label>
+
+                                    <div class="mb-3 ">
+                                        <label for="role">role</label>
+                                        <select id="role" name="role" class="form-control" id="role" onchange="rolechang();">
+                                            <option selected>Choose...</option>
+
+                                            <option value="admin">admin</option>
+                                            <option value="sector">ฝ่าย</option>
+                                            <option value="department">ส่วน</option>
+                                            <option value="user">พนักงาน</option>
+                                        </select>
+                                    </div>
+                                    <?php 
+
+                                    ?>
+                                    <div class="mb-3 " id="department">
+                                        <label for="department">depastment</label>
+                                        <select id="department" name="department" class="form-control">
+                                            <option selected>Choose...</option>
+                                            @foreach($department as $data)
+                                            <option value="{{$data->id}}">{{$data->fname}}</option>
+                                           @endforeach
+                                        </select
+                                        >
+                                    </div>
+                                    <div class="mb-3 " id="sector">
+                                        <label for="sector">sector</label>
+                                        <select id="sector" name="sector" class="form-control">
+                                            <option selected>Choose...</option>
+                                            @foreach($sector as $data)
+                                            <option value="{{$data->id}}">{{$data->name}}</option>
+                                           @endforeach
+                                        </select>
+                                    </div>
+                                
 
 
-                                    <select name="division" id="division" class="form-control form-control-lg">
-                                        @foreach ($division as $row)
-                                        <!--LOOP ข้อมูลใน $users-->
-                                        <option value="<?= $row->id ?>"><?= $row->name ?></option>
-                                        @endforeach
-                                    </select>
-                                    @error('division')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-
-                                </div> --}}
 
                                 <div class="text-center mt-3">
 
-                                    <button type="submit" class="btn btn-lg btn-primary">
-                                        {{ __('Register') }}
+                                    <button type="submit" class="btn btn-primary">
+                                    {{ __('Register') }}
                                     </button>
 
                                 </div>
@@ -101,7 +123,29 @@
         </div>
     </div>
 </div>
+<script>
+(function() {
+    $('#sector').hide();
+        $('#department').hide();
+})();
 
+
+    function rolechang() {
+        var value = document.getElementById('role').value;
+        if(value == 'sector'){
+            $('#sector').show();
+            $('#department').hide();
+        }else if(value == 'admin'){
+            $('#sector').hide();
+            $('#department').hide();
+        }else{
+            $('#sector').hide();
+            $('#department').show();
+        }
+    }
+
+</script>
 
 
 @endsection
+
