@@ -1,10 +1,10 @@
 @extends('layouts.nav')
-@section('title','เพิ่มข้อมูลฝ่าย')
+@section('title','เพิ่มข้อมูลส่วน')
 @section('content')
 <div class="container">
     <div class="header">
         <h1 class="header-title">
-            เพิ่มข้อมูลฝ่าย
+            เพิ่มข้อมูลส่วน
         </h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -18,7 +18,7 @@
         <div class="col-12 col-xl-12">
             <div class="card">
                 <div class="card-header">
-                    <h1 class="card-title">เพิ่มข้อมูลฝ่าย</h1>
+                    <h1 class="card-title">เพิ่มข้อมูลส่วน</h1>
                     <h6 class="card-subtitle text-muted">กรุณากรอกข้อมูลในเเบบฟอร์มด้านล่างให้ครบถ้วน</h6>
                 </div>
                 <div class="card-body">
@@ -27,12 +27,23 @@
                         {{ method_field('POST') }}
                         <div class="row">
                             <div class="mb-3 col-md-8">
-                                <label style="color:red;">ชื่อฝ่าย*</label>
-                                <input type="text" name="fname" class="form-control" placeholder="ชื่อฝ่าย" required>
+                                <label style="color:red;">ชื่อส่วน*</label>
+                                <input type="text" name="fname" class="form-control" placeholder="ชื่อส่วน" required>
                             </div>
                             <div class="form-group col-md-4">
-                                <label style="color:red;">ชื่อย่อฝ่าย*</label>
-                                <input type="text" name="sname" class="form-control" placeholder="ชื่อย่อฝ่าย" required>
+                                <label style="color:red;">ชื่อย่อส่วน*</label>
+                                <input type="text" name="sname" class="form-control" placeholder="ชื่อย่อส่วน" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 ">
+                                <label for="sector">sector</label>
+                                <select id="sector" name="sector" class="form-control">
+                                    <option selected>Choose...</option>
+                                    @foreach($sector as $data)
+                                    <option value="{{$data->id}}">{{$data->name}}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group col-md-12">

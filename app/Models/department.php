@@ -11,6 +11,7 @@ class department extends Model
     protected $fillable = [
         'id',
         'fname',
-        'sname'
+        'sname',
+        'sector'
     ];
 }

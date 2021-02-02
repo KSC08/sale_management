@@ -14,6 +14,7 @@ class project extends Model
         'pro_status',
         'pro_type',
         'detail',
+        'department',
         'created_by',
         'update_by',
     ];

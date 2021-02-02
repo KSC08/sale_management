@@ -8,14 +8,16 @@
             <div class="d-table-cell align-middle">
 
                 <div class="text-center mt-4">
-                    <h1 class="h2">Get started</h1>
-                    <p class="lead">
+                    <h1 class="h2">สมัครสมาชิก</h1>
+                    <!-- <p class="lead">
                         Start creating the best possible user experience for you customers.
-                    </p>
+                    </p> -->
                 </div>
                 <div class="card">
-                    <div class="card-header">{{ __('Register') }}</div>
-
+                    <div class="card-header"></div>
+                    <div class="text-center">
+                                <img src="img/avatars/login.png" alt="Linda Miller" class="img-fluid rounded-circle" width="132" height="132" />
+                            </div>
                     <div class="card-body">
                         <div class="m-sm-4">
                             <form method="POST" action="{{ route('register') }}">
@@ -72,14 +74,36 @@
 
 
                                     <div class="mb-3 ">
-                                        <label for="type">status</label>
-                                        <select id="type" name="status" class="form-control">
+                                        <label for="role">role</label>
+                                        <select id="role" name="role" class="form-control" id="role" onchange="rolechang();">
                                             <option selected>Choose...</option>
 
                                             <option value="admin">admin</option>
-                                            <option value="department">ฝ่าย</option>
-                                            <option value="division">ส่วน</option>
-                                            <option value="empolyee">พนักงาน</option>
+                                            <option value="sector">ฝ่าย</option>
+                                            <option value="department">ส่วน</option>
+                                            <option value="user">พนักงาน</option>
+                                        </select>
+                                    </div>
+                                    <?php 
+
+                                    ?>
+                                    <div class="mb-3 " id="department">
+                                        <label for="department">depastment</label>
+                                        <select id="department" name="department" class="form-control">
+                                            <option selected>Choose...</option>
+                                            @foreach($department as $data)
+                                            <option value="{{$data->id}}">{{$data->fname}}</option>
+                                           @endforeach
+                                        </select
+                                        >
+                                    </div>
+                                    <div class="mb-3 " id="sector">
+                                        <label for="sector">sector</label>
+                                        <select id="sector" name="sector" class="form-control">
+                                            <option selected>Choose...</option>
+                                            @foreach($sector as $data)
+                                            <option value="{{$data->id}}">{{$data->name}}</option>
+                                           @endforeach
                                         </select>
                                     </div>
                                 
@@ -101,7 +125,29 @@
         </div>
     </div>
 </div>
+<script>
+(function() {
+    $('#sector').hide();
+        $('#department').hide();
+})();
 
+
+    function rolechang() {
+        var value = document.getElementById('role').value;
+        if(value == 'sector'){
+            $('#sector').show();
+            $('#department').hide();
+        }else if(value == 'admin'){
+            $('#sector').hide();
+            $('#department').hide();
+        }else{
+            $('#sector').hide();
+            $('#department').show();
+        }
+    }
+
+</script>
 
 
 @endsection
+

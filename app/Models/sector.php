@@ -5,12 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class division extends Model
+class sector extends Model
 {
     protected $fillable = [
-        'id',
-        'fname',
-        'sname',
-        'department'
+        
+        'name',
+    
     ];
 }
