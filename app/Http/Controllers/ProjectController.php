@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\project;
-
+use Auth;
 class ProjectController extends Controller
 {
     /**
@@ -15,7 +15,16 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $project = DB::table('projects')->get();
+        $user_status = Auth::user()->status;
+        $user_id = Auth::user()->id;
+
+        if($user_status=='admin'){
+            $project = DB::table('projects')->get();
+
+        }else{
+            $project = DB::table('projects')->where('created_by','=',$user_id)->get();
+        }
+        
         //dd($project);
         return view('project.index',['project' => $project]);
     }
@@ -51,8 +60,8 @@ class ProjectController extends Controller
                 'pro_status' => $request->get('status'),
                 'pro_type' => $request->get('type'),
                 'detail' => $request->get('detail'),
-                'created_by' => "admin",
-                'update_by' => "admin"
+                'created_by' => $request->get('create'),
+                'update_by' => $request->get('update')
             ]
             );
             // dd($project);

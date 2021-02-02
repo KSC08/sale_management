@@ -67,10 +67,10 @@ Route::POST('/division_update/{id}',[DivisionController::class,'update']);
 Route::get('/division_delete/{id}',[DivisionController::class,'destroy']);
 
 
+// Route::get('/', function () {
+//     return view('layouts.login');
+// });
 Route::get('/', function () {
-    return view('layouts.login');
-});
-Route::get('/lo', function () {
     return view('layouts.login');
 });
 Route::get('/nav', function () {

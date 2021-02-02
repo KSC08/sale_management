@@ -32,7 +32,8 @@
                         <?php $user_id = Auth::user()->id;
                         //echo $user_status;
                         ?>
-<input type="text" value="{{$user_id}}">
+<input name="create" type="hidden" value="{{$user_id}}">
+<input name="update" type="hidden" value="{{$user_id}}">
                     </div>
                     <div class="mb-3 ">
                         <label for="status">สถานะโครงการ</label>
