@@ -44,20 +44,20 @@
                                     @foreach ($dep as $data)
                                         <!--LOOP ข้อมูลใน $department-->
                                         <option value="<?= $data->id ?>"><?= $data->fname ?></option>
-                                        @endforeach
-                                    </select>
-                                </div><br>
-                                <div class="form-group col-md-12">
-                                    <center>
-                                        <div class="form-group"><input type="submit" class="btn btn-primary" value="บันทึก">
-                                            <a href="{{ route('division.index') }}" class="btn btn-danger">ยกเลิก</a>
-                                        </div>
-                                    </center>
+                                    @endforeach
+                                </select>
+                            </div><br>
+                            <div class="form-group col-md-12">
+                            <center>
+                                <div class="form-group"><input type="submit" class="btn btn-primary" value="บันทึก">
+                                    <a href="{{ route('division.index') }}" class="btn btn-danger">ยกเลิก</a>
                                 </div>
-                            </form>
-                        </div>
+                            </center>
+                            </div>
+                        </form>
                     </div>
                 </div>
+            </div>
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 

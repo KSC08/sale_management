@@ -16,7 +16,14 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        return view('department.index',['departments' => department::All()]);
+
+        $departments_sec = DB::table('departments')
+        ->join('sectors as sec','sec.id','=','departments.sector')
+        ->select('departments.*',
+                    'sec.fname as sec_fname',
+                )
+        ->get();
+        return view('department.index',['departments' => $departments_sec]);
     }
 
     /**
@@ -26,8 +33,9 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-
-        return view('department.create',['sector' => sector::All()]);
+        $sector = sector::all();  //การดึงข้อมูลมาจาก db
+        // // dd($dep);
+        return view('department.create',['sector' => $sector]);
     }
 
     /**
@@ -41,7 +49,7 @@ class DepartmentController extends Controller
         $department = new department([
             'fname' => $request->post('fname'),
             'sname' => $request->post('sname'),
-            'sector' => $request->post('sector')
+            'sector' => $request->post('sec_fname')
         ]);
         // return $department;
         $department->save();
@@ -67,10 +75,15 @@ class DepartmentController extends Controller
      */
     public function edit($id)
     {
-        return view('department.edit',[
-            'departments' => DB::table('departments')
-            ->where('id','=',$id)->first()
-            ]);
+
+        $sector = sector::all();  //การดึงข้อมูลมาจาก db
+        return view('department.edit',['sector' => $sector,'departments' => DB::table('departments')
+        ->join('sectors','sectors.id','=','departments.sector')
+        ->select('departments.*'
+        ,'sectors.id as sec_id'
+        ,'sectors.fname as sec_fname')
+        ->where('departments.id','=',$id)->first()]);
+
     }
 
     /**
@@ -85,6 +98,7 @@ class DepartmentController extends Controller
         $department = department::find($id);
         $department->fname = $request->post('fname');
         $department->sname = $request->post('sname');
+        $department->sector = $request->post('sec_fname');
         $department->save();
         return redirect()->action([DepartmentController::class, 'index']);
     }

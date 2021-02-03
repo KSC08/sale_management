@@ -27,21 +27,25 @@
                         {{ method_field('POST') }}
                         <div class="row">
                             <div class="mb-3 col-md-8">
-                                <label style="color:red;">ชื่อส่วน*</label>
+                                <label> ชื่อส่วนงาน
+                                    <a style="color:red;"> *</a>
+                                </label>
                                 <input type="text" name="fname" class="form-control" placeholder="ชื่อส่วน" required>
                             </div>
-                            <div class="form-group col-md-4">
-                                <label style="color:red;">ชื่อย่อส่วน*</label>
+                            <div class="mb-3 col-md-4">
+                                <label> ชื่อย่อส่วนงาน
+                                    <a style="color:red;"> *</a>
+                                </label>
                                 <input type="text" name="sname" class="form-control" placeholder="ชื่อย่อส่วน" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3 ">
-                                <label for="sector">sector</label>
-                                <select id="sector" name="sector" class="form-control">
+                                <label for="sector">ฝ่าย</label>
+                                <select id="sector" name="sec_fname" class="form-control">
                                     <option selected>Choose...</option>
                                     @foreach($sector as $data)
-                                    <option value="{{$data->id}}">{{$data->name}}</option>
+                                    <option value="{{$data->id}}">{{$data->fname}}</option>
                                     @endforeach
                                 </select>
                             </div>

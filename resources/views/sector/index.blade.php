@@ -1,15 +1,13 @@
 @extends('layouts.nav')
 @section('content')
-<div class="container-fluid">
     <div class="header">
         <h1 class="header-title">
-            DataTables
+            ข้อมูลฝ่าย
         </h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="dashboard-default.html">Dashboard</a></li>
-                <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                <li class="breadcrumb-item active" aria-current="page">DataTables</li>
+                <li class="breadcrumb-item"><a href="{{route('department.index')}}">Sector</a></li>
+                <li class="breadcrumb-item"><a href="{{route('department.index')}}">Index</a></li>
             </ol>
         </nav>
     </div>
@@ -17,43 +15,41 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Default</h5>
-                    <h6 class="card-subtitle text-muted">Highly flexible tool that many advanced features to any HTML table.</h6>
-                    
-                    <a style="float: right" href="{{ url('/sector/add') }}" class="btn btn-primary ">เพิ่มข้อมูล</a>
+                    <h5 class="card-title">รายชื่อฝ่ายทั้งหมด
+                        <a class ="btn btn-primary float-right" href="{{route('sector.create')}}">เพิ่มฝ่าย</a>
+                    </h5>
                 </div>
                 <div class="card-body">
                     <table id="datatables-basic" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>NO.</th>
-                                <th>name</th>
-                                <th>setting</th>
+                                <th>ID</th>
+                                <th>ชื่อฝ่าย</th>
+                                <th>ชื่อย่อฝ่าย</th>
+                                <th>Setting</th>
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($sector as $data)
+                        @foreach($sectors as $row)
                             <tr>
-                                <td>{{$data->id}}</td>
-                                
-                                <td>{{$data->name}}</td>
-                                <td>
-                               <a href="{{ url('/sector/edit',$data->id) }}"><i class="align-middle mr-2" data-feather="edit"></i> <span class="align-middle"></span></a> 
-                               <a href="{{ url('/sector/delete',$data->id) }}"><i class="align-middle mr-2" data-feather="trash-2"></i> <span class="align-middle"></span></a>
-                                </td>
+                                <td>{{$row->id}}</td>
+                                <td>{{$row->fname}}</td>
+                                <td>{{$row->sname}}</td>
+                                <th>
+                                    <a href="{{route('sector.edit',$row->id)}}"><i class="align-middle mr-2" data-feather="edit"></i> <span class="align-middle"></span></a> 
+                                    <a href="sector_delete/{{$row->id}}"><i class="align-middle mr-2" data-feather="trash-2"></i> <span class="align-middle"></span></a>
+                                </th>
                             </tr>
                         @endforeach
-
                         </tbody>
-                        <tfoot>
-                           
-                        </tfoot>
                     </table>
                 </div>
             </div>
         </div>
     </div>
-</div>
-@endsection
-
-<!-- /Attachment Modal -->
+    @endsection
+    @section('css')
+    @endsection
+    @section('script')
+    @endsection
+    <!-- /Attachment Modal -->

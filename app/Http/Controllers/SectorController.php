@@ -15,7 +15,7 @@ class SectorController extends Controller
      */
     public function index()
     {
-        return view('sector.index',['sector' => sector::All()]);
+        return view('sector.index',['sectors' => sector::All()]);
     }
 
     /**
@@ -38,13 +38,12 @@ class SectorController extends Controller
     {
         $sector = new sector(
             [
-                'name' => $request->get('name')
+                'fname' => $request->post('fname'),
+                'sname' => $request->post('sname')
             ]
             );
-          
-      $sector->save();
-         
-          return redirect()->action([SectorController::class, 'index']);
+        $sector->save();
+        return redirect()->action([SectorController::class, 'index']);
     }
 
     /**
@@ -66,7 +65,10 @@ class SectorController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('sector.edit',[
+            'sectors'=> DB::table('sectors')
+            ->where('id','=',$id)->first()
+            ]);
     }
 
     /**
@@ -78,7 +80,11 @@ class SectorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sector = sector::find($id);
+        $sector->fname = $request->post('fname');
+        $sector->sname = $request->post('sname');
+        $sector->save();
+        return redirect()->action([SectorController::class, 'index']);
     }
 
     /**
@@ -89,6 +95,9 @@ class SectorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sector = sector::find($id);
+        $sector->delete();
+        return redirect()->action([SectorController::class, 'index']);
+
     }
 }
