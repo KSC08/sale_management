@@ -16,7 +16,7 @@
                         {{ method_field('POST') }}
                         <div class="form-row">
                             <div class="form-group col-md-12">
-                                <label style="color:red;">ประเภทลูกค้า</label>
+                                <label class="bold">ประเภทลูกค้า</label>
                                 <input type="text" name="name" class="form-control" placeholder="ประเภทลูกค้า" required>
                             </div>
 
@@ -37,6 +37,14 @@
         </div>
     </div>
 </div>
+
+<style>     
+    .bold{
+        font-weight: 600;
+    }
+    
+</style>
+
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
