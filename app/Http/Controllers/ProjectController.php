@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\project;
 use Auth;
-
 class ProjectController extends Controller
 {
     /**

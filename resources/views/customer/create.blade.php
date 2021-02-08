@@ -11,32 +11,29 @@
             <li class="breadcrumb-item active" aria-current="page">เพิ่มข้อมูลลูกค้า</li>
         </ol>
     </nav>
-</div><center>
-<div class="col-md-8">
+</div>
+<div class="col-md-12">
     <div class="card">
         <div class="card-body">
             <form method="POST" action="{{route('customer.store')}}" enctype="multipart/form-data">
                 {{csrf_field()}}
                 {{ method_field('POST') }}
                 <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label>ชื่อลูกค้า</label>
-                        <br>
+                    <div class="form-group col-md-12">
+                        <label align="left">ชื่อลูกค้า <a style="color:red;">*</a></label>
                         <input type="text" class="form-control" name="fname" placeholder="กรอกชื่อลูกค้า" required>
                     </div>
-                <br>
-                    <div class="form-group col-md-6">
-                        <label>บริษัท</label>
-                        <select class="custom-select " name="company_id" placeholder="เลือกบริษัท" style="width:250px;">
+                    <div class="mb-3 col-md-12">
+                        <label align="left">บริษัท <a style="color:red;">*</a></label>
+                        <select class="form-control" name="company_id" placeholder="เลือกบริษัท" required>
                             @foreach($companies as $row)
                             <option value="{{$row->id}}">{{$row->name}}</option>
                             @endforeach
                         </select>
                     </div>
-                    <div class="form-group col-md-6">
-                        <br>
-                        <label>ประเภทลูกค้า</label>
-                        <select class="custom-select " name="customer_type" placeholder="เลือกบริษัท" style="width:250px;">
+                    <div class="mb-3 col-md-12">
+                        <label align="left">ประเภทลูกค้า <a style="color:red;">*</a></label>
+                        <select class="form-control" name="customer_type" placeholder="เลือกบริษัท" required>
                             @foreach($customer_types as $row)
                             <option value="{{$row->id}}">{{$row->name}}</option>
                             @endforeach
@@ -44,9 +41,8 @@
                     </div>
                 </div>
                 <div class="form-row">
-                    <div class="form-group col-md-12">
+                    <div class="mb-3 col-md-12">
                         <center>
-                        <br>
                             <div class="form-group"><input type="submit" class="btn btn-primary" value="บันทึกข้อมูล">
                             </div>
                         </center>
@@ -56,7 +52,6 @@
         </div>
     </div>
 </div>
-</center>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 <svg width="0" height="0" style="position:absolute">

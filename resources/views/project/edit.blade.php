@@ -4,22 +4,19 @@
 
 <div class="header">
     <h1 class="header-title">
-        Form Layouts
+        แก้ไขข้อมูลโครงการ
     </h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="dashboard-default.html">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="#">Forms</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Form Layouts</li>
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{url('/project')}}">ข้อมูลโครงการ</a></li>
+            <li class="breadcrumb-item"><a href="#">หน้าแก้ไขข้อมูลโครงการ</a></li>
         </ol>
     </nav>
 </div>
 <div class="row">
     <div class="col-12 col-xl-6">
         <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">เพิ่มข้อมูลสถานะโครงการ</h5>
-            </div>
             <div class="card-body">
             <form method="POST" action="{{url('/project_update')}}" enctype="multipart/form-data">
                     {{csrf_field()}}

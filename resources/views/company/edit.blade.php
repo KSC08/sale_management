@@ -61,7 +61,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <input type="hidden" name="id" value="{{$companies->id}}">
-                            <label style="color:red;">ชื่อ *</label>
+                            <label>ชื่อ <a style="color:red;">*</a></label>
                             <input type="text" name="name" class="form-control" placeholder="ป้อนชื่อ" value="{{$companies->name}}" required>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-12">
                         <center>
-                            <div class="form-group"><input type="submit" class="btn btn-primary" value="บันทึกการแก้ไข">
+                            <div class="form-group"><input type="submit" class="btn btn-primary" value="บันทึก">
                             </div>
                         </center>
                         </div>

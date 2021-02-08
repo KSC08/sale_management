@@ -2,22 +2,19 @@
 @section('content')
 <div class="header">
     <h1 class="header-title">
-        เเบบฟอร์มขออนุมัติการจัดหา ซื้อ/จ้าง/เช่า
+        เพิ่มข้อมูลโครงการ
     </h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Page 1</a></li>
-            <li class="breadcrumb-item"><a href="#">Page 2</a></li>
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{url('/project')}}">ข้อมูลโครงการ</a></li>
+            <li class="breadcrumb-item"><a href="#">หน้าเพิ่มข้อมูลโครงการ</a></li>
         </ol>
     </nav>
 </div>
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">Date Time Picker</h5>
-                <h6 class="card-subtitle text-muted">Date and time picker designed to integrate into your Bootstrap project.</h6>
-            </div>
             <div class="card-body">
             <form method="POST" action="{{url('/create_project')}}">
                 {{csrf_field()}}
