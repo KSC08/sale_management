@@ -17,7 +17,7 @@
                     <div class="card-body">
                         <div class="m-sm-4">
                             <div class="text-center">
-                                <img src="img/avatars/login.png" alt="Linda Miller" class="img-fluid rounded-circle" width="132" height="132" />
+                                <img src="img/avatars/login.png" alt="Linda Miller" class="img-fluid" width="132" height="132" />
                             </div>
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf
@@ -78,7 +78,7 @@
                                         <input class="form-check-input" type="checkbox" name="remember" id="customControlInline" value="remember-me" {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="form-check-label text-small" for="customControlInline">
-                                            {{ __('Remember Me') }}
+                                            {{ __('จดจำรหัสผ่าน') }}
                                         </label>
                                     </div>
 
@@ -94,12 +94,12 @@
                                 
                                     <div class="text-center mt-3">
                                         <button type="submit" class="btn btn-lg btn-primary">
-                                            {{ __('Sign in') }}
+                                            {{ __('เข้าสู่ระบบ') }}
                                         </button>
 
                                         @if (Route::has('password.request'))
                                         <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot Your Password?') }}
+                                            {{ __('ลืมรหัสผ่าน?') }}
                                         </a>
                                         @endif
                                     </div>
