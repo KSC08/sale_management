@@ -18,7 +18,6 @@
         <div class="col-12 col-xl-12">
             <div class="card">
                 <div class="card-header">
-                    <h1 class="card-title">เพิ่มข้อมูลส่วน</h1>
                     <h6 class="card-subtitle text-muted">กรุณากรอกข้อมูลในเเบบฟอร์มด้านล่างให้ครบถ้วน</h6>
                 </div>
                 <div class="card-body">
@@ -43,7 +42,7 @@
                             <div class="mb-3 ">
                                 <label for="sector">ฝ่าย</label>
                                 <select id="sector" name="sec_fname" class="form-control">
-                                    <option selected>Choose...</option>
+                                    <option selected>เลือกฝ่าย...</option>
                                     @foreach($sector as $data)
                                     <option value="{{$data->id}}">{{$data->fname}}</option>
                                     @endforeach

@@ -16,24 +16,26 @@
             <div class="card">
                 <div class="card-header">
                     <h5 class="card-title">รายชื่อส่วนงานทั้งหมด
-                        <a class ="btn btn-primary float-right" href="{{route('department.create')}}">เพิ่มส่วนงาน</a>
+                        <a class ="btn btn-primary float-right" href="{{route('department.create')}}">เพิ่มข้อมูล</a>
                     </h5>
                 </div>
                 <div class="card-body">
                     <table id="datatables-basic" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID</th>
+                                <th>ลำดับ</th>
                                 <th>ชื่อส่วนงาน</th>
                                 <th>ชื่อย่อส่วนงาน</th>
                                 <th>ฝ่าย</th>
-                                <th>Setting</th>
+                                <th><i class="align-middle mr-2" data-feather="settings"></i> <span class="align-middle"></span></th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $i = 0?>
                         @foreach($departments as $row)
                             <tr>
-                                <td>{{$row->id}}</td>
+                                <?php $i++?>
+                                <td>{{$i}}</td>
                                 <td>{{$row->fname}}</td>
                                 <td>{{$row->sname}}</td>
                                 <td>{{$row->sec_fname}}</td>
