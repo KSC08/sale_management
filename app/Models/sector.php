@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class sector extends Model
 {
     protected $fillable = [
-        
-        'name',
+        'id',
+        'fname',
+        'sname'
     
     ];
 }
