@@ -56,6 +56,15 @@
                             @endforeach
                         </select>
                     </div>
+                    <div class="mb-3 ">
+                        <label for="type">ลูกค้าเจ้าของโครงการ</label>
+                        <select id="type" name="customer" class="form-control">
+                            <option selected>Choose...</option>
+                            @foreach($customers as $data)
+                            <option value="{{$data->id}}">{{$data->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="form-row">
                         <div class="form-group col-md-12">
                             <input type="hidden" name="id" value="{{$project->id}}">

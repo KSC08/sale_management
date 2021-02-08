@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\customer;
-
+use auth;
 class CustomerController extends Controller
 {
     /**
@@ -17,14 +17,16 @@ class CustomerController extends Controller
     {
         return view('customer.index', [
             'customers' => DB::table('customers')
-            ->join('companies','companies.id','=','customers.company_id')
-            ->join('customer_types','customer_types.id','=','customers.customer_type')
-            ->select(
-                'customers.id as id',
-                'customers.name as cus_name',
-                'companies.name as com_name',
-                'customer_types.name as cus_type_name'
-            )->get()]);
+                ->join('companies', 'companies.id', '=', 'customers.company_id')
+                ->join('customer_types', 'customer_types.id', '=', 'customers.customer_type')
+                ->where('created_by',Auth::user()->id)
+                ->select(
+                    'customers.id as id',
+                    'customers.name as cus_name',
+                    'companies.name as com_name',
+                    'customer_types.name as cus_type_name'
+                )->get()
+        ]);
     }
 
     /**
@@ -34,8 +36,10 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('customer.create', ['companies' => DB::table('companies')->get(),
-        'customer_types' => DB::table('customer_types')->get()]);
+        return view('customer.create', [
+            'companies' => DB::table('companies')->get(),
+            'customer_types' => DB::table('customer_types')->get()
+        ]);
     }
 
     /**
@@ -47,10 +51,12 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $customer = new customer([
-                'name' => $request->post('fname'),
-                'company_id' => $request->post('company_id'),
-                'customer_type' => $request->post('customer_type')
-            ]);
+            'name' => $request->post('fname'),
+            'company_id' => $request->post('company_id'),
+            'customer_type' => $request->post('customer_type'),
+            'created_by' => Auth::user()->id,
+            'update_by' => Auth::user()->id
+        ]);
         $customer->save();
         return redirect()->action([CustomerController::class, 'index']);
     }
@@ -75,21 +81,8 @@ class CustomerController extends Controller
     public function edit($id)
     {
         $cus = DB::table('customers')
-        ->join('companies as com','com.id','=','customers.company_id')
-        ->join('customer_types as ct','ct.id','=','customers.customer_type')
-        ->select(
-            'customers.id as id',
-            'customers.name as cus_name',
-            'com.name as com_name',
-            'com.id as com_id',
-            'ct.id as cus_type_id',
-            'ct.name as cus_type_name'
-        )->where('customers.id',$id)->first();
-        
-        return view('customer.edit', [
-            'customers' => DB::table('customers')
-            ->join('companies as com','com.id','=','customers.company_id')
-            ->join('customer_types as ct','ct.id','=','customers.customer_type')
+            ->join('companies as com', 'com.id', '=', 'customers.company_id')
+            ->join('customer_types as ct', 'ct.id', '=', 'customers.customer_type')
             ->select(
                 'customers.id as id',
                 'customers.name as cus_name',
@@ -97,7 +90,20 @@ class CustomerController extends Controller
                 'com.id as com_id',
                 'ct.id as cus_type_id',
                 'ct.name as cus_type_name'
-            )->where('customers.id',$id)->first(),
+            )->where('customers.id', $id)->first();
+
+        return view('customer.edit', [
+            'customers' => DB::table('customers')
+                ->join('companies as com', 'com.id', '=', 'customers.company_id')
+                ->join('customer_types as ct', 'ct.id', '=', 'customers.customer_type')
+                ->select(
+                    'customers.id as id',
+                    'customers.name as cus_name',
+                    'com.name as com_name',
+                    'com.id as com_id',
+                    'ct.id as cus_type_id',
+                    'ct.name as cus_type_name'
+                )->where('customers.id', $id)->first(),
             'companies' => DB::table('companies')->get(),
             'customer_types' => DB::table('customer_types')->get()
         ]);
@@ -117,9 +123,10 @@ class CustomerController extends Controller
         $customer->name = $request->post('name');
         $customer->company_id = $request->post('company_id');
         $customer->customer_type = $request->post('customer_type');
-        if($customer->save()){
+        $customer->update_by = Auth::user()->id;
+        if ($customer->save()) {
             return redirect()->action([CustomerController::class, 'index']);
-        }else{
+        } else {
             dd("ไม่ได้");
         }
     }
@@ -133,10 +140,10 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         $customer = customer::find($id);
-        if($customer != null){
+        if ($customer != null) {
             $customer->delete();
             return redirect()->action([CustomerController::class, 'index']);
-        }else{
+        } else {
             return redirect()->action([CustomerController::class, 'index']);
         }
     }

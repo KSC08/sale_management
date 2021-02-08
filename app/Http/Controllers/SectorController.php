@@ -89,6 +89,8 @@ class SectorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sector = sector::find($id);
+        $sector->delete();
+        return redirect()->action([SectorController::class, 'index']);
     }
 }

@@ -15,7 +15,11 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <a class="btn btn-primary" href="{{route('customer.create')}}">เพิ่มข้อมูลลูกค้า</a>
+                <h5 class="card-title">ตารางข้อมูลลูกค้า</h5>
+                <h6 class="card-subtitle text-muted">ตารางข้อมูลลูกค้าที่ถูกสร้างโดยพนักงาน</h6>
+                <?php if (Auth::user()->role == 'user') { ?>
+                    <a style="float: right" class="btn btn-primary" href="{{route('customer.create')}}">เพิ่มข้อมูลลูกค้า</a>
+                <?php } ?>
             </div>
             <div class="card-body">
                 <table id="datatables-basic" class="table table-striped" style="width:100%">
@@ -25,7 +29,7 @@
                             <th>ชื่อลูกค้า</th>
                             <td>ชื่อบริษัท</td>
                             <td>ประเภทลูกค้า</td>
-                            <th>Action</th>
+                            <th>Setting</th>
                         </tr>
                     </thead>
                     <tbody>

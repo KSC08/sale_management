@@ -19,7 +19,9 @@
                 <div class="card-header">
                     <h5 class="card-title">Default</h5>
                     <h6 class="card-subtitle text-muted">Highly flexible tool that many advanced features to any HTML table.</h6>
-                    <a style="float: right" href="{{ url('/project/add') }}" class="btn btn-primary ">เพิ่มข้อมูล</a>
+                    <?php if(Auth::user()->role =='user'){ ?>
+                        <a style="float: right" href="{{ url('/project/add') }}" class="btn btn-primary ">เพิ่มข้อมูล</a>
+                    <?php }?>
                 </div>
                 <div class="card-body">
                     <table id="datatables-basic" class="table table-striped" style="width:100%">
@@ -28,12 +30,8 @@
                                 <th>NO.</th>
                                 <th>code</th>
                                 <th>name</th>
-                                <th>pro_status</th>
-                                <th>pro_type</th>
-                                <th>detail</th>
                                 <th>department</th>
                                 <th>created_by</th>
-                                <th>update_by</th>
                                 <td>setting</td>
                             </tr>
                         </thead>
@@ -44,13 +42,10 @@
                                 <td>{{$data->id}}</td>
                                 <td>{{$data->code}}</td>
                                 <td>{{$data->name}}</td>
-                                <td>{{$data->pro_status}}</td>
-                                <td>{{$data->pro_type}}</td>
-                                <td>{{$data->detail}}</td>
                                 <td>{{$data->department}}</td>
-                                <td>{{$data->created_by}}</td>
-                                <td>{{$data->update_by}}</td>
+                                <td>{{$data->creater_name}}</td>
                                 <td>
+                                <a href="{{ url('/project/view',$data->id) }}"><i class="align-middle mr-2" data-feather="zoom-in"></i><span class="align-middle"></span></a> 
                                 <a href="{{ url('/project/edit',$data->id) }}"><i class="align-middle mr-2" data-feather="edit"></i> <span class="align-middle"></span></a> 
                                <a href="{{ url('/project/delete',$data->id) }}"><i class="align-middle mr-2" data-feather="trash-2"></i> <span class="align-middle"></span></a>
                                 </td>

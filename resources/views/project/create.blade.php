@@ -19,7 +19,9 @@
                 <h6 class="card-subtitle text-muted">Date and time picker designed to integrate into your Bootstrap project.</h6>
             </div>
             <div class="card-body">
-            <form method="get" action="{{url('/create_project')}}">
+            <form method="POST" action="{{url('/create_project')}}">
+                {{csrf_field()}}
+                {{ method_field('POST') }}
                     <div class="row">
                         <div class="mb-3 col-md-6">
                             <label for="code">รหัสโครงการ</label>
@@ -48,6 +50,15 @@
                         <select id="type" name="type" class="form-control">
                             <option selected>Choose...</option>
                             @foreach($project_type as $data)
+                            <option value="{{$data->id}}">{{$data->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3 ">
+                        <label for="type">ลูกค้าเจ้าของโครงการ</label>
+                        <select id="type" name="customer" class="form-control">
+                            <option selected>Choose...</option>
+                            @foreach($customers as $data)
                             <option value="{{$data->id}}">{{$data->name}}</option>
                             @endforeach
                         </select>

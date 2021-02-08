@@ -148,10 +148,11 @@ Route::get('/user_detail', [App\Http\Controllers\UserDetailController::class, 'i
 //project
 Route::get('/project', [ProjectController::class, 'index']);
 Route::get('/project/add', [ProjectController::class, 'create']);
-Route::get('/create_project', [ProjectController::class, 'store']);
+Route::post('/create_project', [ProjectController::class, 'store']);
 Route::get('/project/edit/{id}', [ProjectController::class, 'edit']);
 Route::post('/project_update', [ProjectController::class, 'update']);
 Route::get('/project/delete/{id}', [ProjectController::class, 'destroy']);
+Route::get('/project/view/{id}', [ProjectController::class, 'show']);
 
 //project_type
 Route::get('/project_type', [ProjectTypeController::class, 'index']);
