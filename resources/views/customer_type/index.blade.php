@@ -1,10 +1,21 @@
 @extends('layouts.nav')
 @section('content')
+<div class="header">
+        <h1 class="header-title">
+        รายละเอียดข้อมูลประเภทลูกค้า
+        </h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{route('department.index')}}">Customer Type</a></li>
+                <li class="breadcrumb-item"><a href="{{route('department.index')}}">Index</a></li>
+            </ol>
+        </nav>
+    </div>
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">รายละเอียดข้อมูลประเภทลูกค้า <a class ="btn btn-primary float-right" href="{{route('customer_type.create')}}">เพิ่มข้อมูล</a></h5>
+                <h5 class="card-title">รายละเอียดข้อมูลประเภทลูกค้าทั้งหมด <a class ="btn btn-primary float-right" href="{{route('customer_type.create')}}">เพิ่มข้อมูล</a></h5>
                 
             </div>
             <div class="card-body">
