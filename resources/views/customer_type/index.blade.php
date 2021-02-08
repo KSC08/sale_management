@@ -6,8 +6,8 @@
         </h1>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('department.index')}}">Customer Type</a></li>
-                <li class="breadcrumb-item"><a href="{{route('department.index')}}">Index</a></li>
+                <li class="breadcrumb-item"><a href="#">Customer Type</a></li>
+                <li class="breadcrumb-item"><a href="#">Index</a></li>
             </ol>
         </nav>
     </div>
