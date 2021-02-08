@@ -4,24 +4,25 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">รายละเอียดข้อมูลลูกค้า <a class ="btn btn-primary float-right" href="{{route('customer_type.create')}}">เพิ่มรายละเอียดข้อมูลลูกค้า</a></h5>
+                <h5 class="card-title">รายละเอียดข้อมูลประเภทลูกค้า <a class ="btn btn-primary float-right" href="{{route('customer_type.create')}}">เพิ่มข้อมูล</a></h5>
                 
-                <h6 class="card-subtitle text-muted">มีรายละเอียด ดังต่อไปนี้</h6>
             </div>
             <div class="card-body">
                 <table id="datatables-basic" class="table table-striped" style="width:100%">
                     <thead>
                         <tr>
-                            <th>NO.</th>
+                            <th>ลำดับ</th>
                             <th>ประเภทลูกค้า</th>
-                            <th>Setting</th>
+                            <th><i class="align-middle mr-2" data-feather="settings"></i> <span class="align-middle"></span></th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($customer_types as $row)
+                        <?php $i = 0?>
+                        @foreach($customer_types as $row )
                         <tr>
-                            <td scope="row">{{$row->id}}</td>
+                            <?php $i++?>
+                            <td scope="row">{{$i}}</td>
                             <td>{{$row->name}}</td>
                             <td>
 

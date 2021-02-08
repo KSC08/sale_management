@@ -7,7 +7,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h1 class="text-primary mr-auto" align="center">เพิ่มรายละเอียดข้อมูลลูกค้า</h1>
+                    <h1 class="text-primary mr-auto" align="center">เพิ่มรายละเอียดข้อมูลประเภทลูกค้า</h1>
                 </div>
                 
                 <div class="card-body">
