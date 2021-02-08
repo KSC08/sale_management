@@ -171,9 +171,8 @@ Route::post('/project_status_update', [ProjectStatusController::class, 'update']
 Route::get('/project_status/delete/{id}', [ProjectStatusController::class, 'destroy']);
 
 //sector
-Route::get('/sector', [SectorController::class, 'index']);
-Route::get('/sector/add', [SectorController::class, 'create']);
-Route::get('/create_sector', [SectorController::class, 'store']);
-Route::get('/sector/edit/{id}', [SectorController::class, 'edit']);
-Route::post('/sector_update', [SectorController::class, 'update']);
-Route::get('/sector/delete/{id}', [SectorController::class, 'destroy']);
+Route::resource('sector', 'App\Http\Controllers\SectorController');
+Route::get('/sector_edit/{id}',[SectorController::class,'edit']);
+Route::POST('/sector_store',[SectorController::class,'store']);
+Route::POST('/sector_update/{id}',[SectorController::class,'update']);
+Route::get('/sector_delete/{id}',[SectorController::class,'destroy']);

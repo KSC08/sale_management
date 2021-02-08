@@ -70,7 +70,7 @@
 						</a>
 						<ul id="pages" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('customer.index')}}">ข้อมูลลูกค้า</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/customer_type')}}">รายละเอียดข้อมูลลูกค้า</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/customer_type')}}">รายละเอียดข้อมูล<br>ประเภทลูกค้า</a></li>
 						</ul>
 					</li>
 					<li class="sidebar-item">
@@ -79,8 +79,8 @@
 						</a>
 						<ul id="pages2" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="{{url('company')}}">บริษัท</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href={{route('department.index')}}>ข้อมูลฝ่าย</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href={{route('division.index')}}>ข้อมูลส่วน</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href={{url('department')}}>ข้อมูลส่วน</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href={{url('sector')}}>ข้อมูลฝ่าย</a></li>
 						</ul>
 					</li>
 

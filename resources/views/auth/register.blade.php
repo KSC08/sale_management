@@ -102,7 +102,7 @@
                                         <select id="sector" name="sector" class="form-control">
                                             <option selected>Choose...</option>
                                             @foreach($sector as $data)
-                                            <option value="{{$data->id}}">{{$data->name}}</option>
+                                            <option value="{{$data->id}}">{{$data->sname}}</option>
                                            @endforeach
                                         </select>
                                     </div>

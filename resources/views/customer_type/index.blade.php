@@ -1,37 +1,47 @@
 @extends('layouts.nav')
 @section('content')
+<div class="header">
+        <h1 class="header-title">
+        รายละเอียดข้อมูลประเภทลูกค้า
+        </h1>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{route('department.index')}}">Customer Type</a></li>
+                <li class="breadcrumb-item"><a href="{{route('department.index')}}">Index</a></li>
+            </ol>
+        </nav>
+    </div>
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">รายละเอียดข้อมูลลูกค้า</h5>
-                <a class ="btn btn-primary float-right" href="{{route('customer_type.create')}}">เพิ่มรายละเอียดข้อมูลลูกค้า</a>
-                <h6 class="card-subtitle text-muted">มีรายละเอียด ดังต่อไปนี้</h6>
+                <h5 class="card-title">รายละเอียดข้อมูลประเภทลูกค้าทั้งหมด <a class ="btn btn-primary float-right" href="{{route('customer_type.create')}}">เพิ่มข้อมูล</a></h5>
+                
             </div>
             <div class="card-body">
                 <table id="datatables-basic" class="table table-striped" style="width:100%">
                     <thead>
                         <tr>
-                            <th>รหัสลูกค้า</th>
+                            <th>ลำดับ</th>
                             <th>ประเภทลูกค้า</th>
-                            <th>Action</th>
+                            <th><i class="align-middle mr-2" data-feather="settings"></i> <span class="align-middle"></span></th>
 
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($customer_types as $row)
+                        <?php $i = 0?>
+                        @foreach($customer_types as $row )
                         <tr>
-                            <td scope="row">{{$row->id}}</td>
+                            <?php $i++?>
+                            <td scope="row">{{$i}}</td>
                             <td>{{$row->name}}</td>
                             <td>
-                            <a  href="{{route('customer_type.edit',$row->id)}}" type="button" rel="tooltip"  class="btn btn-info btn-simple btn-xs" data-original-title="Edit Article">
-                                <i class="fa fa-edit"></i>
-                            </a>
+
+                            <a  href="{{route('customer_type.edit',$row->id)}}"><i class="align-middle mr-2" data-feather="edit"></i> <span class="align-middle"></span></a>              
+                            <a  href="customer_type/destroy/{{$row->id}}" onclick="return confirm('คุณต้องการลบข้อมูลนี้ใช่หรือไม่')"><i class="align-middle mr-2" data-feather="trash-2"></i> <span class="align-middle"></span></a>
                             
-                            <a  href="customer_type/destroy/{{$row->id}}"  onclick="return confirm('คุณต้องการลบข้อมูลนี้ใช่หรือไม่')" type="button" rel="tooltip" title="" class="btn btn-info btn-simple btn-xs" data-original-title="Edit Article">
-                                <i class="fa fa-trash"></i>
-                            </a>
                             </td>
+
                         </tr>
                         @endforeach
 
@@ -44,11 +54,6 @@
 
 
 </div>
-
-
-
-
-
 
 
 @endsection

@@ -94,10 +94,10 @@ class CustomerTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $customer_types = CustomerType::find($id);
+        $customer_types = customer_type::find($id);
         $customer_types->name = $request->post('name');
         $customer_types->save();
-        return view('customer_type.index',['customer_types' => CustomerType::All()]);
+        return view('customer_type.index',['customer_types' => customer_type::All()]);
 
         // $update = [
         //     'id'        => $request->id,
