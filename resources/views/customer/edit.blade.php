@@ -15,23 +15,20 @@
 </div>
 <div class="container">
     <div class="row">
-    <center>
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                     <form method="POST" action="{{url('/customer_update',$customers->id)}}" enctype="multipart/form-data">
                         {{csrf_field()}}
                         {{ method_field('POST') }}
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="inputEmail4">ชื่อลูกค้า</label>
-                                <br>
+                            <div class="form-group col-md-12">
+                                <label for="inputEmail4">ชื่อลูกค้า <a style="color:red;">*</a></label>
                                 <input type="text" name="name" class="form-control" placeholder="ป้อนชื่อ" value="{{$customers->cus_name}}" required>
                             </div>
-                            <div class="form-group col-md-6">
-                                <br>
-                                <label for="inputState">บริษัท</label>
-                                <select class="custom-select " name="company_id" style="width: 250px;">
+                            <div class="form-group col-md-12">
+                                <label for="inputState">บริษัท <a style="color:red;">*</a></label>
+                                <select class="form-control" name="company_id" >
                                     <option value="{{$customers->com_id}}">{{$customers->com_name}}</option>
                                     @foreach($companies as $row)
                                         <?php if ($customers->com_id != $row->id) { ?>
@@ -40,10 +37,9 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group col-md-6">
-                                <br>
-                                <label for="inputState">ประเภทลูกค้า</label>
-                                <select class="custom-select " name="customer_type" style="width: 250px;">
+                            <div class="form-group col-md-12">
+                                <label for="inputState">ประเภทลูกค้า <a style="color:red;">*</a></label>
+                                <select class="form-control" name="customer_type" >
                                     <option value="{{$customers->cus_type_id}}">{{$customers->cus_type_name}}</option>
                                     @foreach($customer_types as $row)
                                         <?php if ($customers->cus_type_id != $row->id) { ?>
@@ -53,9 +49,9 @@
                                 </select>
                             </div>
                             <div class="form-group col-md-12">
-                            <center>
                             <br>
-                                <button type="submit" class="btn btn-primary">บันทึกการแก้ไข</button>
+                            <center>
+                                <button type="submit" class="btn btn-primary">บันทึก</button>
                             </center>
                             </div>
                         </div>
@@ -86,8 +82,6 @@
 
             </div>
         </div>
-
-        </center>
     </div>
 </div>
 <div class="container">

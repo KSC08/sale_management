@@ -19,6 +19,8 @@ class CreateCustomersTable extends Migration
             $table->integer('company_id')->unsigned();
             $table->foreign('company_id')->references('id')->on('companies');
             $table->integer('customer_type')->unsigned();
+            $table->string('created_by');
+            $table->string('update_by');
             $table->timestamps();
         });
         

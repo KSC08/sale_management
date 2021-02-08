@@ -2,24 +2,23 @@
 @section('content')
 <div class="header">
     <h1 class="header-title">
-        เเบบฟอร์มขออนุมัติการจัดหา ซื้อ/จ้าง/เช่า
+        เพิ่มข้อมูลโครงการ
     </h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Page 1</a></li>
-            <li class="breadcrumb-item"><a href="#">Page 2</a></li>
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{url('/project')}}">ข้อมูลโครงการ</a></li>
+            <li class="breadcrumb-item"><a href="#">หน้าเพิ่มข้อมูลโครงการ</a></li>
         </ol>
     </nav>
 </div>
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
-                <h5 class="card-title">Date Time Picker</h5>
-                <h6 class="card-subtitle text-muted">Date and time picker designed to integrate into your Bootstrap project.</h6>
-            </div>
             <div class="card-body">
-            <form method="get" action="{{url('/create_project')}}">
+            <form method="POST" action="{{url('/create_project')}}">
+                {{csrf_field()}}
+                {{ method_field('POST') }}
                     <div class="row">
                         <div class="mb-3 col-md-6">
                             <label for="code">รหัสโครงการ</label>
@@ -48,6 +47,15 @@
                         <select id="type" name="type" class="form-control">
                             <option selected>Choose...</option>
                             @foreach($project_type as $data)
+                            <option value="{{$data->id}}">{{$data->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3 ">
+                        <label for="type">ลูกค้าเจ้าของโครงการ</label>
+                        <select id="type" name="customer" class="form-control">
+                            <option selected>Choose...</option>
+                            @foreach($customers as $data)
                             <option value="{{$data->id}}">{{$data->name}}</option>
                             @endforeach
                         </select>

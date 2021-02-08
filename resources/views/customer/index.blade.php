@@ -15,28 +15,32 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <a class="btn btn-primary" href="{{route('customer.create')}}">เพิ่มข้อมูลลูกค้า</a>
+                <h5 class="card-title">ตารางข้อมูลลูกค้า
+                <?php if (Auth::user()->role == 'user') { ?>
+                    <a style="float: right" class="btn btn-primary" href="{{route('customer.create')}}">เพิ่มข้อมูล</a>
+                <?php } ?></h5>
+                
             </div>
             <div class="card-body">
                 <table id="datatables-basic" class="table table-striped" style="width:100%">
                     <thead>
                         <tr>
-                            <th>ID</th>
+                            <th>ลำดับ</th>
                             <th>ชื่อลูกค้า</th>
                             <td>ชื่อบริษัท</td>
                             <td>ประเภทลูกค้า</td>
-                            <th>Action</th>
+                            <th><i class="align-middle mr-2" data-feather="settings"></i> <span class="align-middle"></span></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody><?php $i = 0?>
                         @foreach($customers as $row)
-                        <tr>
-                            <td>{{$row->id}}</td>
+                        <tr><?php $i++?>
+                            <td>{{$i}}</td>
                             <td>{{$row->cus_name}}</td>
                             <td>{{$row->com_name}}</td>
                             <td>{{$row->cus_type_name}}</td>
-                            <th><a href="{{route('customer.edit',$row->id)}}"><i class="fa fa-edit"></i></a>&nbsp&nbsp
-                                <a href="{{url('customer_delete',$row->id)}}" onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่')"><i class="fa fa-trash"></i></a>
+                            <th><a href="{{route('customer.edit',$row->id)}}"><i class="align-middle mr-2" data-feather="edit"></i></a>&nbsp&nbsp
+                                <a href="{{url('customer_delete',$row->id)}}" onclick="return confirm('คุณต้องการลบข้อมูลนี้หรือไม่')"><i class="align-middle mr-2" data-feather="trash-2"></i> </a>
                             </th>
                         </tr>
                         @endforeach
