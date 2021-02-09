@@ -18,12 +18,12 @@ class CreateDevicesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
-        Schema::table('project_details', function (Blueprint $table)
-        {
-            $table->foreign('device')
-                ->references('id')->on('devices')
-                ->onDelete('cascade');
-        });
+        // Schema::table('project_details', function (Blueprint $table)
+        // {
+        //     $table->foreign('device')
+        //         ->references('id')->on('devices')
+        //         ->onDelete('cascade');
+        // });
     }
 
     /**

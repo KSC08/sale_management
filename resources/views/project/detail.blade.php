@@ -19,70 +19,52 @@
                         <h5 class="card-title">1.ข้อมูลทั่วไปโครงการ</h5>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ url('/create_project') }}" enctype="multipart/form-data">
-                            {{csrf_field()}}
-                {{ method_field('POST') }}
+                        
                             <div class="row">
                                 <div class="mb-3 col-md-6">
                                     <label for="code">รหัสโครงการ</label>
-                                    <input type="text" class="form-control" id="code" name="code" value="1">
+                                    {{-- <label for="">{{$project->code}}</label> --}}
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="pro_name">ชื่อโครงการ</label>
-                                    <input type="text" class="form-control" id="pro_name" name="pro_name"
-                                        placeholder="กรองชื่อโครงการ"value="1" >
+                                    <label >{{$project->name}}</label>
                                 </div>
                                 <?php $user_dep = Auth::user()->department;
                                 //echo $user_status;
                                 ?>
-                                <input type="hidden" name="department" value="{{ $user_dep }}">
+                                
                             </div>
                             <div class="row">
                                 <div class="mb-3 col-md-6">
                                     <label for="status">สถานะโครงการ</label>
-                                    <select id="status" name="status" class="form-control">
-                                        <option selected>Choose...</option>
-                                        @foreach ($project_status as $data)
-                                            <option value="{{ $data->id }}">{{ $data->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="">{{$project->pro_status}}</label>
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="type">ประเภทโครงการ</label>
-                                    <select id="type" name="type" class="form-control">
-                                        <option selected>Choose...</option>
-                                        @foreach ($project_type as $data)
-                                            <option value="{{ $data->id }}">{{ $data->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <label for="">{{$project->pro_type}}</label>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="mb-3">
                                     <label for="detail">รายละเอียด</label>
-                                    <textarea class="form-control" placeholder="Textarea" rows="1" id="detail"
-                                        name="detail" >111</textarea>
+                                    <label for="">{{$project->detail}}</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="mb-3 col-md-4">
                                     <label for="pmname">ชื่อ(ทีมเทคนิคที่ดูแลโครงการ) </label>
-                                   
-                                        <input type="text" class="form-control" id="pmname" name="pmname"
-                                        placeholder="กรอกชื่อผู้ดูแลโครงการ" >
+                                    <label for="">{{$project->pmname}}</label>
                                 </div>
                                 <div class="mb-3 col-md-4">
                                     <label for="pmlname">นามสกุล(ทีมเทคนิคที่ดูแลโครงการ) </label>
                                    
-                                        <input type="text" class="form-control" id="pmlname" name="pmlname"
-                                        placeholder="กรอกนามสกุลผู้ดูแลโครงการ" >
+                                    <label for="">{{$project->pmlname}}</label>
                                 </div>
                                 <div class="mb-3 col-md-4">
                                     <label for="pmphone">เบอร์โทร</label>
                                    
-                                        <input type="text" class="form-control" id="pmphone" name="pmphone"
-                                        placeholder="กรอกเบอร์โทรผู้ติดต่อโครงการ" >
+                                    <label for="">{{$project->pmphone}}</label>
                                 </div>
                             </div>
                             
@@ -90,38 +72,14 @@
                             <div class="row">
                                 <div class="mb-3 col-md-4">
                                     <label for="inputState">ลูกค้า (ชื่อ เบอร์โทร Email)</label>
-                                    <select id="inputState" class="form-control" name="customer">
-                                        
-                                        <option selected>Choose...</option>
-                                        @foreach($customer as $data => $value)
-                                        <option value="{{$value->id}}">{{$value->name}}</option>
-                                        @endforeach
-                                        
-                                    </select>
+                                    <label for="">{{$project->customer}}</label>
                                 </div>
                             </div>
                             <fieldset class="mb-3">
                                 <div class="row">
                                     <label class="col-form-label col-sm-2 text-sm-right pt-sm-0">การชำระเงิน</label>
 
-                                    <div class="col-sm-3">
-                                        <label class="form-check">
-                                            <input name="Payment" type="radio" class="form-check-input" checked value="รายงวด">
-                                            <span class="form-check-label">รายงวด</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <label class="form-check">
-                                            <input name="Payment" type="radio" class="form-check-input" value="รายเดือน">
-                                            <span class="form-check-label">รายเดือน</span>
-                                        </label>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <label class="form-check">
-                                            <input name="Payment" type="radio" class="form-check-input" value="ครั้งเดียว">
-                                            <span class="form-check-label">ครั้งเดียว</span>
-                                        </label>
-                                    </div>
+                                    <label for="">{{$project->Payment}}</label>
 
 
                                 </div>
@@ -137,9 +95,7 @@
                                         <div class="card-body">
                                             <div class="mb-3 row">
 
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="operational_goals" >11</textarea>
-
+                                                <label for="">{{$project->operational_goals}}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -151,7 +107,7 @@
                                         <div class="card-header">
                                             <h5 class="card-title">3.ขอบเขตการดำเนินงาน</h5>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body" style="margin-left: 20px">
                                             <div class="mb-3 row">
                                                 <label class="col-form-label">3.1.รายละเอียดวงจร ประกอบด้วยชนิดของบริการ
                                                     ความเร็ว จำนวนวงจร (บริการของ เอ็นที)</label>
@@ -159,8 +115,8 @@
                                             <div class="mb-3 row">
 
 
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="scope_detail1" >11</textarea>
+                                                <label for="">{{$project->scope_detail1}}</label>
+
 
                                             </div>
                                             <div class="mb-3 row">
@@ -169,32 +125,31 @@
                                             </div>
                                             <div class="mb-3 row">
 
-
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="scope_detail2" >11</textarea>
+                                                <label for="">{{$project->scope_detail2}}</label>
 
                                             </div>
-                                            <div class="mb-3 row">
+                                            <label class="col-form-label">3.3. ประมาณการค่าปรับ </label>
 
-                                                <label class="col-form-label">3.3. ประมาณการค่าปรับ </label>
+                                            <div class="mb-3 row" style="margin-left: 20px">
+
                                                 <label class="col-form-label">3.3.1.หลักเกณฑ์การคิดค่าปรับ </label>
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="scope_detail3" >11</textarea>
+                                                <label for="">{{$project->scope_detail3}}</label>
                                                 <label class="col-form-label">3.3.2.ประมาณการค่าปรับ (ระบุจำนวน)
                                                 </label>
-                                                <label class="col-form-label">1. ค่าปรับจากการส่งมอบ </label>
+                                                <div class="mb-3 row" style="margin-left: 20px">
 
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="scope_detail4" >11</textarea>
+                                                    <label class="col-form-label">1. ค่าปรับจากการส่งมอบ </label>
+
+                                                <label for="">{{$project->scope_detail4}}</label>
 
                                                 <label class="col-form-label">2. ประมาณการค่าปรับตาม SLA
                                                     หากไม่มีค่าปรับให้ระบุเหตุผล </label>
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="scope_detail5" >11</textarea>
+                                                    <label for="">{{$project->scope_detail5}}</label>
+                                                </div>
+                                                
                                                 <label class="col-form-label">3.3.3.กรณีมีค่าปรับจากปีก่อนหน้า
                                                     กรุณาระบุจำนวน และสาเหตุ</label>
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="scope_detail6" >11</textarea>
+                                                    <label for="">{{$project->scope_detail6}}</label>
 
 
                                             </div>
@@ -216,8 +171,7 @@
                                             <div class="mb-3 row">
 
 
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="action_plan1" >11</textarea>
+                                                <label for="">{{$project->action_plan1}}</label>
 
                                             </div>
                                             <div class="mb-3 row">
@@ -227,13 +181,13 @@
                                             <div class="mb-3 row">
                                                 <div class="mb-3 col-xl-6">
                                                     <label for="date_start">วันที่เรื่ม</label>
-                                                    <input type="date" class="form-control" id="date_start"
-                                                        name="action_plan_date2">
+                                                    <label for="">{{$project->action_plan_date2}}</label>
+
                                                 </div>
                                                 <div class="mb-3 col-xl-6">
                                                     <label for="date_start">วันที่สิ้นสุด</label>
-                                                    <input type="date" class="form-control" id="date_start"
-                                                        name="action_plan_date3">
+                                                    <label for="">{{$project->action_plan_date3}}</label>
+
                                                 </div>
                                             </div>
 
@@ -247,8 +201,8 @@
                                                 <label class="col-form-label">1. ครั้งเดียว DDMMYY
                                                     (ตามสัญญาหรือคาดการณ์)</label>
 
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="action_plan4" >11</textarea>
+                                                    <label for="">{{$project->action_plan4}}</label>
+
 
                                             </div>
                                             <label class="col-form-label">2. รายงวด ( X งวด)</label>
@@ -261,16 +215,16 @@
                                             <div class="mb-3 row">
 
 
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="action_plan5" >11</textarea>
+                                                <label for="">{{$project->action_plan5}}</label>
+
 
                                             </div>
                                             <div class="mb-3 row">
 
                                                 <label class="col-form-label">3. รายเดือน (ทุกวันที่ DD ของเดือน)</label>
 
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="action_plan6" >11</textarea>
+                                                <label for="">{{$project->action_plan6}}</label>
+
 
                                             </div>
 
@@ -295,8 +249,9 @@
                                                 <label class="col-form-label">5.1.1. เงินลงทุน (ค่าใช้จ่ายกรณีเป็นงบลงทุนของ
                                                     เอ็นที) (หากไม่มีข้อมูล ใส่ว่ารอข้อมูลจาก......)</label>
 
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="finance1" >11</textarea>
+                                               
+                                                <label for="">{{$project->finance1}}</label>
+
 
                                             </div>
                                             <div class="mb-3 row">
@@ -305,8 +260,8 @@
                                                     (ค่าใช้จ่ายกรณีเป็นงบทำการของ เอ็นที) (หากไม่มีข้อมูล
                                                     ใส่ว่ารอข้อมูลจาก........)</label>
 
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="finance2" >11</textarea>
+                                                    <label for="">{{$project->finance2}}</label>
+
 
                                             </div>
 
@@ -319,16 +274,16 @@
 
                                                 <label class="col-form-label">5.1.3.1. รายได้ค่าติดตั้ง </label>
 
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="finance3" >11</textarea>
+                                                <label for="">{{$project->finance3}}</label>
+
 
                                             </div>
                                             <div class="mb-3 row">
 
                                                 <label class="col-form-label">5.1.3.2. รายได้ค่าเช่าวงจร </label>
 
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="finance4" >11</textarea>
+                                                <label for="">{{$project->finance4}}</label>
+
 
                                             </div>
                                             <div class="mb-3 row">
@@ -340,8 +295,8 @@
                                                     บาท/ชุด/เดือน (ไม่รวม VAT)
                                                 </h6>
 
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="finance5" >11</textarea>
+                                                <label for="">{{$project->finance5}}</label>
+
 
                                             </div>
 
@@ -364,13 +319,14 @@
                                                     รายได้รวมของโครงการ (ไม่รวม VAT) </label>
                                                 <h6>(หมายเหตุ) เมื่อคำนวณ รายได้กับบริการใน ข้อ 5.1.3 แล้ว
                                                     ต้องเป็นจำนวนที่เท่ากับ ผลตอบแทนที่เป็นตัวเงิน</h6>
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="performance1" >11</textarea>
+                                               
+                                                    <label for="">{{$project->performance1}}</label>
+
                                             </div>
                                             <div class="mb-3 row">
                                                 <label class="col-form-label">6.2. ผลตอบแทนที่ไม่เป็นตัวเงิน </label>
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="performance2" >11</textarea>
+                                                <label for="">{{$project->performance2}}</label>
+
                                             </div>
                                             
                                         </div>
@@ -392,8 +348,9 @@
                                                     (ตัวอย่าง 2) SLA หรือเงื่อนไขการให้บริการ ที่สูงมาก
                                                     อาจไม่สามารถทำตามข้อกำหนดได้
                                                 </h6>
-                                                <textarea class="form-control" placeholder="กรอกรายละเอียด"
-                                                    rows="3" name="Risk" >11</textarea>
+                                             
+                                                <label for="">{{$project->Risk}}</label>
+
                                             </div>
                                             <div class="mb-3 row">
                                                 <label class="col-form-label">7.2. เอกสารประกอบ</label>
@@ -403,8 +360,7 @@
                                                 <label class="col-form-label">7.2.1. ☐ ใบเสนอราคา ระหว่าง เอ็นที กับลูกค้า
                                                     ☐เอกสารลดราคา(ถ้ามี) </label>
 
-                                                <input type="file" id="code" name="file1"
-                                                   >
+                                                    <embed src="{{ asset('pro_doc/' . $project->file1) }}" width="800px" height="2100px" />
 
                                             </div>
                                             <div class="mb-3 row">
@@ -414,8 +370,7 @@
                                                 <h6>(กรณีที่ในปีปัจจุบันยังไม่มีให้ปรับ /แก้ไข /พิมพ์สีแดง
                                                     /เพิ่มเติมในเอกสารของปีก่อน ส่งให้ ส่วนงานเทคนิค
                                                     เพื่อดำเนินการจัดหาตามกรรมวิธีต่อไป)</h6>
-                                                <input type="file"  id="code" name="file2"
-                                                    >
+                                                    <embed src="{{ asset('pro_doc/' . $project->file2) }}" width="800px" height="2100px" />
 
                                             </div>
                                             <div class="mb-3 row">
@@ -425,8 +380,7 @@
                                                 <h6>(กรณีที่ในปีปัจจุบันยังไม่มีให้ปรับ /แก้ไข /พิมพ์สีแดง
                                                     /เพิ่มเติมในเอกสารของปีก่อน ส่งให้ ส่วนงานเทคนิค
                                                     เพื่อดำเนินการจัดหาตามกรรมวิธีต่อไป) </h6>
-                                                <input type="file"  id="code" name="file3"
-                                                    >
+                                                    <embed src="{{ asset('pro_doc/' . $project->file3) }}" width="800px" height="2100px" />
 
                                             </div>
                                             <div class="mb-3 row">
@@ -434,31 +388,25 @@
                                                 <label class="col-form-label">7.2.4 เอกสารโปรโมชั่นของบริการ
                                                     ที่ใช้ในโครงการนี้(ถ้ามี การใช้โปรโมชั่น) </label>
 
-                                                <input type="file"  id="code" name="file4"
-                                                    >
+                                                    <embed src="{{ asset('pro_doc/' . $project->file4) }}" width="800px" height="2100px" />
 
                                             </div>
                                             <div class="mb-3 row">
 
                                                 <label class="col-form-label">7.2.5. ประวัติการโทร CDR
                                                     ของลูกค้าย้อนหลังอย่างน้อย 3 เดือน (หากมีบริการโทรศัพท์)</label>
-
-                                                <input type="file" id="code" name="file5"
-                                                    >
-
+                                                    <embed src="{{ asset('pro_doc/' . $project->file5) }}" width="800px" height="2100px" />
                                             </div>
+                                            
 
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <center>
-                                <button type="submit" class="btn btn-primary">บันทึก</button>
+                            
 
-                            </center>
-
-                        </form>
+                        
                     </div>
                 </div>
             </div>
