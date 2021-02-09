@@ -56,8 +56,9 @@
 							<i class="align-middle mr-2 fas fa-fw fa-home"></i> <span class="align-middle">โครงการ</span>
 						</a>
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่กำลังดำเนินการอยู่</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่เสร็จสิ้นไปแล้ว</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/project')}}">โครงการ</a></li>
+							{{-- <li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่กำลังดำเนินการอยู่</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่เสร็จสิ้นไปแล้ว</a></li> --}}
 						</ul>
 					</li>
 					<li class="sidebar-header">
