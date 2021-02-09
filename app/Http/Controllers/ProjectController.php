@@ -89,11 +89,11 @@ class ProjectController extends Controller
     {
         $project_status = DB::table('project_statuses')->get();
         $project_type = DB::table('project_types')->get();
-        $customers = DB::table('customers')->where('created_by',Auth::user()->id)->get();
+        $customers = DB::table('customers')->get();
         return view('project.create', [
             'project_status' => $project_status,
             'project_type' => $project_type,
-            'customers' => $customers,
+            'customer' => $customers,
         ]);
     }
 
@@ -112,7 +112,7 @@ class ProjectController extends Controller
                 'name' => $request->POST('pro_name'),
                 'pro_status' => $request->POST('status'),
                 'pro_type' => $request->POST('type'),
-                'customer' => $request->POST('customer'),
+                
                 'detail' => $request->POST('detail'),
                 'department' => $request->POST('department'),
                 'created_by' => Auth::user()->id,
