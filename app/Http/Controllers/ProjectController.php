@@ -74,6 +74,7 @@ class ProjectController extends Controller
                 )
                 ->get();
         }
+        // lol
         return view('project.index', ['project' => $project]);
     }
 
