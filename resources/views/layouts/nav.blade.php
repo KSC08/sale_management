@@ -57,8 +57,8 @@
 						</a>
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/project')}}">โครงการ</a></li>
-							{{-- <li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่กำลังดำเนินการอยู่</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่เสร็จสิ้นไปแล้ว</a></li> --}}
+							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่กำลังดำเนินการอยู่</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่เสร็จสิ้นไปแล้ว</a></li>
 						</ul>
 					</li>
 					<li class="sidebar-header">
@@ -71,7 +71,7 @@
 						</a>
 						<ul id="pages" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="{{route('customer.index')}}">ข้อมูลลูกค้า</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/customer_type')}}">รายละเอียดข้อมูลลูกค้า</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/customer_type')}}">รายละเอียดข้อมูล<br>ประเภทลูกค้า</a></li>
 						</ul>
 					</li>
 					<li class="sidebar-item">

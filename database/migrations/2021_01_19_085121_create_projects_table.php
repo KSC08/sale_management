@@ -19,6 +19,7 @@ class CreateProjectsTable extends Migration
             $table->string('name');
             $table->integer('pro_status')->unsigned();
             $table->integer('pro_type')->unsigned();
+            $table->integer('customer')->unsigned();
             $table->longText('detail');
             $table->longText('department');
             $table->string('created_by');
@@ -27,6 +28,9 @@ class CreateProjectsTable extends Migration
         });
         Schema::table('projects', function (Blueprint $table)
         {
+            $table->foreign('customer')
+                ->references('id')->on('customers')
+                ->onDelete('cascade');
             $table->foreign('pro_status')
                 ->references('id')->on('project_statuses')
                 ->onDelete('cascade');

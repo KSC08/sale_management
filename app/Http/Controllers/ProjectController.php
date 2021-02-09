@@ -9,7 +9,6 @@ use App\Models\project;
 use App\Models\project_detail;
 use App\Models\document;
 use Auth;
-
 class ProjectController extends Controller
 {
     /**
@@ -19,42 +18,6 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        // dd(Auth::user()->role);
-        // if(Auth::user()->role=='admin'){
-        //     $project = DB::table('projects')->get();
-        // }elseif(Auth::user()->role=='sector'){
-        //     // $departments = DB::table('departments')
-        //     // ->join('sectors','sectors.id','=','departments.sector')
-        //     // ->join('users','users.sector','=','sectors.id')
-        //     // ->where('users.id',Auth::user()->id)->get();
-        //     $departments = DB::table('departments')->where('sector',Auth::user()->sector)->get();
-        //     foreach($departments as $row){
-        //         $id=$row->id;
-        //     }
-        //     $projects = DB::table('projects');
-        //     if (is_array($id) || is_object($id))
-        //     {
-        //         $i=0;
-        //         foreach ($id as $row)
-        //         {
-        //             if($i==0){
-        //                 $projects->where('projects.id','=',$row[$i]);
-        //                 $i=$i+1;
-        //                 }else{
-        //                 $projects->orWhere('projects.id','=',$row[$i]);
-        //                 $i=$i+1;
-        //                 dd($i);
-        //                  }
-        //         }
-        //     }
-        //     $projects->get();
-        //     dd($projects);
-        //     $project = DB::table('projects')->where('department',$departments)->get();
-        // }elseif(Auth::user()->role=='department'){
-        //     $project = DB::table('projects')->where('department',Auth::user()->department)->get();
-        // }else{
-        //     $project = DB::table('projects')->where('department',Auth::user()->department)->get();
-        // }
         $user = DB::table('users')
             ->join('departments', 'departments.id', '=', 'users.department')
             ->join('sectors', 'sectors.id', '=', 'departments.sector')->where('users.id', '=', Auth::user()->id)->get();
@@ -64,21 +27,53 @@ class ProjectController extends Controller
             // return Auth::user()->sector;
             $project = DB::table('projects')
                 ->join('departments', 'departments.id', '=', 'projects.department')
+                ->join('users as creater', 'creater.id', '=', 'projects.created_by')
+                ->join('users as editor', 'editor.id', '=', 'projects.update_by')
                 ->where('departments.sector', Auth::user()->sector)
                 ->select(
                     'projects.*',
-                    'departments.fname as department'
+                    'departments.fname as department',
+                    'creater.name as creater_name',
+                    'editor.name as editor_name'
                 )
                 ->get();
         } elseif (Auth::user()->role == 'admin') {
-            $project = DB::table('projects')->get();
-        } else {
             $project = DB::table('projects')
                 ->join('departments', 'departments.id', '=', 'projects.department')
+                ->join('users as creater', 'creater.id', '=', 'projects.created_by')
+                ->join('users as editor', 'editor.id', '=', 'projects.update_by')
+                ->select(
+                    'projects.*',
+                    'departments.fname as department',
+                    'creater.name as creater_name',
+                    'editor.name as editor_name'
+                )
+                ->get();
+        } elseif (Auth::user()->role == 'user') {
+            $project = DB::table('projects')
+                ->join('departments', 'departments.id', '=', 'projects.department')
+                ->join('users as creater', 'creater.id', '=', 'projects.created_by')
+                ->join('users as editor', 'editor.id', '=', 'projects.update_by')
+                ->where('projects.created_by', Auth::user()->id)
+                ->select(
+                    'projects.*',
+                    'departments.fname as department',
+                    'creater.name as creater_name',
+                    'editor.name as editor_name'
+                )
+                ->get();
+        } elseif (Auth::user()->role == 'department') {
+            // return Auth::user()->sector;
+            $project = DB::table('projects')
+                ->join('departments', 'departments.id', '=', 'projects.department')
+                ->join('users as creater', 'creater.id', '=', 'projects.created_by')
+                ->join('users as editor', 'editor.id', '=', 'projects.update_by')
                 ->where('departments.id', Auth::user()->department)
                 ->select(
                     'projects.*',
-                    'departments.fname as department'
+                    'departments.fname as department',
+                    'creater.name as creater_name',
+                    'editor.name as editor_name'
                 )
                 ->get();
         }
@@ -94,13 +89,11 @@ class ProjectController extends Controller
     {
         $project_status = DB::table('project_statuses')->get();
         $project_type = DB::table('project_types')->get();
-        $customer = DB::table('customers')->get();
-
-
+        $customers = DB::table('customers')->where('created_by',Auth::user()->id)->get();
         return view('project.create', [
             'project_status' => $project_status,
             'project_type' => $project_type,
-            'customer' => $customer,
+            'customers' => $customers,
         ]);
     }
 
@@ -112,16 +105,18 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->POST('customer'));
         $project = new project(
             [
-                'code' => $request->get('code'),
-                'name' => $request->get('pro_name'),
-                'pro_status' => $request->get('status'),
-                'pro_type' => $request->get('type'),
-                'detail' => $request->get('detail'),
-                'department' => $request->get('department'),
-                'created_by' => "admin",
-                'update_by' => "admin"
+                'code' => $request->POST('code'),
+                'name' => $request->POST('pro_name'),
+                'pro_status' => $request->POST('status'),
+                'pro_type' => $request->POST('type'),
+                'customer' => $request->POST('customer'),
+                'detail' => $request->POST('detail'),
+                'department' => $request->POST('department'),
+                'created_by' => Auth::user()->id,
+                'update_by' => Auth::user()->id
             ]
         );
         // dd($project);
@@ -289,7 +284,9 @@ class ProjectController extends Controller
                 )
                 ->first(),
             'project_status' => DB::table('project_statuses')->get(),
-            'project_type' => DB::table('project_types')->get()
+            'project_type' => DB::table('project_types')->get(),
+            'customers' => DB::table('customers')->where('created_by',Auth::user()->id)->get()
+
         ]);
     }
 
@@ -306,7 +303,9 @@ class ProjectController extends Controller
         $project->name = $request->post('pro_name');
         $project->pro_status = $request->post('status');
         $project->pro_type = $request->post('type');
+        $project->pro_type = $request->post('customer');
         $project->detail = $request->post('detail');
+        $project->update_by = Auth::user()->id;
         $project->save();
         return redirect()->action([ProjectController::class, 'index'])->with('success', 'แก้ไขข้อมูลแล้ว');
     }

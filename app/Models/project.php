@@ -13,6 +13,7 @@ class project extends Model
         'name',
         'pro_status',
         'pro_type',
+        'customer',
         'detail',
         'department',
         'created_by',
