@@ -18,12 +18,12 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
-        Schema::table('project_details', function (Blueprint $table)
-        {
-            $table->foreign('service')
-                ->references('id')->on('services')
-                ->onDelete('cascade');
-        });
+        // Schema::table('project_details', function (Blueprint $table)
+        // {
+        //     $table->foreign('service')
+        //         ->references('id')->on('services')
+        //         ->onDelete('cascade');
+        // });
     }
 
     /**

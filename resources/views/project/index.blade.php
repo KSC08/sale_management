@@ -53,6 +53,8 @@
                                 <td>
                                 <a href="{{ url('/project/edit',$data->id) }}"><i class="align-middle mr-2" data-feather="edit"></i> <span class="align-middle"></span></a> 
                                <a href="{{ url('/project/delete',$data->id) }}"><i class="align-middle mr-2" data-feather="trash-2"></i> <span class="align-middle"></span></a>
+                               <a href="{{ url('/project/detail',$data->id) }}"><i class="align-middle mr-2" data-feather="zoom-in"></i> <span class="align-middle"></span></a>
+
                                 </td>
                                
                             </tr>

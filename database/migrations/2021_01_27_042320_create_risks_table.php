@@ -18,12 +18,12 @@ class CreateRisksTable extends Migration
             $table->string('name');
             $table->timestamps();
         });
-        Schema::table('project_details', function (Blueprint $table)
-        {
-            $table->foreign('risk')
-                ->references('id')->on('risks')
-                ->onDelete('cascade');
-        });
+        // Schema::table('project_details', function (Blueprint $table)
+        // {
+        //     $table->foreign('risk')
+        //         ->references('id')->on('risks')
+        //         ->onDelete('cascade');
+        // });
     }
 
     /**
