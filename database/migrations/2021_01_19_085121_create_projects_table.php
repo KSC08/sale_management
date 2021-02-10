@@ -20,6 +20,7 @@ class CreateProjectsTable extends Migration
             $table->integer('pro_status')->unsigned();
             $table->integer('pro_type')->unsigned();
             $table->integer('customer')->unsigned();
+            $table->double('budget',10,2);
             $table->longText('detail');
             $table->longText('department');
             $table->string('created_by');

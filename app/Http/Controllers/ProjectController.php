@@ -11,6 +11,15 @@ use App\Models\document;
 use Auth;
 class ProjectController extends Controller
 {
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -94,7 +103,7 @@ class ProjectController extends Controller
         return view('project.create', [
             'project_status' => $project_status,
             'project_type' => $project_type,
-            'customers' => $customers,
+            'customer' => $customers,
         ]);
     }
 
@@ -114,6 +123,7 @@ class ProjectController extends Controller
                 'pro_status' => $request->POST('status'),
                 'pro_type' => $request->POST('type'),
                 'customer' => $request->POST('customer'),
+                'budget' => $request->POST('budget'),
                 'detail' => $request->POST('detail'),
                 'department' => $request->POST('department'),
                 'created_by' => Auth::user()->id,
@@ -173,7 +183,7 @@ class ProjectController extends Controller
         { //ตรวจเอกสาร
             $file = $request->file('file1');
             $extension = $file->getClientOriginalName();
-            $filename = time() . '.' . '1'.$extension;
+            $filename = time() . '.' . '1'.'.'.$extension;
             $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
             $project_doc->file1 = $filename;
         }
@@ -185,7 +195,7 @@ class ProjectController extends Controller
         { //ตรวจเอกสาร
             $file = $request->file('file2');
             $extension = $file->getClientOriginalName();
-            $filename = time() . '.' . '2'.$extension;
+            $filename = time() . '.' . '2'.'.'.$extension;
             $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
             $project_doc->file2 = $filename;
         }
@@ -197,7 +207,7 @@ class ProjectController extends Controller
         { //ตรวจเอกสาร
             $file = $request->file('file3');
             $extension = $file->getClientOriginalName();
-            $filename = time() . '.' . '3'.$extension;
+            $filename = time() . '.' . '3'.'.'.$extension;
             $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
             $project_doc->file3 = $filename;
         }
@@ -209,7 +219,7 @@ class ProjectController extends Controller
         { //ตรวจเอกสาร
             $file = $request->file('file4');
             $extension = $file->getClientOriginalName();
-            $filename = time() . '.' . '4'.$extension;
+            $filename = time() . '.' . '4'.'.'.$extension;
             $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
             $project_doc->file4 = $filename;
         }
@@ -221,7 +231,7 @@ class ProjectController extends Controller
         { //ตรวจเอกสาร
             $file = $request->file('file5');
             $extension = $file->getClientOriginalName();
-            $filename = time() . '.' . '5'.$extension;
+            $filename = time() . '.' . '5'.'.'.$extension;
             $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
             $project_doc->file5 = $filename;
         }
@@ -229,6 +239,81 @@ class ProjectController extends Controller
         {
             $project_doc->file5 = null;
         }
+        if ($request->hasfile('file6'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file6');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '6'.'.'.$extension;
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $project_doc->file6 = $filename;
+        }
+        else
+        {
+            $project_doc->file6 = null;
+        }
+        if ($request->hasfile('file7'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file7');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '7'.'.'.$extension;
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $project_doc->file7 = $filename;
+        }
+        else
+        {
+            $project_doc->file7 = null;
+        }
+        if ($request->hasfile('file8'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file8');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '8'.'.'.$extension;
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $project_doc->file8 = $filename;
+        }
+        else
+        {
+            $project_doc->file8 = null;
+        }
+        if ($request->hasfile('file9'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file9');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '9'.'.'.$extension;
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $project_doc->file9 = $filename;
+        }
+        else
+        {
+            $project_doc->file9 = null;
+        }
+        if ($request->hasfile('file10'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file10');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '10'.'.'.$extension;
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $project_doc->file10 = $filename;
+        }
+        else
+        {
+            $project_doc->file10 = null;
+        }
+
+        if ($request->hasfile('file11'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file11');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '11'.'.'.$extension;
+            // 20210210.11.namefile.pdf
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์pro_doc
+            $project_doc->file11 = $filename;
+        }
+        else
+        {
+            $project_doc->file11 = null;
+        }
+        
         $project_doc->pro_detail = $project_detail->id;
         $project_doc->save();
         return redirect()->action([ProjectController::class, 'index']);

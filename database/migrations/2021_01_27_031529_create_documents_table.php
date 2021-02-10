@@ -20,6 +20,12 @@ class CreateDocumentsTable extends Migration
             $table->string('file3')->nullable();
             $table->string('file4')->nullable();
             $table->string('file5')->nullable();
+            $table->string('file6')->nullable();
+            $table->string('file7')->nullable();
+            $table->string('file8')->nullable();
+            $table->string('file9')->nullable();
+            $table->string('file10')->nullable();
+            $table->string('file11')->nullable();
             $table->integer('pro_detail')->unsigned();
             $table->foreign('pro_detail')->references('id')->on('project_details');
             $table->timestamps();
