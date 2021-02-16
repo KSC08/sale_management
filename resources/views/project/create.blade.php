@@ -25,11 +25,11 @@
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label for="code">รหัสโครงการ</label>
-                                <input type="text" class="form-control" id="code" name="code" value="1">
+                                <input type="text" class="form-control" id="code" name="code" required>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="pro_name">ชื่อโครงการ</label>
-                                <input type="text" class="form-control" id="pro_name" name="pro_name" placeholder="กรองชื่อโครงการ" value="1">
+                                <input type="text" class="form-control" id="pro_name" name="pro_name" placeholder="กรองชื่อโครงการ" required>
                             </div>
                             <?php $user_dep = Auth::user()->department;
                             //echo $user_status;
@@ -39,8 +39,8 @@
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label for="status">สถานะโครงการ</label>
-                                <select id="status" name="status" class="form-control">
-                                    <option selected>Choose...</option>
+                                <select id="status" name="status" class="form-control" required>
+                                    <option value="" selected>Choose...</option>
                                     @foreach ($project_status as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                     @endforeach
@@ -48,41 +48,58 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="type">ประเภทโครงการ</label>
-                                <select id="type" name="type" class="form-control">
-                                    <option selected>Choose...</option>
+                                <select id="type" name="type" class="form-control" onchange="rolechang();" required>
+                                    <option value="" selected>Choose...</option>
                                     @foreach ($project_type as $data)
                                     <option value="{{ $data->id }}">{{ $data->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
+
+                            <script>
+                                function rolechang() {
+                                        var value = document.getElementById('type').value;
+                                        var x = document.getElementById("type_else_div");
+                                        if (value == '4') {
+                                            x.style.display = "block";
+                                        } else{
+                                            x.style.display = "none";
+                                        }
+                                    }
+                            </script>
+                        </div>
+                        <div class="row" id="type_else_div" style="display:none">
+                            <div class="mb-3">
+                                <textarea class="form-control" placeholder="กรุณาระบุ..................." rows="3" name="type_else"></textarea>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="mb-3">
                                 <label for="detail">งบประมาณ</label>
-                                <input type="text" class="form-control" placeholder="กรอกงบประมาณ" rows="1" id="detail" name="budget" value="10000000">
+                                <input type="text" class="form-control" placeholder="กรอกงบประมาณ" rows="1" id="detail" name="budget" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3">
                                 <label for="detail">รายละเอียด</label>
-                                <textarea class="form-control" placeholder="Textarea" rows="1" id="detail" name="detail">111</textarea>
+                                <textarea class="form-control" placeholder="Textarea" rows="1" id="detail" name="detail" required></textarea>
                             </div>
                         </div>
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label for="pmname">ชื่อ(ทีมเทคนิคที่ดูแลโครงการ) </label>
 
-                                <input type="text" class="form-control" id="pmname" name="pmname" placeholder="กรอกชื่อผู้ดูแลโครงการ">
+                                <input type="text" class="form-control" id="pmname" name="pmname" placeholder="กรอกชื่อผู้ดูแลโครงการ" required>
                             </div>
                             <div class="mb-3 col-md-4">
                                 <label for="pmlname">นามสกุล(ทีมเทคนิคที่ดูแลโครงการ) </label>
 
-                                <input type="text" class="form-control" id="pmlname" name="pmlname" placeholder="กรอกนามสกุลผู้ดูแลโครงการ">
+                                <input type="text" class="form-control" id="pmlname" name="pmlname" placeholder="กรอกนามสกุลผู้ดูแลโครงการ" required>
                             </div>
                             <div class="mb-3 col-md-4">
                                 <label for="pmphone">เบอร์โทร</label>
 
-                                <input type="text" class="form-control" id="pmphone" name="pmphone" placeholder="กรอกเบอร์โทรผู้ติดต่อโครงการ">
+                                <input type="text" class="form-control" id="pmphone" name="pmphone" placeholder="กรอกเบอร์โทรผู้ติดต่อโครงการ" required>
                             </div>
                         </div>
                         <div class="row">
@@ -92,9 +109,8 @@
                         <div class="row">
                             <div class="mb-3 col-md-4">
                                 <label for="inputState">ลูกค้า (ชื่อ เบอร์โทร Email)</label>
-                                <select id="inputState" class="form-control" name="customer">
-
-                                    <option selected>Choose...</option>
+                                <select id="inputState" class="form-control" name="customer" required>
+                                    <option value="" selected>Choose...</option>
                                     @foreach($customer as $data => $value)
                                     <option value="{{$value->id}}">{{$value->name}}</option>
                                     @endforeach
@@ -142,7 +158,7 @@
                                     <div class="card-body">
                                         <div class="mb-3 row">
 
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="operational_goals">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="operational_goals"></textarea>
 
                                         </div>
                                         <div class="mb-3 row">
@@ -167,7 +183,7 @@
                                         <div class="mb-3 row">
 
 
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="scope_detail1">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="scope_detail1"></textarea>
 
                                         </div>
                                         <div class="mb-3 row">
@@ -177,26 +193,26 @@
                                         <div class="mb-3 row">
 
 
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="scope_detail2">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="scope_detail2"></textarea>
 
                                         </div>
                                         <div class="mb-3 row">
 
                                             <label class="col-form-label">3.3. ประมาณการค่าปรับ </label>
                                             <label class="col-form-label">3.3.1.หลักเกณฑ์การคิดค่าปรับ </label>
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="scope_detail3">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="scope_detail3"></textarea>
                                             <label class="col-form-label">3.3.2.ประมาณการค่าปรับ (ระบุจำนวน)
                                             </label>
                                             <label class="col-form-label">1. ค่าปรับจากการส่งมอบ </label>
 
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="scope_detail4">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="scope_detail4"></textarea>
 
                                             <label class="col-form-label">2. ประมาณการค่าปรับตาม SLA
                                                 หากไม่มีค่าปรับให้ระบุเหตุผล </label>
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="scope_detail5">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="scope_detail5"></textarea>
                                             <label class="col-form-label">3.3.3.กรณีมีค่าปรับจากปีก่อนหน้า
                                                 กรุณาระบุจำนวน และสาเหตุ</label>
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="scope_detail6">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="scope_detail6"></textarea>
 
 
                                         </div>
@@ -220,9 +236,7 @@
                                         </div>
 
                                         <div class="mb-3 row">
-
-
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="action_plan1">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="action_plan1"></textarea>
 
                                         </div>
                                         <div class="mb-3 row">
@@ -232,11 +246,11 @@
                                         <div class="mb-3 row">
                                             <div class="mb-3 col-xl-6">
                                                 <label for="date_start">วันที่เรื่ม</label>
-                                                <input type="date" class="form-control" id="date_start" name="action_plan_date2">
+                                                <input type="date" class="form-control" id="date_start" name="action_plan_date2" >
                                             </div>
                                             <div class="mb-3 col-xl-6">
                                                 <label for="date_start">วันที่สิ้นสุด</label>
-                                                <input type="date" class="form-control" id="date_start" name="action_plan_date3">
+                                                <input type="date" class="form-control" id="date_start" name="action_plan_date3" >
                                             </div>
                                         </div>
 
@@ -250,7 +264,7 @@
                                             <label class="col-form-label">1. ครั้งเดียว DDMMYY
                                                 (ตามสัญญาหรือคาดการณ์)</label>
 
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="action_plan4">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="action_plan4"></textarea>
 
                                         </div>
                                         <label class="col-form-label">2. รายงวด ( X งวด)</label>
@@ -263,14 +277,14 @@
                                         <div class="mb-3 row">
 
 
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="action_plan5">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="action_plan5"></textarea>
 
                                         </div>
                                         <div class="mb-3 row">
 
                                             <label class="col-form-label">3. รายเดือน (ทุกวันที่ DD ของเดือน)</label>
 
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="action_plan6">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="action_plan6"></textarea>
 
                                         </div>
                                         <div class="mb-3 row">
@@ -297,7 +311,7 @@
                                             <label class="col-form-label">5.1.1. เงินลงทุน (ค่าใช้จ่ายกรณีเป็นงบลงทุนของ
                                                 เอ็นที) (หากไม่มีข้อมูล ใส่ว่ารอข้อมูลจาก......)</label>
 
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="finance1">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="finance1"></textarea>
 
                                         </div>
                                         <div class="mb-3 row">
@@ -306,7 +320,7 @@
                                                 (ค่าใช้จ่ายกรณีเป็นงบทำการของ เอ็นที) (หากไม่มีข้อมูล
                                                 ใส่ว่ารอข้อมูลจาก........)</label>
 
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="finance2">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="finance2"></textarea>
 
                                         </div>
 
@@ -319,14 +333,14 @@
 
                                             <label class="col-form-label">5.1.3.1. รายได้ค่าติดตั้ง </label>
 
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="finance3">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="finance3"></textarea>
 
                                         </div>
                                         <div class="mb-3 row">
 
                                             <label class="col-form-label">5.1.3.2. รายได้ค่าเช่าวงจร </label>
 
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="finance4">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="finance4"></textarea>
 
                                         </div>
                                         <div class="mb-3 row">
@@ -338,7 +352,7 @@
                                                 บาท/ชุด/เดือน (ไม่รวม VAT)
                                             </h6>
 
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="finance5">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="finance5"></textarea>
 
                                         </div>
                                         <div class="mb-3 row">
@@ -361,11 +375,11 @@
                                                 รายได้รวมของโครงการ (ไม่รวม VAT) </label>
                                             <h6>(หมายเหตุ) เมื่อคำนวณ รายได้กับบริการใน ข้อ 5.1.3 แล้ว
                                                 ต้องเป็นจำนวนที่เท่ากับ ผลตอบแทนที่เป็นตัวเงิน</h6>
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="performance1">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="performance1"></textarea>
                                         </div>
                                         <div class="mb-3 row">
                                             <label class="col-form-label">6.2. ผลตอบแทนที่ไม่เป็นตัวเงิน </label>
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="performance2">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="performance2"></textarea>
                                         </div>
                                         <div class="mb-3 row">
                                             <label class="col-form-label">ไฟล์เอกสารผลการดำเนินงานที่คาดว่าจะเกิดขึ้น(ถ้ามี) </label>
@@ -390,7 +404,7 @@
                                                 (ตัวอย่าง 2) SLA หรือเงื่อนไขการให้บริการ ที่สูงมาก
                                                 อาจไม่สามารถทำตามข้อกำหนดได้
                                             </h6>
-                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="Risk">11</textarea>
+                                            <textarea class="form-control" placeholder="กรอกรายละเอียด" rows="3" name="Risk"></textarea>
                                         </div>
                                         <div class="mb-3 row">
                                             <label class="col-form-label">7.2. เอกสารประกอบ</label>

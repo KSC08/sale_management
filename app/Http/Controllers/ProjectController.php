@@ -9,6 +9,7 @@ use App\Models\project;
 use App\Models\project_detail;
 use App\Models\document;
 use Auth;
+use Illuminate\Support\Facades\File;
 class ProjectController extends Controller
 {
         /**
@@ -145,6 +146,7 @@ class ProjectController extends Controller
                 'pmphone'=> $request->post('pmphone'),
                 'customer'=> $request->post('customer'),
                 'Payment'=> $request->post('Payment'),
+                'type_else'=> $request->post('type_else'),
 
                 'operational_goals'=> $request->post('operational_goals'),
                 'scope_detail1'=> $request->post('scope_detail1'),
@@ -170,12 +172,14 @@ class ProjectController extends Controller
                 'performance1'=> $request->post('performance1'),
                 'performance2'=> $request->post('performance2'),
                 'Risk'=> $request->post('Risk'),
-                'created_by'=> 'admin',
-                'update_by'=> 'admin',
+                'created_by'=> Auth::user()->id,
+                'update_by'=> Auth::user()->id,
             ]
         );
         // dd($project);
+        if($project->pro_type=='4'){
 
+        }
         $project_detail->save();
         //dd(1);
         $project_doc = new document();
@@ -184,7 +188,7 @@ class ProjectController extends Controller
             $file = $request->file('file1');
             $extension = $file->getClientOriginalName();
             $filename = time() . '.' . '1'.'.'.$extension;
-            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์pro_doc
             $project_doc->file1 = $filename;
         }
         else
@@ -196,7 +200,7 @@ class ProjectController extends Controller
             $file = $request->file('file2');
             $extension = $file->getClientOriginalName();
             $filename = time() . '.' . '2'.'.'.$extension;
-            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์pro_doc
             $project_doc->file2 = $filename;
         }
         else
@@ -208,7 +212,7 @@ class ProjectController extends Controller
             $file = $request->file('file3');
             $extension = $file->getClientOriginalName();
             $filename = time() . '.' . '3'.'.'.$extension;
-            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์pro_doc
             $project_doc->file3 = $filename;
         }
         else
@@ -220,7 +224,7 @@ class ProjectController extends Controller
             $file = $request->file('file4');
             $extension = $file->getClientOriginalName();
             $filename = time() . '.' . '4'.'.'.$extension;
-            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์pro_doc
             $project_doc->file4 = $filename;
         }
         else
@@ -232,7 +236,7 @@ class ProjectController extends Controller
             $file = $request->file('file5');
             $extension = $file->getClientOriginalName();
             $filename = time() . '.' . '5'.'.'.$extension;
-            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์pro_doc
             $project_doc->file5 = $filename;
         }
         else
@@ -244,7 +248,7 @@ class ProjectController extends Controller
             $file = $request->file('file6');
             $extension = $file->getClientOriginalName();
             $filename = time() . '.' . '6'.'.'.$extension;
-            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์pro_doc
             $project_doc->file6 = $filename;
         }
         else
@@ -256,7 +260,7 @@ class ProjectController extends Controller
             $file = $request->file('file7');
             $extension = $file->getClientOriginalName();
             $filename = time() . '.' . '7'.'.'.$extension;
-            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์pro_doc
             $project_doc->file7 = $filename;
         }
         else
@@ -268,7 +272,7 @@ class ProjectController extends Controller
             $file = $request->file('file8');
             $extension = $file->getClientOriginalName();
             $filename = time() . '.' . '8'.'.'.$extension;
-            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์pro_doc
             $project_doc->file8 = $filename;
         }
         else
@@ -280,7 +284,7 @@ class ProjectController extends Controller
             $file = $request->file('file9');
             $extension = $file->getClientOriginalName();
             $filename = time() . '.' . '9'.'.'.$extension;
-            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์pro_doc
             $project_doc->file9 = $filename;
         }
         else
@@ -292,7 +296,7 @@ class ProjectController extends Controller
             $file = $request->file('file10');
             $extension = $file->getClientOriginalName();
             $filename = time() . '.' . '10'.'.'.$extension;
-            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์vis_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารในโฟลเดอร์pro_doc
             $project_doc->file10 = $filename;
         }
         else
@@ -330,6 +334,8 @@ class ProjectController extends Controller
         $project = DB::table('projects')
         ->join('project_details','project_details.pro_id','=','projects.id')
         ->join('documents','documents.pro_detail','=','project_details.id')
+        ->join('project_statuses', 'project_statuses.id', '=', 'projects.pro_status')
+        ->join('project_types', 'project_types.id', '=', 'projects.pro_type')
         ->where('projects.id',$id)
         ->select('projects.code as code'
         ,'projects.name as name'
@@ -340,7 +346,11 @@ class ProjectController extends Controller
         ,'projects.created_by'
         ,'projects.update_by'
         ,'project_details.*'
-        ,'documents.*')
+        ,'documents.*',
+        'project_statuses.id as pro_status_id',
+        'project_statuses.name as pro_status_name',
+        'project_types.id as pro_status_id',
+        'project_types.name as pro_type_name')
         ->first();
         return view('project.detail', ['project' => $project]);
     }
@@ -354,24 +364,25 @@ class ProjectController extends Controller
     public function edit($id)
     {
         return view('project.edit', [
-            'project' => DB::table('projects')
+                'project' => DB::table('projects')
+                ->join('project_details', 'project_details.pro_id', '=', 'projects.id')
                 ->join('project_statuses', 'project_statuses.id', '=', 'projects.pro_status')
                 ->join('project_types', 'project_types.id', '=', 'projects.pro_type')
+                ->join('customers', 'customers.id', '=', 'projects.customer')
                 ->where('projects.id', $id)
-                ->select(
-                    'projects.name',
-                    'projects.id',
-                    'projects.code',
-                    'projects.detail',
-                    'project_statuses.id as pro_status_id',
-                    'project_statuses.name as pro_status',
-                    'project_types.id as pro_status_id',
-                    'project_types.name as pro_type'
-                )
+                ->select('projects.*',
+                'projects.id as pro_id',
+                'project_details.*',
+                'project_statuses.id as status_id',
+                'project_statuses.name as status_name',
+                'project_types.id as type_id',
+                'project_types.name as type_name',
+                'customers.id as cus_id',
+                'customers.name as cus_name',)
                 ->first(),
-            'project_status' => DB::table('project_statuses')->get(),
-            'project_type' => DB::table('project_types')->get(),
-            'customers' => DB::table('customers')->where('created_by',Auth::user()->id)->get()
+                'project_status' => DB::table('project_statuses')->get(),
+                'project_type' => DB::table('project_types')->get(),
+                'customers' => DB::table('customers')->where('created_by',Auth::user()->id)->get()
 
         ]);
     }
@@ -383,16 +394,165 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
-        $project = project::find($request->post('id'));
+        $project = project::find($id);
+        $project->code = $request->post('code');
         $project->name = $request->post('pro_name');
         $project->pro_status = $request->post('status');
         $project->pro_type = $request->post('type');
         $project->pro_type = $request->post('customer');
+        $project->budget = $request->post('budget');
         $project->detail = $request->post('detail');
         $project->update_by = Auth::user()->id;
         $project->save();
+
+        $project_detail = project_detail::where('pro_id','=',$id)->first();
+        $project_detail->pmname = $request->post('pmname');
+        $project_detail->pmlname = $request->post('pmlname');
+        $project_detail->pmphone = $request->post('pmphone');
+        $project_detail->customer = $request->post('customer');
+        $project_detail->Payment = $request->post('Payment');
+
+        $project_detail->operational_goals = $request->post('operational_goals');
+        $project_detail->scope_detail1 = $request->post('scope_detail1');
+        $project_detail->scope_detail2 = $request->post('scope_detail2');
+        $project_detail->scope_detail3 = $request->post('scope_detail3');
+        $project_detail->scope_detail4 = $request->post('scope_detail4');
+        $project_detail->scope_detail5 = $request->post('scope_detail5');
+        $project_detail->scope_detail6 = $request->post('scope_detail6');
+
+        $project_detail->action_plan1 = $request->post('action_plan1');
+        $project_detail->action_plan_date2 = $request->post('action_plan_date2');
+        $project_detail->action_plan_date3 = $request->post('action_plan_date3');
+        $project_detail->action_plan4 = $request->post('action_plan4');
+        $project_detail->action_plan5 = $request->post('action_plan5');
+        $project_detail->action_plan6 = $request->post('action_plan6');
+
+        $project_detail->finance1 = $request->post('finance1');
+        $project_detail->finance2 = $request->post('finance2');
+        $project_detail->finance3 = $request->post('finance3');
+        $project_detail->finance4 = $request->post('finance4');
+        $project_detail->finance5 = $request->post('finance5');
+
+        $project_detail->performance1 = $request->post('performance1');
+        $project_detail->performance2 = $request->post('performance2');
+        $project_detail->Risk = $request->post('Risk');
+        $project_detail->update_by = Auth::user()->id;
+        $project_detail->save();
+
+        $document = document::where('pro_detail','=',$project_detail->id)->first ();
+        if ($request->hasfile('file1'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file1');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '1'.'.'. $extension;
+            File::delete('pro_doc/' . $document->file1); //ลบเอกสารในโฟลเดอร์pro_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารอันใหม่ในโฟลเดอร์pro_doc
+            $pro_doc = $filename;
+            $document->file1 = $pro_doc;
+        }
+        if ($request->hasfile('file2'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file2');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '2'.'.'. $extension;
+            File::delete('pro_doc/' . $document->file2); //ลบเอกสารในโฟลเดอร์pro_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารอันใหม่ในโฟลเดอร์pro_doc
+            $pro_doc = $filename;
+            $document->file2 = $pro_doc;
+        }
+        if ($request->hasfile('file3'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file3');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '3'.'.'. $extension;
+            File::delete('pro_doc/' . $document->file3); //ลบเอกสารในโฟลเดอร์pro_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารอันใหม่ในโฟลเดอร์pro_doc
+            $pro_doc = $filename;
+            $document->file3 = $pro_doc;
+        }
+        if ($request->hasfile('file4'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file4');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '4'.'.'. $extension;
+            File::delete('pro_doc/' . $document->file4); //ลบเอกสารในโฟลเดอร์pro_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารอันใหม่ในโฟลเดอร์pro_doc
+            $pro_doc = $filename;
+            $document->file4 = $pro_doc;
+        }
+        if ($request->hasfile('file5'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file5');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '5'.'.'. $extension;
+            File::delete('pro_doc/' . $document->file5); //ลบเอกสารในโฟลเดอร์pro_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารอันใหม่ในโฟลเดอร์pro_doc
+            $pro_doc = $filename;
+            $document->file5 = $pro_doc;
+        }
+        if ($request->hasfile('file6'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file6');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '6'.'.'. $extension;
+            File::delete('pro_doc/' . $document->file6); //ลบเอกสารในโฟลเดอร์pro_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารอันใหม่ในโฟลเดอร์pro_doc
+            $pro_doc = $filename;
+            $document->file6 = $pro_doc;
+        }
+        if ($request->hasfile('file7'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file7');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '7'.'.'. $extension;
+            File::delete('pro_doc/' . $document->file7); //ลบเอกสารในโฟลเดอร์pro_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารอันใหม่ในโฟลเดอร์pro_doc
+            $pro_doc = $filename;
+            $document->file7 = $pro_doc;
+        }
+        if ($request->hasfile('file8'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file8');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '8'.'.'. $extension;
+            File::delete('pro_doc/' . $document->file8); //ลบเอกสารในโฟลเดอร์pro_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารอันใหม่ในโฟลเดอร์pro_doc
+            $pro_doc = $filename;
+            $document->file8 = $pro_doc;
+        }
+        if ($request->hasfile('file9'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file9');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '9'.'.'. $extension;
+            File::delete('pro_doc/' . $document->file9); //ลบเอกสารในโฟลเดอร์pro_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารอันใหม่ในโฟลเดอร์pro_doc
+            $pro_doc = $filename;
+            $document->file9 = $pro_doc;
+        }
+        if ($request->hasfile('file10'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file10');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '10'.'.'. $extension;
+            File::delete('pro_doc/' . $document->file10); //ลบเอกสารในโฟลเดอร์pro_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารอันใหม่ในโฟลเดอร์pro_doc
+            $pro_doc = $filename;
+            $document->file10 = $pro_doc;
+        }
+        if ($request->hasfile('file11'))
+        { //ตรวจเอกสาร
+            $file = $request->file('file11');
+            $extension = $file->getClientOriginalName();
+            $filename = time() . '.' . '11'.'.'. $extension;
+            File::delete('pro_doc/' . $document->file11); //ลบเอกสารในโฟลเดอร์pro_doc
+            $file->move('pro_doc', $filename); //บันทึกเอกสารอันใหม่ในโฟลเดอร์pro_doc
+            $pro_doc = $filename;
+            $document->file11 = $pro_doc;
+        }
+        $document->save();
         return redirect()->action([ProjectController::class, 'index'])->with('success', 'แก้ไขข้อมูลแล้ว');
     }
     /**
@@ -405,14 +565,32 @@ class ProjectController extends Controller
     {
         $delete = project::find($id);
         if ($delete != null) {
+            $pro_detail = DB::table('project_details')->where('pro_id','=',$id)->first();
+            if($pro_detail != null){
+                $document = DB::table('documents')->where('pro_detail','=',$pro_detail->id)->first();
+                if($document != null){
+                    $delete_document = document::find($document->id);
+                    File::delete('pro_doc/' . $delete_document->file1);
+                    File::delete('pro_doc/' . $delete_document->file2);
+                    File::delete('pro_doc/' . $delete_document->file3);
+                    File::delete('pro_doc/' . $delete_document->file4);
+                    File::delete('pro_doc/' . $delete_document->file5);
+                    File::delete('pro_doc/' . $delete_document->file6);
+                    File::delete('pro_doc/' . $delete_document->file7);
+                    File::delete('pro_doc/' . $delete_document->file8);
+                    File::delete('pro_doc/' . $delete_document->file9);
+                    File::delete('pro_doc/' . $delete_document->file10);
+                    File::delete('pro_doc/' . $delete_document->file11);
+                    $delete_document->delete();
+                }
+                $delete_document = project_detail::find($pro_detail->id);
+                $delete_document->delete();
+            }
+            
             $delete->delete();
-            return view('project.index', [
-                'project' => DB::table('projects')->get()
-            ])->with('success', 'ลบข้อมูลแล้ว');
+            return redirect()->action([ProjectController::class, 'index'])->with('success', 'ลบข้อมูลแล้ว');
         } else {
-            return view('project.index', [
-                'project' => DB::table('projects')->get()
-            ])->with('alert', 'ไม่สามารถลบข้อมูลนี้ได้');
+            return redirect()->action([ProjectController::class, 'index'])->with('alert', 'ไม่สามารถลบข้อมูลนี้ได้');
         }
     }
 }

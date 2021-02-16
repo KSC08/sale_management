@@ -57,8 +57,8 @@
 						</a>
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/project')}}">โครงการ</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่กำลังดำเนินการอยู่</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่เสร็จสิ้นไปแล้ว</a></li>
+							<!-- <li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่กำลังดำเนินการอยู่</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่เสร็จสิ้นไปแล้ว</a></li> -->
 						</ul>
 					</li>
 					<li class="sidebar-header">
@@ -80,12 +80,12 @@
 						</a>
 						<ul id="pages2" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="{{url('company')}}">บริษัท</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href={{url('department')}}>ข้อมูลส่วน</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href={{url('sector')}}>ข้อมูลฝ่าย</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{url('department')}}">ข้อมูลส่วน</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="{{url('sector')}}">ข้อมูลฝ่าย</a></li>
 						</ul>
 					</li>
 
-					<li class="sidebar-item">
+					<!-- <li class="sidebar-item">
 						<a data-target="#pages1" data-toggle="collapse" class="sidebar-link collapsed">
 
 							<i class="align-middle mr-2 fas fa-fw fa-file"></i> <span class="align-middle">จัดการข้อมูลผู้ใช้</span>
@@ -96,7 +96,7 @@
 							<li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">เปลี่ยนรหัสผ่าน</a></li>
 							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/user_detail')}}">รายละเอียดข้อมูลผู้ใช้</a></li>
 						</ul>
-					</li>
+					</li> -->
 				</ul>
 
 			</div>

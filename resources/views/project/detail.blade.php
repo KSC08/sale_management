@@ -22,11 +22,11 @@
 
                     <div class="row">
                         <div class="mb-3 col-md-6">
-                            <label for="code">รหัสโครงการ</label>
+                            <label for="code">รหัสโครงการ : </label>
                             {{-- <label for="">{{$project->code}}</label> --}}
                         </div>
                         <div class="mb-3 col-md-6">
-                            <label for="pro_name">ชื่อโครงการ</label>
+                            <label for="pro_name">ชื่อโครงการ : </label>
                             <label>{{$project->name}}</label>
                         </div>
                         <?php $user_dep = Auth::user()->department;
@@ -36,33 +36,39 @@
                     </div>
                     <div class="row">
                         <div class="mb-3 col-md-6">
-                            <label for="status">สถานะโครงการ</label>
-                            <label for="">{{$project->pro_status}}</label>
+                            <label for="status">สถานะโครงการ : </label>
+                            <label for="">{{$project->pro_status_name}}</label>
                         </div>
                         <div class="mb-3 col-md-6">
-                            <label for="type">ประเภทโครงการ</label>
-                            <label for="">{{$project->pro_type}}</label>
+                            <label for="type">ประเภทโครงการ : </label>
+                            <label for="">{{$project->pro_type_name}}</label>
                         </div>
                     </div>
-
+                    <?php if($project->pro_type==4){ ?>
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label for="">{{$project->type_else}}</label>
+                        </div>
+                    </div>
+                    <?php }?>
                     <div class="row">
                         <div class="mb-3">
-                            <label for="detail">รายละเอียด</label>
+                            <label for="detail">รายละเอียด : </label>
                             <label for="">{{$project->detail}}</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="mb-3 col-md-4">
-                            <label for="pmname">ชื่อ(ทีมเทคนิคที่ดูแลโครงการ) </label>
+                            <label for="pmname">ชื่อ(ทีมเทคนิคที่ดูแลโครงการ) : </label>
                             <label for="">{{$project->pmname}}</label>
                         </div>
                         <div class="mb-3 col-md-4">
-                            <label for="pmlname">นามสกุล(ทีมเทคนิคที่ดูแลโครงการ) </label>
+                            <label for="pmlname">นามสกุล(ทีมเทคนิคที่ดูแลโครงการ) : </label>
 
                             <label for="">{{$project->pmlname}}</label>
                         </div>
                         <div class="mb-3 col-md-4">
-                            <label for="pmphone">เบอร์โทร</label>
+                            <label for="pmphone">เบอร์โทร : </label>
 
                             <label for="">{{$project->pmphone}}</label>
                         </div>
@@ -71,13 +77,13 @@
 
                     <div class="row">
                         <div class="mb-3 col-md-4">
-                            <label for="inputState">ลูกค้า (ชื่อ เบอร์โทร Email)</label>
+                            <label for="inputState">ลูกค้า (ชื่อ เบอร์โทร Email) : </label>
                             <label for="">{{$project->customer}}</label>
                         </div>
                     </div>
                     <fieldset class="mb-3">
                         <div class="row">
-                            <label class="col-form-label col-sm-2 text-sm-right pt-sm-0">การชำระเงิน</label>
+                            <label class="col-form-label col-sm-2 text-sm-right pt-sm-0">การชำระเงิน : </label>
 
                             <label for="">{{$project->Payment}}</label>
 
@@ -85,17 +91,16 @@
                         </div>
                     </fieldset>
                     <?php if (!empty($project->file6)) { ?>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#file1">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#file6">
                             ดูเอกสาร
                         </button>
                     <?php } else {
                         echo "ไม่มีเอกสาร";
                     }  ?>
-                    <div class="modal fade" id="file1" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal fade" id="file6" tabindex="-1" role="dialog" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title">Large modal</h5>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -113,13 +118,35 @@
                         <div class="col-12 col-xl-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title">2.เป้าหมายในการดำเนินการ</h5>
-
+                                    <h5 class="card-title">2.เป้าหมายในการดำเนินการ : </h5>
                                 </div>
                                 <div class="card-body">
                                     <div class="mb-3 row">
-
                                         <label for="">{{$project->operational_goals}}</label>
+                                    </div>
+                                    <?php if (!empty($project->file7)) { ?>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#file7">
+                                            ดูเอกสาร
+                                        </button>
+                                    <?php } else {
+                                        echo "ไม่มีเอกสาร";
+                                    }  ?>
+                                    <div class="modal fade" id="file7" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body m-3">
+                                                    <embed src="{{ asset('pro_doc/' . $project->file7) }}" width="800px" height="2100px" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -156,26 +183,50 @@
 
                                     <div class="mb-3 row" style="margin-left: 20px">
 
-                                        <label class="col-form-label">3.3.1.หลักเกณฑ์การคิดค่าปรับ </label>
+                                        <label class="col-form-label">3.3.1.หลักเกณฑ์การคิดค่าปรับ : </label>
                                         <label for="">{{$project->scope_detail3}}</label>
                                         <label class="col-form-label">3.3.2.ประมาณการค่าปรับ (ระบุจำนวน)
                                         </label>
                                         <div class="mb-3 row" style="margin-left: 20px">
 
-                                            <label class="col-form-label">1. ค่าปรับจากการส่งมอบ </label>
+                                            <label class="col-form-label">1. ค่าปรับจากการส่งมอบ : </label>
 
                                             <label for="">{{$project->scope_detail4}}</label>
 
                                             <label class="col-form-label">2. ประมาณการค่าปรับตาม SLA
-                                                หากไม่มีค่าปรับให้ระบุเหตุผล </label>
+                                                หากไม่มีค่าปรับให้ระบุเหตุผล : </label>
                                             <label for="">{{$project->scope_detail5}}</label>
                                         </div>
 
                                         <label class="col-form-label">3.3.3.กรณีมีค่าปรับจากปีก่อนหน้า
-                                            กรุณาระบุจำนวน และสาเหตุ</label>
+                                            กรุณาระบุจำนวน และสาเหตุ : </label>
                                         <label for="">{{$project->scope_detail6}}</label>
 
 
+                                    </div>
+                                    <?php if (!empty($project->file8)) { ?>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#file8">
+                                            ดูเอกสาร
+                                        </button>
+                                    <?php } else {
+                                        echo "ไม่มีเอกสาร";
+                                    }  ?>
+                                    <div class="modal fade" id="file8" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body m-3">
+                                                    <embed src="{{ asset('pro_doc/' . $project->file8) }}" width="800px" height="2100px" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -189,7 +240,7 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="mb-3 row">
-                                        <label class="col-form-label">4.1. ระยะเวลาในการดำเนินงานของ เอ็นที </label>
+                                        <label class="col-form-label">4.1. ระยะเวลาในการดำเนินงานของ เอ็นที : </label>
                                     </div>
 
                                     <div class="mb-3 row">
@@ -200,16 +251,16 @@
                                     </div>
                                     <div class="mb-3 row">
                                         <label class="col-form-label">4.2 ระยะเวลาในการให้บริการตามสัญญา (DDMMYY ถึง
-                                            DDMMYY) (ระหว่าง เอ็นที กับลูกค้า)</label>
+                                            DDMMYY) (ระหว่าง เอ็นที กับลูกค้า) : </label>
                                     </div>
                                     <div class="mb-3 row">
                                         <div class="mb-3 col-xl-6">
-                                            <label for="date_start">วันที่เรื่ม</label>
+                                            <label for="date_start">วันที่เรื่ม : </label>
                                             <label for="">{{$project->action_plan_date2}}</label>
 
                                         </div>
                                         <div class="mb-3 col-xl-6">
-                                            <label for="date_start">วันที่สิ้นสุด</label>
+                                            <label for="date_start">วันที่สิ้นสุด : </label>
                                             <label for="">{{$project->action_plan_date3}}</label>
 
                                         </div>
@@ -223,7 +274,7 @@
                                     <div class="mb-3 row">
 
                                         <label class="col-form-label">1. ครั้งเดียว DDMMYY
-                                            (ตามสัญญาหรือคาดการณ์)</label>
+                                            (ตามสัญญาหรือคาดการณ์) : </label>
 
                                         <label for="">{{$project->action_plan4}}</label>
 
@@ -232,7 +283,7 @@
                                     <label class="col-form-label">2. รายงวด ( X งวด)</label>
 
                                     <div class="mb-3 row">
-                                        <label class="col-form-label">1. งวดที่ 1 วันที่ (ตามสัญญาหรือคาดการณ์)
+                                        <label class="col-form-label">1. งวดที่ 1 วันที่ (ตามสัญญาหรือคาดการณ์) : 
                                         </label>
                                     </div>
 
@@ -245,13 +296,36 @@
                                     </div>
                                     <div class="mb-3 row">
 
-                                        <label class="col-form-label">3. รายเดือน (ทุกวันที่ DD ของเดือน)</label>
+                                        <label class="col-form-label">3. รายเดือน (ทุกวันที่ DD ของเดือน) : </label>
 
                                         <label for="">{{$project->action_plan6}}</label>
 
 
                                     </div>
-
+                                    <?php if (!empty($project->file9)) { ?>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#file9">
+                                            ดูเอกสาร
+                                        </button>
+                                    <?php } else {
+                                        echo "ไม่มีเอกสาร";
+                                    }  ?>
+                                    <div class="modal fade" id="file9" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body m-3">
+                                                    <embed src="{{ asset('pro_doc/' . $project->file9) }}" width="800px" height="2100px" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                 </div>
                             </div>
@@ -271,7 +345,7 @@
                                     <div class="mb-3 row">
 
                                         <label class="col-form-label">5.1.1. เงินลงทุน (ค่าใช้จ่ายกรณีเป็นงบลงทุนของ
-                                            เอ็นที) (หากไม่มีข้อมูล ใส่ว่ารอข้อมูลจาก......)</label>
+                                            เอ็นที) (หากไม่มีข้อมูล ใส่ว่ารอข้อมูลจาก......) : </label>
 
 
                                         <label for="">{{$project->finance1}}</label>
@@ -282,7 +356,7 @@
 
                                         <label class="col-form-label">5.1.2.ใช้จ่ายในการดำเนินงาน
                                             (ค่าใช้จ่ายกรณีเป็นงบทำการของ เอ็นที) (หากไม่มีข้อมูล
-                                            ใส่ว่ารอข้อมูลจาก........)</label>
+                                            ใส่ว่ารอข้อมูลจาก........) : </label>
 
                                         <label for="">{{$project->finance2}}</label>
 
@@ -296,7 +370,7 @@
 
                                     <div class="mb-3 row">
 
-                                        <label class="col-form-label">5.1.3.1. รายได้ค่าติดตั้ง </label>
+                                        <label class="col-form-label">5.1.3.1. รายได้ค่าติดตั้ง : </label>
 
                                         <label for="">{{$project->finance3}}</label>
 
@@ -304,7 +378,7 @@
                                     </div>
                                     <div class="mb-3 row">
 
-                                        <label class="col-form-label">5.1.3.2. รายได้ค่าเช่าวงจร </label>
+                                        <label class="col-form-label">5.1.3.2. รายได้ค่าเช่าวงจร : </label>
 
                                         <label for="">{{$project->finance4}}</label>
 
@@ -316,17 +390,37 @@
                                         <h6>(ตัวอย่าง 1) บริการ IP-VPN ความเร็ว 100Mbps จำนวน XX วงจร
                                             มีรายได้ค่าบริการ 10000 บาท/วงจร/เดือน (ไม่รวม VAT)
                                             (ตัวอย่าง 2) อุปกรณ์ Router แบบที่ 1 จำนวน XX ชุด มีรายได้ค่าเช่า 5000
-                                            บาท/ชุด/เดือน (ไม่รวม VAT)
+                                            บาท/ชุด/เดือน (ไม่รวม VAT) : 
                                         </h6>
 
                                         <label for="">{{$project->finance5}}</label>
 
 
                                     </div>
-
-
-
-
+                                    <?php if (!empty($project->file10)) { ?>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#file10">
+                                            ดูเอกสาร
+                                        </button>
+                                    <?php } else {
+                                        echo "ไม่มีเอกสาร";
+                                    }  ?>
+                                    <div class="modal fade" id="file10" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body m-3">
+                                                    <embed src="{{ asset('pro_doc/' . $project->file10) }}" width="800px" height="2100px" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -342,17 +436,40 @@
                                         <label class="col-form-label">6.1. ผลตอบแทนที่เป็นตัวเงิน =
                                             รายได้รวมของโครงการ (ไม่รวม VAT) </label>
                                         <h6>(หมายเหตุ) เมื่อคำนวณ รายได้กับบริการใน ข้อ 5.1.3 แล้ว
-                                            ต้องเป็นจำนวนที่เท่ากับ ผลตอบแทนที่เป็นตัวเงิน</h6>
+                                            ต้องเป็นจำนวนที่เท่ากับ ผลตอบแทนที่เป็นตัวเงิน : </h6>
 
                                         <label for="">{{$project->performance1}}</label>
 
                                     </div>
                                     <div class="mb-3 row">
-                                        <label class="col-form-label">6.2. ผลตอบแทนที่ไม่เป็นตัวเงิน </label>
+                                        <label class="col-form-label">6.2. ผลตอบแทนที่ไม่เป็นตัวเงิน :  </label>
                                         <label for="">{{$project->performance2}}</label>
 
                                     </div>
-
+                                    <?php if (!empty($project->file11)) { ?>
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#file11">
+                                            ดูเอกสาร
+                                        </button>
+                                    <?php } else {
+                                        echo "ไม่มีเอกสาร";
+                                    }  ?>
+                                    <div class="modal fade" id="file11" tabindex="-1" role="dialog" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body m-3">
+                                                    <embed src="{{ asset('pro_doc/' . $project->file11) }}" width="800px" height="2100px" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -395,7 +512,7 @@
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Large modal</h5>
+
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -429,7 +546,7 @@
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Large modal</h5>
+
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -463,7 +580,7 @@
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Large modal</h5>
+
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -495,7 +612,7 @@
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Large modal</h5>
+
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -526,7 +643,7 @@
                                             <div class="modal-dialog modal-lg" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title">Large modal</h5>
+
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
