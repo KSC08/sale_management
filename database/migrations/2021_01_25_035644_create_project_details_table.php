@@ -16,47 +16,48 @@ class CreateProjectDetailsTable extends Migration
         Schema::create('project_details', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pro_id')->unsigned();
-            $table->string('pmname');
-            $table->string('pmlname');
-            $table->string('pmphone');
-            $table->string('customer');
-            $table->string('Payment');
+            $table->string('pmname')->nullable();
+            $table->string('pmlname')->nullable();
+            $table->string('pmphone')->nullable();
+            $table->string('customer')->nullable();
+            $table->string('Payment')->nullable();
 
+            $table->string('type_else')->nullable();
            
-            $table->string('operational_goals');
-            $table->string('scope_detail1');
-            $table->string('scope_detail2');
-            $table->string('scope_detail3');
-            $table->string('scope_detail4');
-            $table->string('scope_detail5');
-            $table->string('scope_detail6');
+            $table->string('operational_goals')->nullable();
+            $table->string('scope_detail1')->nullable();
+            $table->string('scope_detail2')->nullable();
+            $table->string('scope_detail3')->nullable();
+            $table->string('scope_detail4')->nullable();
+            $table->string('scope_detail5')->nullable();
+            $table->string('scope_detail6')->nullable();
 
 
-            $table->string('action_plan1');
-            $table->string('action_plan_date2');
-            $table->string('action_plan_date3');
-            $table->string('action_plan4');
-            $table->string('action_plan5');
-            $table->string('action_plan6');
+            $table->string('action_plan1')->nullable();
+            $table->string('action_plan_date2')->nullable();
+            $table->string('action_plan_date3')->nullable();
+            $table->string('action_plan4')->nullable();
+            $table->string('action_plan5')->nullable();
+            $table->string('action_plan6')->nullable();
 
-            $table->string('finance1');
-            $table->string('finance2');
-            $table->string('finance3');
-            $table->string('finance4');
-            $table->string('finance5');
+            $table->string('finance1')->nullable();
+            $table->string('finance2')->nullable();
+            $table->string('finance3')->nullable();
+            $table->string('finance4')->nullable();
+            $table->string('finance5')->nullable();
 
-            $table->string('performance1');
-            $table->string('performance2');
+            $table->string('performance1')->nullable();
+            $table->string('performance2')->nullable();
 
-            $table->string('Risk');
+            $table->string('Risk')->nullable();
 
             // $table->integer('service')->unsigned();
             // $table->integer('device')->unsigned();
             // $table->integer('risk')->unsigned();
             
            
-            $table->string('created_by');
-            $table->string('update_by');
+            $table->string('created_by')->nullable();
+            $table->string('update_by')->nullable();
             $table->timestamps();
         });
         Schema::table('project_details', function (Blueprint $table)
