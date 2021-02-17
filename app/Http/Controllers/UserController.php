@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Division;
+use App\Models\department;
+use App\Models\sector;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Auth;
 
 
 class UserController extends Controller
@@ -16,10 +17,31 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
+        if($id==1){
+            $users = DB::table('users')
+            ->join('sectors', 'sectors.id', '=', 'users.sector')
+            ->where('role','=','sector')
+            ->select('users.*'
+            ,'sectors.fname as division')
+            ->get();
+        }elseif($id==2){
+            $users = DB::table('users')
+            ->join('departments', 'departments.id', '=', 'users.department')
+            ->where('role','=','department')
+            ->select('users.*'
+            ,'departments.fname as division')
+            ->get();
+        }elseif($id==3){
+            $users = DB::table('users')
+            ->join('departments', 'departments.id', '=', 'users.department')
+            ->where('role','=','user')
+            ->select('users.*'
+            ,'departments.fname as division')
+            ->get();
+        }
         
-        $users = DB::table('users')->get();
         return view('user.index',['users' => $users]);
     }
 
@@ -74,18 +96,21 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $users = DB::table('users')->join('divisions','divisions.id','=','div_id')
-        ->where('users.id','=',$id)
-        ->select('users.*',
-        'divisions.id as div_id',
-                    'divisions.name as division')->first();
-
-        return view('user.edit',['user' => $users,'division' => division::All()]); 
-
-        // return view('user.edit',[
-        //     'users' => DB::table('users')
-        //     ->where('id','=',$id)->first()
-        //     ]);
+        $user = User::find($id);
+        if($user->role=='sector'){
+            $user_edit = DB::table('users')
+            ->join('sectors','sectors.id','=','users.sector')
+            ->where('users.id',$id)
+            ->select('users.*'
+            ,'sectors.fname as sector_name')->first();
+            return view('user.edit',['user' => $user_edit,'division' => sector::All()]); 
+        }else{
+            $user_edit = DB::table('users')
+            ->join('departments','departments.id','=','users.department')
+            ->where('users.id',$id)
+            ->select('users.*','departments.fname as dep_name')->first();
+            return view('user.edit',['user' => $user_edit,'division' => department::All()]); 
+        }
     }
 
     /**
@@ -111,10 +136,36 @@ class UserController extends Controller
         $users->name = $request->post('name');
         $users->email = $request->post('email');
         // $users->password = $request->post('password');
-        $users->div_id = $request->post('div_id');
-        $users->phone_number = $request->post('phone_number');
+        if($users->role=="sector"){
+            $users->sector = $request->post('div_id');
+        }else{
+            $users->department = $request->post('div_id');
+        }
         $users->save();
-        return redirect()->action([UserController::class, 'index']);
+        if($users->role=='sector'){
+            $users = DB::table('users')
+            ->join('sectors', 'sectors.id', '=', 'users.sector')
+            ->where('role','=','sector')
+            ->select('users.*'
+            ,'sectors.fname as division')
+            ->get();
+        }elseif($users->role=='department'){
+            $users = DB::table('users')
+            ->join('departments', 'departments.id', '=', 'users.department')
+            ->where('role','=','department')
+            ->select('users.*'
+            ,'departments.fname as division')
+            ->get();
+        }elseif($users->role=='department'){
+            $users = DB::table('users')
+            ->join('departments', 'departments.id', '=', 'users.department')
+            ->where('role','=','user')
+            ->select('users.*'
+            ,'departments.fname as division')
+            ->get();
+        }
+        
+        return view('user.index',['users' => $users]);
     }
 
     /**
