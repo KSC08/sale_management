@@ -8,7 +8,7 @@
 	<meta name="description" content="Responsive Bootstrap 4 Admin &amp; Dashboard Template">
 	<meta name="author" content="Bootlab">
 
-	<title>Spark - Responsive Admin &amp; Dashboard Template @yield('title')</title>
+	<title>Sale manangement @yield('title')</title>
 
 	<!-- PICK ONE OF THE STYLES BELOW -->
 	<link href="{{ asset('css/modern.css') }}" rel="stylesheet">
@@ -123,11 +123,11 @@
 					<i class="hamburger align-self-center"></i>
 				</a>
 
-				<form class="d-none d-sm-inline-block">
+				<!-- <form class="d-none d-sm-inline-block">
 					<input class="form-control form-control-lite" type="text" placeholder="Search projects...">
-				</form>
+				</form> -->
 
-				<div class="navbar-collapse collapse">
+				<!-- <div class="navbar-collapse collapse">
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item dropdown active">
 							<a class="nav-link dropdown-toggle position-relative" href="#" id="messagesDropdown" data-toggle="dropdown">
@@ -271,11 +271,11 @@
 							</div>
 						</li>
 					</ul>
-				</div>
-
+				</div> -->
+<!-- 
 				<a class="sidebar-toggle d-flex mr-2">
 					<i class="hamburger align-self-center"></i>
-				</a>
+				</a> -->
 				{{-- <form class="form-inline d-none d-sm-inline-block">
                   <input class="form-control form-control-lite" type="text" placeholder="Search projects...">
                </form> --}}
@@ -316,7 +316,7 @@
 					@yield('content')
 				</div>
 			</main>
-			<footer class="footer">
+			<!-- <footer class="footer">
 				<div class="container-fluid">
 					<div class="row text-muted">
 						<div class="col-8 text-left">
@@ -337,12 +337,12 @@
 						</div>
 						<div class="col-4 text-right">
 							<p class="mb-0">
-								&copy; 2020 - <a href="dashboard-default.html" class="text-muted">Spark</a>
+								<!-- &copy; 2020 - <a href="dashboard-default.html" class="text-muted">Spark</a> -->
 							</p>
 						</div>
 					</div>
 				</div>
-			</footer>
+			</footer> -->
 		</div>
 
 	</div>

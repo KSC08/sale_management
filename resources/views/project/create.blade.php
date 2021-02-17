@@ -6,8 +6,9 @@
     </h1>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Page 1</a></li>
-            <li class="breadcrumb-item"><a href="#">Page 2</a></li>
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{url('/project')}}">ข้อมูลโครงการ</a></li>
+            <li class="breadcrumb-item"><a href="#">ข้อมูลโครงการ</a>หน้าเเบบฟอร์มขออนุมัติการจัดหา</li>
         </ol>
     </nav>
 </div>
@@ -25,7 +26,7 @@
                         <div class="row">
                             <div class="mb-3 col-md-6">
                                 <label for="code">รหัสโครงการ</label>
-                                <input type="text" class="form-control" id="code" name="code" required>
+                                <input type="text" class="form-control" id="code" name="code" placeholder="กรอกรหัสโครงการ" required>
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="pro_name">ชื่อโครงการ</label>
@@ -411,8 +412,7 @@
                                         </div>
                                         <div class="mb-3 row">
 
-                                            <label class="col-form-label">7.2.1. ☐ ใบเสนอราคา ระหว่าง เอ็นที กับลูกค้า
-                                                ☐เอกสารลดราคา(ถ้ามี) </label>
+                                            <label class="col-form-label">7.2.1. ใบเสนอราคา ระหว่าง เอ็นที กับลูกค้า หรือ เอกสารลดราคา(ถ้ามี) </label>
 
                                             <input type="file" id="code" name="file1">
 
