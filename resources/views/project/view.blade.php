@@ -72,7 +72,7 @@
             <div class="modal-body m-3">
                 <div class="row">
                     <div class="mb-3 col-md-12">
-                        <label for="code">รายละเอียดแผนการดำเนินงาน(ไม่ต้องกรองก็ได้ถ้ามีไฟล์)</label>
+                        <label for="code">รายละเอียดแผนการดำเนินงาน(ไม่ต้องกรอกก็ได้ถ้ามีไฟล์)</label>
                         <textarea class="form-control" name="name" rows="2" placeholder="กรอกรายละเอียดแผนการดำเนินงาน"></textarea>
                     </div>
                 </div>

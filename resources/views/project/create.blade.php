@@ -29,7 +29,7 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="pro_name">ชื่อโครงการ</label>
-                                <input type="text" class="form-control" id="pro_name" name="pro_name" placeholder="กรองชื่อโครงการ" required>
+                                <input type="text" class="form-control" id="pro_name" name="pro_name" placeholder="กรอกชื่อโครงการ" required>
                             </div>
                             <?php $user_dep = Auth::user()->department;
                             //echo $user_status;

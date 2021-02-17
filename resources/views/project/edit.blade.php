@@ -29,7 +29,7 @@
                             </div>
                             <div class="mb-3 col-md-6">
                                 <label for="pro_name">ชื่อโครงการ</label>
-                                <input type="text" class="form-control" id="pro_name" name="pro_name" value="{{$project->name}}" placeholder="กรองชื่อโครงการ" required>
+                                <input type="text" class="form-control" id="pro_name" name="pro_name" value="{{$project->name}}" placeholder="กรอกชื่อโครงการ" required>
                             </div>
                         </div>
                         <div class="row">
