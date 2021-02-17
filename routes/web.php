@@ -80,15 +80,18 @@ Route::get('/nav', function () {
 
 
 //user
-Route::get('/user', function () {
-    return view('user.index');
+Route::get('/user/{id}',[UserController::class, 'index']);
+Route::post('/user', function () {
+    // Update the user's profile...
+
+    return redirect('/dashboard')->with('status', 'Profile updated!');
 });
 //user_detail
 Route::get('/user_detail', function () {
     return view('user_detail.index');
 });
 Route::resource('user', 'App\Http\Controllers\UserController');
-Route::get('/user_seach', [UserContrUseroller::class, 'search']);
+Route::get('/user_seach', [UserController::class, 'search']);
 Route::get('/user_create', [UserController::class, 'create']);
 Route::POST('/user_store/{id}', [UserController::class, 'store']);
 Route::get('/user_edit/{id}', [UserController::class, 'edit']);
@@ -140,7 +143,7 @@ Route::post('user_detail/destroy/{id}', 'App\Http\Controllers\UserDetailControll
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('users');
+// Route::get('/user', [App\Http\Controllers\UserController::class, 'index'])->name('users');
 Route::get('/customer_type', [App\Http\Controllers\CustomerTypeController::class, 'index'])->name('customer_types');
 Route::get('/user_detail', [App\Http\Controllers\UserDetailController::class, 'index']);
 

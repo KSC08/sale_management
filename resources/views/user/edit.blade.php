@@ -22,34 +22,41 @@
                                 <label style="color:red;">E-mail</label>
                                 <input type="email" name="email" id="email" class="form-control" placeholder="ป้อน E-mail" value="{{$user->email}}" required>
                             </div><br>
-                            <div class="form-group">
-                                <label style="color:red;">เบอร์โทร</label>
-                                <input type="text" name="phone_number"  class="form-control" maxlength="10" placeholder="ป้อนเบอร์โทร"  
-                                value="{{$user->phone_number}}" style="width:250px;" onKeyUp="if(this.value*1!=this.value) this.value='' ;" required>
-                                
-                            </div><br>
                             <div class="form-group col-md-12">
-                                <label style="color:red;">ส่วนงาน</label><br>
-                                <select class="custom-select " name="div_id" id="comid" placeholder="ป้อนส่วนงาน" style="width:250px;">
-                                <option value="{{$user->div_id}}">{{$user->division}}</option>
-                                @foreach($division as $row)
-                                <?php if($user->div_id!=$row->id){?>
-                                    <option value="{{$row->id}}">{{$row->name}}</option>
-                                <?php }?>
-                                @endforeach</select>
+                                <?php if ($user->role == 'sector') { ?>
+                                    <label style="color:red;">ฝ่าย</label><br>
+                                    <select class="custom-select " name="div_id" id="comid" placeholder="ป้อนส่วนงาน" style="width:250px;">
+                                        <option value="{{$user->sector}}">{{$user->sector_name}}</option>
+                                        @foreach($division as $row)
+                                        <?php if ($user->sector != $row->id) { ?>
+                                            <option value="{{$row->id}}">{{$row->fname}}</option>
+                                        <?php } ?>
+                                        @endforeach
+                                    </select>
+                                <?php } else { ?>
+                                    <label style="color:red;">ส่วนงาน</label><br>
+                                    <select class="custom-select " name="div_id" id="comid" placeholder="ป้อนส่วนงาน" style="width:250px;">
+                                        <option value="{{$user->department}}">{{$user->dep_name}}</option>
+                                        @foreach($division as $row)
+                                        <?php if ($user->department != $row->id) { ?>
+                                            <option value="{{$row->id}}">{{$row->fname}}</option>
+                                        <?php } ?>
+                                        @endforeach
+                                    </select>
+                                <?php } ?>
                             </div>
-                            
+
                         </div><br>
-                          
-                            <div class="form-group col-md-12">
-                                <center>
-                                    <div class="form-group"><input type="submit" class="btn btn-primary" value="บันทึกข้อมูล">
+
+                        <div class="form-group col-md-12">
+                            <center>
+                                <div class="form-group"><input type="submit" class="btn btn-primary" value="บันทึกข้อมูล">
                                     <input type="submit" class="btn btn-primary" value="ย้อนกลับ">
-                                    </div>
-                                </center>
-                            </div>
-                           
-                        
+                                </div>
+                            </center>
+                        </div>
+
+
                     </form>
                 </div>
             </div>

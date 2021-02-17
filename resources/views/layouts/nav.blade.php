@@ -34,17 +34,13 @@
 
 	<div class="wrapper">
 		<nav id="sidebar" class="sidebar">
-			<a class="sidebar-brand" href="index.html">
-				<svg>
-					<use xlink:href="#ion-ios-pulse-strong"></use>
-				</svg>
-				Spark
+			<a class="sidebar-brand">
+				Sale management
 			</a>
 			<div class="sidebar-content">
 				<div class="sidebar-user">
-					<img src="img/avatars/avatar.jpg" class="img-fluid rounded-circle mb-2" alt="Linda Miller" />
-					<div class="font-weight-bold">Linda Miller</div>
-					<small>Front-end Developer</small>
+					<div class="font-weight-bold"><h2>{{Auth::user()->name}}</h2></div>
+					<div class="font-weight-bold">{{Auth::user()->role}}</div>
 				</div>
 
 				<ul class="sidebar-nav">
@@ -57,8 +53,8 @@
 						</a>
 						<ul id="dashboards" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
 							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/project')}}">โครงการ</a></li>
-							<!-- <li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่กำลังดำเนินการอยู่</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่เสร็จสิ้นไปแล้ว</a></li> -->
+							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่กำลังดำเนินการอยู่</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="#">โครงการที่เสร็จสิ้นไปแล้ว</a></li>
 						</ul>
 					</li>
 					<li class="sidebar-header">
@@ -84,19 +80,18 @@
 							<li class="sidebar-item"><a class="sidebar-link" href="{{url('sector')}}">ข้อมูลฝ่าย</a></li>
 						</ul>
 					</li>
-
-					<!-- <li class="sidebar-item">
-						<a data-target="#pages1" data-toggle="collapse" class="sidebar-link collapsed">
-
-							<i class="align-middle mr-2 fas fa-fw fa-file"></i> <span class="align-middle">จัดการข้อมูลผู้ใช้</span>
-						</a>
-						<ul id="pages1" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">สมัครสมาชิก</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/user')}}">ข้อมูลผู้ใช้</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">เปลี่ยนรหัสผ่าน</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="{{url('/user_detail')}}">รายละเอียดข้อมูลผู้ใช้</a></li>
-						</ul>
-					</li> -->
+					<?php if (Auth::user()->role == 'admin') { ?>
+						<li class="sidebar-item">
+							<a data-target="#pages1" data-toggle="collapse" class="sidebar-link collapsed">
+								<i class="align-middle mr-2 fas fa-fw fa-file"></i> <span class="align-middle">จัดการข้อมูลผู้ใช้</span>
+							</a>
+							<ul id="pages1" class="sidebar-dropdown list-unstyled collapse " data-parent="#sidebar">
+								<li class="sidebar-item"><a class="sidebar-link" href="{{url('/user',$id=1)}}">ตารางฝ่าย</a></li>
+								<li class="sidebar-item"><a class="sidebar-link" href="{{url('/user',$id=2)}}">ตารางส่วน</a></li>
+								<li class="sidebar-item"><a class="sidebar-link" href="{{url('/user',$id=3)}}">ตารางผู้ใช้</a></li>
+							</ul>
+						</li>
+					<?php } ?>
 				</ul>
 
 			</div>
@@ -305,7 +300,7 @@
 						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                            document.getElementById('logout-form').submit();">
-								{{ __('ออกจากระบบ') }}
+								{{ __('ÍÍ¡¨Ò¡ÃÐºº') }}
 							</a>
 							<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 								@csrf

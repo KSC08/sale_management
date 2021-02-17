@@ -18,7 +18,6 @@
                             <th>รหัสผู้ใช้งาน</th>
                             <th>ชื่อผู้ใช้งาน</th>
                             <th>E-mail</th>
-                            <th>เบอร์โทร</th>
                             <th>ส่วนงาน</th>                     
                             <th>Action</th>
 
@@ -30,16 +29,15 @@
                         <td scope="row">{{$row->id}}</td>
                             <td>{{$row->name}}</td>
                             <td>{{$row->email}}</td>
-                            <td>{{$row->phone_number}}</td>
                             <td>{{$row->division }}</td>
                             
                             <td>
-                            <a  href="{{route('user.edit',$row->id)}}"  class="btn btn-info btn-simple btn-xs" data-original-title="Edit Article">
-                                <i class="fa fa-edit"></i>
+                            <a  href="{{route('user.edit',$row->id)}}">
+                            <i class="align-middle mr-2" data-feather="edit"></i>
                             </a>
                             
-                            <a  href="user/destroy/{{$row->id}}" onclick="return confirm('คุณต้องการลบข้อมูลนี้ใช่หรือไม่')"type="button" rel="tooltip" title="" class="btn btn-info btn-simple btn-xs" data-original-title="Edit Article">
-                                <i class="fa fa-trash"></i>
+                            <a  href="user/destroy/{{$row->id}}" onclick="return confirm('คุณต้องการลบข้อมูลนี้ใช่หรือไม่')">
+                            <i class="align-middle mr-2" data-feather="trash-2"></i>
                             </a>
                             </td>
                         </tr>
